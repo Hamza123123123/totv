@@ -1,46 +1,61 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تطبيق TOTV الرسمي</title>
     <style>
-        body { margin: 0; background-color: #000; color: #ddd; font-family: system-ui, sans-serif; overflow-x: hidden; }
-        
-        /* أيقونة القائمة (الثلاث خطوط) */
-        .menu-icon {
-            position: fixed; top: 20px; right: 20px; font-size: 30px; color: #ffcc00; cursor: pointer; z-index: 1000;
+        :root {
+            --bg-color: #000;
+            --card-bg: rgba(15, 15, 15, 0.9);
+            --text-primary: #ffcc00;
+            --text-secondary: #ddd;
+            --text-muted: #888;
+            --border-color: #222;
+            --footer-bg: #050505;
         }
+
+        .light-mode {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-primary: #d4a017;
+            --text-secondary: #333;
+            --text-muted: #666;
+            --border-color: #ddd;
+            --footer-bg: #eee;
+        }
+
+        body { margin: 0; background-color: var(--bg-color); color: var(--text-secondary); font-family: system-ui, sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: 0.3s; }
+        
+        /* أيقونة القائمة */
+        .menu-icon { position: fixed; top: 20px; right: 20px; font-size: 30px; color: var(--text-primary); cursor: pointer; z-index: 1000; }
+
+        /* أيقونة القمر/الشمس */
+        .theme-toggle { position: fixed; top: 70px; right: 25px; font-size: 24px; color: var(--text-primary); cursor: pointer; z-index: 1000; transition: 0.3s; }
 
         /* القائمة الجانبية */
-        .sidebar {
-            position: fixed; top: 0; right: -280px; width: 250px; height: 100%; background: #111;
-            transition: 0.3s; padding: 60px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 999;
-            border-left: 2px solid #ffcc00;
-        }
+        .sidebar { position: fixed; top: 0; right: -280px; width: 250px; height: 100%; background: var(--bg-color); transition: 0.3s; padding: 60px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 999; border-left: 2px solid var(--text-primary); }
         .sidebar.active { right: 0; }
-        .sidebar h2 { color: #ffcc00; font-size: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .sidebar h2 { color: var(--text-primary); font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .sidebar ul { list-style: none; padding: 0; }
-        .sidebar ul li { padding: 15px 0; border-bottom: 1px solid #222; color: #bbb; }
-        .sidebar ul li b { color: #ffcc00; }
+        .sidebar ul li { padding: 15px 0; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; }
+        .sidebar ul li b { color: var(--text-primary); margin-left: 10px; font-size: 1.2rem; }
         
-        /* تنسيق زر التيليجرام داخل القائمة */
-        .tg-link {
-            display: block; margin-top: 20px; padding: 12px; background: #0088cc; color: #fff;
-            text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; transition: 0.3s;
-        }
-        .tg-link:hover { background: #00aaff; }
+        .tg-link { display: block; margin-top: 20px; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; transition: 0.3s; }
 
         /* المحتوى الرئيسي */
-        .main-content { display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 20px; }
-        .card { background: rgba(15, 15, 15, 0.9); padding: 40px; border-radius: 25px; border: 1px solid #222; max-width: 400px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .logo { max-width: 200px; margin-bottom: 20px; }
-        h1 { color: #ffcc00; font-size: 1.6rem; margin-bottom: 10px; }
-        p { color: #888; line-height: 1.6; }
-        .btn { background: #ffcc00; color: #000; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; font-size: 1.1rem; }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,204,0,0.3); }
+        .main-content { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid var(--border-color); max-width: 400px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; }
+        .logo { max-width: 200px; margin-bottom: 20px; border-radius: 50%; }
+        h1 { color: var(--text-primary); font-size: 1.6rem; margin-bottom: 10px; }
+        p { color: var(--text-muted); line-height: 1.6; }
+        .btn { background: var(--text-primary); color: #000; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; font-size: 1.1rem; }
+        .btn:hover { transform: scale(1.05); }
 
-        /* طبقة تظليل عند فتح القائمة */
+        /* لوحة الحقوق */
+        footer { padding: 20px; text-align: center; color: var(--text-muted); font-size: 14px; background: var(--footer-bg); border-top: 1px solid var(--border-color); transition: 0.3s; }
+        footer b { color: var(--text-primary); }
+
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 998; }
         .overlay.active { display: block; }
     </style>
@@ -48,37 +63,51 @@
 <body>
 
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="theme-toggle" id="themeIcon" onclick="toggleTheme()">🌙</div>
 
     <div class="sidebar" id="sidebar">
         <h2>مميزات TOTV+</h2>
         <ul>
-            <li><b>•</b> بث مباشر بجودة 4K</li>
-            <li><b>•</b> بدون إعلانات مزعجة</li>
-            <li><b>•</b> مكتبة أفلام ومسلسلات</li>
-            <li><b>•</b> تحديثات يومية</li>
+            <li><b>⚽</b> مشاهدة جميع مباريات كرة القدم مباشر</li>
+            <li><b>📺</b> بث مباشر بجودة 4K</li>
+            <li><b>🚫</b> بدون إعلانات مزعجة</li>
+            <li><b>🎬</b> مكتبة أفلام ومسلسلات</li>
+            <li><b>🔄</b> تحديثات يومية</li>
         </ul>
-        
-        <p style="margin-top: 30px; font-size: 14px; color: #ffcc00;">الدعم الفني:</p>
         <a href="https://t.me/YAHJ8" target="_blank" class="tg-link">💬 تواصل عبر تيليجرام</a>
-        
-        <p style="margin-top: 50px; font-size: 12px; color: #555;">إصدار الموقع v2.0</p>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <div class="main-content">
         <div class="card">
-            <img src="logo.png" alt="" class="logo">
+            <img src="logo.png" alt="TOTV Logo" class="logo">
             <h1>تحميل تطبيق TOTV الرسمي</h1>
             <p>استمتع بأفضل تجربة مشاهدة للقنوات العالمية والمحتوى الحصري بجودة عالية.</p>
             <a href="app.apk" class="btn">📥 تحميل للأندرويد APK</a>
         </div>
     </div>
 
+    <footer>
+        جميع الحقوق محفوظة © <b>2026</b> لـ تطبيق <b>TOTV</b>
+    </footer>
+
     <script>
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.innerHTML = '☀️'; // يتحول لشمس في الوضع الفاتح
+            } else {
+                icon.innerHTML = '🌙'; // يعود لقمر في الوضع المظلم
+            }
         }
     </script>
 </body>

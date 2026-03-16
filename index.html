@@ -46,21 +46,30 @@
         .menu-icon { position: absolute; top: 15px; right: 15px; font-size: 28px; color: var(--text-primary); cursor: pointer; z-index: 1000; }
         .theme-toggle { position: absolute; top: 60px; right: 18px; font-size: 22px; color: var(--text-primary); cursor: pointer; z-index: 1000; transition: 0.3s; }
 
-        .sidebar { position: fixed; top: 0; right: -280px; width: 250px; height: 100%; background: var(--bg-color); transition: 0.3s; padding: 60px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 999; border-left: 2px solid var(--text-primary); text-align: right; }
+        /* القائمة الجانبية كما في الصورة المطلوبة */
+        .sidebar { position: fixed; top: 0; right: -280px; width: 250px; height: 100%; background: var(--bg-color); transition: 0.3s; padding: 60px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 999; border-left: 2px solid var(--text-primary); }
         .sidebar.active { right: 0; }
         
-        /* إصلاح تنسيق الأيقونات في القائمة */
-        .sidebar h2 { color: var(--text-primary); margin-bottom: 20px; font-size: 1.5rem; }
+        .sidebar h2 { color: var(--text-primary); font-size: 1.4rem; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        
+        /* استعادة شكل الأيقونات البسيط والمرتب */
         .sidebar ul { list-style: none; padding: 0; margin: 0; }
         .sidebar ul li { 
-            padding: 15px 0; 
+            padding: 12px 0; 
             border-bottom: 1px solid var(--border-color); 
             font-size: 14px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; /* مسافة ثابتة بين الأيقونة والنص */
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
         }
-        .sidebar ul li b { color: var(--text-primary); font-size: 18px; min-width: 25px; text-align: center; }
+        .sidebar ul li::before {
+            content: "•"; /* النقطة البسيطة كما في الصورة */
+            color: var(--text-primary);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: 10px;
+        }
 
         .main-content { 
             flex-grow: 1; 
@@ -91,6 +100,9 @@
         
         .btn { background: var(--text-primary); color: #000; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 1rem; }
 
+        /* زر التواصل كما في الصورة */
+        .tg-link { display: block; margin-top: 30px; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; font-size: 14px; }
+
         footer { 
             padding: 15px; 
             text-align: center; 
@@ -104,7 +116,6 @@
 
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 998; }
         .overlay.active { display: block; }
-        .tg-link { display: block; margin-top: 25px; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -115,11 +126,10 @@
     <div class="sidebar" id="sidebar">
         <h2>مميزات TOTV+</h2>
         <ul>
-            <li><b>⚽</b> مشاهدة جميع مباريات كرة القدم</li>
-            <li><b>📺</b> بث مباشر بجودة 4K</li>
-            <li><b>🚫</b> بدون إعلانات مزعجة</li>
-            <li><b>🎬</b> مكتبة أفلام ومسلسلات</li>
-            <li><b>🔄</b> تحديثات يومية</li>
+            <li>بث مباشر بجودة 4K</li>
+            <li>بدون إعلانات مزعجة</li>
+            <li>مكتبة أفلام ومسلسلات</li>
+            <li>تحديثات يومية</li>
         </ul>
         <a href="https://t.me/YAHJ8" target="_blank" class="tg-link">💬 تواصل عبر تيليجرام</a>
     </div>

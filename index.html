@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>تطبيق TOTV الرسمي</title>
     <style>
         :root {
@@ -25,35 +25,35 @@
             --footer-bg: #eee;
         }
 
-        body { margin: 0; background-color: var(--bg-color); color: var(--text-secondary); font-family: system-ui, sans-serif; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; transition: 0.3s; }
+        /* منع التمرير في الصفحة بالكامل */
+        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; background-color: var(--bg-color); color: var(--text-secondary); font-family: system-ui, sans-serif; transition: 0.3s; }
         
-        /* أيقونة القائمة */
-        .menu-icon { position: fixed; top: 20px; right: 20px; font-size: 30px; color: var(--text-primary); cursor: pointer; z-index: 1000; }
+        body { display: flex; flex-direction: column; justify-content: space-between; }
 
-        /* أيقونة القمر/الشمس */
-        .theme-toggle { position: fixed; top: 70px; right: 25px; font-size: 24px; color: var(--text-primary); cursor: pointer; z-index: 1000; transition: 0.3s; }
+        /* أيقونة القائمة والقمر */
+        .menu-icon { position: absolute; top: 15px; right: 15px; font-size: 28px; color: var(--text-primary); cursor: pointer; z-index: 1000; }
+        .theme-toggle { position: absolute; top: 60px; right: 18px; font-size: 22px; color: var(--text-primary); cursor: pointer; z-index: 1000; transition: 0.3s; }
 
         /* القائمة الجانبية */
         .sidebar { position: fixed; top: 0; right: -280px; width: 250px; height: 100%; background: var(--bg-color); transition: 0.3s; padding: 60px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 999; border-left: 2px solid var(--text-primary); }
         .sidebar.active { right: 0; }
-        .sidebar h2 { color: var(--text-primary); font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .sidebar h2 { color: var(--text-primary); font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .sidebar ul { list-style: none; padding: 0; }
-        .sidebar ul li { padding: 15px 0; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; }
-        .sidebar ul li b { color: var(--text-primary); margin-left: 10px; font-size: 1.2rem; }
+        .sidebar ul li { padding: 12px 0; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; font-size: 14px; }
+        .sidebar ul li b { color: var(--text-primary); margin-left: 10px; font-size: 1.1rem; }
         
-        .tg-link { display: block; margin-top: 20px; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; transition: 0.3s; }
+        .tg-link { display: block; margin-top: 20px; padding: 10px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 10px; text-align: center; font-weight: bold; font-size: 14px; }
 
-        /* المحتوى الرئيسي */
-        .main-content { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-        .card { background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid var(--border-color); max-width: 400px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; }
-        .logo { max-width: 200px; margin-bottom: 20px; border-radius: 50%; }
-        h1 { color: var(--text-primary); font-size: 1.6rem; margin-bottom: 10px; }
-        p { color: var(--text-muted); line-height: 1.6; }
-        .btn { background: var(--text-primary); color: #000; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; font-size: 1.1rem; }
-        .btn:hover { transform: scale(1.05); }
+        /* المحتوى الرئيسي وسط الشاشة */
+        .main-content { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 10px; }
+        .card { background: var(--card-bg); padding: 25px 20px; border-radius: 20px; border: 1px solid var(--border-color); max-width: 320px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; }
+        .logo { max-width: 140px; height: auto; margin-bottom: 15px; }
+        h1 { color: var(--text-primary); font-size: 1.3rem; margin: 0 0 8px 0; }
+        p { color: var(--text-muted); line-height: 1.4; font-size: 13px; margin: 0 0 15px 0; }
+        .btn { background: var(--text-primary); color: #000; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.95rem; }
 
-        /* لوحة الحقوق */
-        footer { padding: 20px; text-align: center; color: var(--text-muted); font-size: 14px; background: var(--footer-bg); border-top: 1px solid var(--border-color); transition: 0.3s; }
+        /* فوتر صغير جداً في الأسفل */
+        footer { padding: 15px; text-align: center; color: var(--text-muted); font-size: 12px; background: var(--footer-bg); border-top: 1px solid var(--border-color); }
         footer b { color: var(--text-primary); }
 
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 998; }
@@ -102,12 +102,7 @@
             const body = document.body;
             const icon = document.getElementById('themeIcon');
             body.classList.toggle('light-mode');
-            
-            if (body.classList.contains('light-mode')) {
-                icon.innerHTML = '☀️'; // يتحول لشمس في الوضع الفاتح
-            } else {
-                icon.innerHTML = '🌙'; // يعود لقمر في الوضع المظلم
-            }
+            icon.innerHTML = body.classList.contains('light-mode') ? '☀️' : '🌙';
         }
     </script>
 </body>

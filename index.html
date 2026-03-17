@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تطبيق TOTV الرسمي</title>
+    
+    <title>تحميل تطبيق TOTV الرسمي</title>
+    <meta name="description" content="الموقع الرسمي لتحميل تطبيق TOTV لمشاهدة المباريات والأفلام بجودة 4K.">
+    <meta name="keywords" content="TOTV, تطبيق TOTV, تحميل TOTV APK, بث مباشر">
+
     <style>
         :root {
             --bg-color: #000;
@@ -43,19 +47,18 @@
             align-items: center; 
         }
 
-        /* تعديل شريط التنبيه ليكون بالمنتصف وبخط ناعم */
         .top-alert {
             margin-top: 15px;
-            background: rgba(255, 204, 0, 0.1); /* خلفية خفيفة جداً */
+            background: rgba(255, 204, 0, 0.1); 
             color: var(--text-primary);
             text-align: center;
             padding: 5px 15px;
-            font-size: 12px; /* خط ناعم */
-            font-weight: 400; /* خط غير سميك */
+            font-size: 12px;
+            font-weight: 400;
             border: 1px solid rgba(255, 204, 0, 0.3);
-            border-radius: 50px; /* شكل بيضاوي أنيق */
+            border-radius: 50px;
             z-index: 1001;
-            display: inline-block; /* ليكون عرضه على قدر النص فقط */
+            display: inline-block;
         }
 
         .menu-icon { position: absolute; top: 15px; right: 15px; font-size: 28px; color: var(--text-primary); cursor: pointer; z-index: 1000; }
@@ -107,7 +110,14 @@
             margin: auto; 
         }
 
-        .logo { width: 150px; height: auto; margin-bottom: 15px; }
+        /* تعديل الشعار ليظهر بدون خلفية */
+        .logo { 
+            width: 150px; 
+            height: auto; 
+            margin-bottom: 15px; 
+            mix-blend-mode: screen; /* هذه الخاصية تخفي السواد وتظهر الشعار فقط */
+        }
+
         h1 { color: var(--text-primary); font-size: 1.4rem; margin: 0 0 10px 0; }
         p { color: var(--text-muted); line-height: 1.5; font-size: 14px; margin: 0 0 20px 0; }
         
@@ -176,6 +186,10 @@
             const icon = document.getElementById('themeIcon');
             body.classList.toggle('light-mode');
             icon.innerHTML = body.classList.contains('light-mode') ? '☀️' : '🌙';
+            
+            // تعديل طريقة الدمج عند تغيير الوضع (لأن الخلفية ستصبح فاتحة)
+            const logo = document.querySelector('.logo');
+            logo.style.mixBlendMode = body.classList.contains('light-mode') ? 'multiply' : 'screen';
         }
     </script>
 </body>

@@ -6,22 +6,20 @@
     <title>TOTV+ | التطبيق الرسمي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- خط القاهرة (حديث) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome للأيقونات (السحابة والقمر) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.2s ease, color 0.1s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #FFFFFF; /* خلفية بيضاء نقية */
-            color: #1e1e2f; /* نص غامق للقراءة */
+            background-color: #FFFFFF;
+            color: #1e1e2f;
             line-height: 1.6;
             padding: 1.5rem 1.5rem 2rem;
             min-height: 100vh;
@@ -30,42 +28,65 @@
             align-items: center;
         }
 
-        /* الوضع الليلي */
+        /* ===== الوضع الليلي (مصحح بالكامل) ===== */
         body.dark-mode {
-            background-color: #121212;
+            background-color: #0a0a0f;
             color: #f0f0f0;
         }
-        body.dark-mode .card,
+        
+        /* الخلفيات في الوضع الليلي */
         body.dark-mode .features-card,
         body.dark-mode .support-box,
         body.dark-mode .app-card,
-        body.dark-mode .hero-section,
+        body.dark-mode .hero-section {
+            background-color: #1a1a24 !important;
+            border-color: #444 !important;
+            color: #f0f0f0 !important;
+            box-shadow: 8px 8px 0 #000 !important;
+        }
+
+        body.dark-mode .logo-icon {
+            background-color: #f0f0f0 !important;
+            border-color: #f0f0f0 !important;
+        }
+        body.dark-mode .logo-icon span {
+            color: #0a0a0f !important;
+        }
+
         body.dark-mode .badge-4k,
+        body.dark-mode .hero-badge,
+        body.dark-mode .card-label,
         body.dark-mode .download-btn,
         body.dark-mode .telegram-btn,
-        body.dark-mode .logo-icon {
-            border-color: #444 !important;
-            background-color: #1e1e2e !important;
-            color: #eee !important;
-            box-shadow: none !important;
-        }
-        body.dark-mode .app-card {
-            background: #1a1a2a;
-            border-color: #3a3a5a;
-        }
-        body.dark-mode .feature-item::before {
-            background-color: #ffaa00;
-            color: #121212;
-        }
         body.dark-mode .copyright {
-            background: #ffaa00;
-            color: #121212;
+            background-color: #f0f0f0 !important;
+            color: #0a0a0f !important;
+            border-color: #f0f0f0 !important;
         }
+
+        /* النصوص في الوضع الليلي */
+        body.dark-mode .logo-text,
         body.dark-mode .hero-section p,
         body.dark-mode .app-card h3,
         body.dark-mode .app-card p,
-        body.dark-mode .tag {
+        body.dark-mode .feature-item,
+        body.dark-mode .support-box h3,
+        body.dark-mode .support-box p,
+        body.dark-mode .contact-info,
+        body.dark-mode .contact-info i,
+        body.dark-mode p {
             color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .tag {
+            background-color: #2a2a35 !important;
+            border-color: #f0f0f0 !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .feature-item::before {
+            background-color: #f0f0f0 !important;
+            color: #0a0a0f !important;
         }
 
         .container {
@@ -73,7 +94,7 @@
             width: 100%;
         }
 
-        /* زر الثيم (شمس / قمر) */
+        /* زر الثيم */
         .theme-toggle {
             display: flex;
             justify-content: flex-end;
@@ -95,16 +116,13 @@
             box-shadow: 3px 3px 0 #ccc;
         }
         body.dark-mode .theme-btn {
-            background: #ffaa00;
-            color: #121212;
-            border-color: #ffaa00;
+            background: #f0f0f0;
+            color: #0a0a0f;
+            border-color: #f0f0f0;
             box-shadow: 3px 3px 0 #333;
         }
-        .theme-btn i {
-            font-size: 1.3rem;
-        }
 
-        /* الشعار النصي */
+        /* الشعار */
         .logo-area {
             display: flex;
             align-items: center;
@@ -150,6 +168,9 @@
             font-size: 1.1rem;
             border: 2px solid #000;
             box-shadow: 3px 3px 0 #aaa;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* الهيرو */
@@ -164,7 +185,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            box-shadow: 6px 6px 0 #000;
+            box-shadow: 8px 8px 0 #000;
         }
 
         .hero-section p {
@@ -172,6 +193,9 @@
             font-weight: 700;
             margin: 0;
             color: #000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .hero-badge {
@@ -182,6 +206,9 @@
             font-size: 1.3rem;
             font-weight: 700;
             border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* بطاقة المميزات */
@@ -244,12 +271,8 @@
             margin-bottom: 0.5rem;
             color: #000;
         }
-        .support-box p {
-            font-size: 1.2rem;
-            color: #222;
-        }
 
-        .telegram-btn {
+        .telegram-link {
             display: inline-block;
             background: #000;
             color: #fff;
@@ -263,8 +286,9 @@
             margin-top: 1rem;
             width: 100%;
             box-shadow: 4px 4px 0 #aaa;
+            direction: ltr;
         }
-        .telegram-btn:hover {
+        .telegram-link:hover {
             background: #fff;
             color: #000;
             transform: scale(0.98);
@@ -312,11 +336,6 @@
             margin-bottom: 0.8rem;
             color: #000;
         }
-        .app-card h3 small {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-        }
 
         .tags {
             display: flex;
@@ -348,6 +367,10 @@
             transition: 0.15s;
             margin: 1.5rem 0 0.5rem;
             box-shadow: 5px 5px 0 #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .download-btn:hover {
             background: #fff;
@@ -384,27 +407,30 @@
             color: #000;
             flex-wrap: wrap;
         }
-        .contact-info i {
-            margin-left: 0.4rem;
+        .contact-info a {
             color: #000;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        body.dark-mode .contact-info a {
+            color: #f0f0f0;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
-        /* تحسين للجوال */
         @media (max-width: 600px) {
             .logo-area { flex-direction: column; align-items: flex-start; }
             .logo-text { border-right: none; border-bottom: 4px solid #000; padding-bottom: 0.5rem; }
             .contact-info { flex-direction: column; gap: 0.8rem; }
         }
-
-        /* إزالة أي نص "الرسمي" مخفي كان موجود */
-        .dummy-logo-fallback {
-            display: none;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- زر الثيم (شمس / قمر) -->
+        <!-- زر الثيم -->
         <div class="theme-toggle">
             <div class="theme-btn" id="themeToggle">
                 <i class="fas fa-sun" id="themeIcon"></i>
@@ -412,28 +438,27 @@
             </div>
         </div>
 
-        <!-- الشعار (دائرة سوداء + نص) -->
+        <!-- الشعار -->
         <div class="logo-area">
             <div class="logo-icon">
                 <span>TOTV+</span>
             </div>
             <div class="logo-text">التطبيق الرسمي</div>
-            <span class="badge-4k"><i class="fas fa-bolt" style="margin-left: 5px;"></i>بث 4K مباشر</span>
+            <span class="badge-4k"><i class="fas fa-bolt"></i>بث 4K مباشر</span>
         </div>
 
         <!-- وصف قصير -->
         <p style="font-size: 1.4rem; font-weight: 500; margin-bottom: 0.5rem;">
-            <i class="fas fa-globe" style="margin-left: 8px;"></i>
-            تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.
+            <i class="fas fa-globe"></i> تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.
         </p>
 
-        <!-- شريط التحميل (IMG_7948) -->
+        <!-- شريط التحميل -->
         <div class="hero-section">
-            <p><i class="fas fa-download" style="margin-left: 10px;"></i> حمل التطبيق للوصول إلى جميع الخدمات</p>
+            <p><i class="fas fa-download"></i> حمل التطبيق للوصول إلى جميع الخدمات</p>
             <span class="hero-badge"><i class="fas fa-rocket"></i> تحميل APK</span>
         </div>
 
-        <!-- بطاقة المميزات + الدعم (IMG_7918) -->
+        <!-- بطاقة المميزات -->
         <div class="features-card">
             <div class="features-grid">
                 <div class="features-list">
@@ -445,15 +470,15 @@
                 <div class="support-box">
                     <h3><i class="fas fa-headset"></i> الدعم الفني</h3>
                     <p><i class="fab fa-telegram"></i> تواصل عبر تليجرام</p>
-                    <!-- تم التحديث: @YAHJ8 -->
-                    <a href="#" class="telegram-btn">@YAHJ8</a>
+                    <!-- رابط مباشر للتليجرام -->
+                    <a href="https://t.me/YAHJ8" target="_blank" class="telegram-link">@YAHJ8</a>
                 </div>
             </div>
         </div>
 
-        <!-- بطاقتا التحميل (الأولى IMG_7918 / الثانية IMG_7948) -->
+        <!-- بطاقتا التحميل -->
         <div class="cards-row">
-            <!-- البطاقة الأولى: TOTV الرسمي + APK -->
+            <!-- البطاقة الأولى -->
             <div class="app-card">
                 <div class="card-label"><i class="fas fa-check-circle"></i> تطبيق TOTV الرسمي</div>
                 <h3>TOTV+ <small>قنوات عالمية</small></h3>
@@ -467,7 +492,7 @@
                 <div style="text-align: center; color: #333;"><i class="far fa-clock"></i> الإصدار 4.2.0 • تحديث يومي</div>
             </div>
 
-            <!-- البطاقة الثانية: MOVIES FOOTBALL + APK -->
+            <!-- البطاقة الثانية -->
             <div class="app-card">
                 <div class="card-label"><i class="fas fa-star"></i> TOTV+</div>
                 <h3>MOVIES<br>FOOTBALL</h3>
@@ -482,20 +507,19 @@
             </div>
         </div>
 
-        <!-- الفوتر (حقوق النشر ومعلومات الاتصال المحدّثة) -->
+        <!-- الفوتر -->
         <div class="footer">
             <div class="copyright">
                 TOTV 2026 © جميع الحقوق محفوظة
             </div>
             <div class="contact-info">
-                <!-- تم التحديث: تيليجرام YAHJ8 والبريد الجديد -->
-                <span><i class="fab fa-telegram"></i> تليجرام: <strong>YAHJ8</strong></span>
-                <span><i class="far fa-envelope"></i> بريد: <strong>totv.support@gmail.com</strong></span>
+                <!-- رابط تليجرام في الفوتر أيضاً -->
+                <a href="https://t.me/YAHJ8" target="_blank"><i class="fab fa-telegram"></i> تليجرام: YAHJ8</a>
+                <a href="mailto:totv.support@gmail.com"><i class="far fa-envelope"></i> بريد: totv.support@gmail.com</a>
             </div>
         </div>
     </div>
 
-    <!-- جافاسكريبت بسيط للتبديل بين الوضع النهاري والليلي -->
     <script>
         const toggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
@@ -513,6 +537,5 @@
             }
         });
     </script>
-    <!-- لا يوجد أي نص احتياطي "الرسمي" يظهر في الخلفية البيضاء، تمت إزالته تماماً -->
 </body>
 </html>

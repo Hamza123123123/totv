@@ -312,91 +312,6 @@
             transform: translateY(-2px);
         }
 
-        /* ===== نموذج الاسم والبريد ===== */
-        .form-section {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 30px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            backdrop-filter: blur(5px);
-        }
-
-        .form-title {
-            text-align: center;
-            margin-bottom: 1.2rem;
-            color: #FFD700;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.4rem;
-            color: #cccccc;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 215, 0, 0.2);
-            border-radius: 50px;
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #FFD700;
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 0.5rem;
-            font-family: inherit;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
-        }
-
         /* ===== قسم الدعم الفني ===== */
         .support-section {
             display: flex;
@@ -584,7 +499,6 @@
             .golden-icon { width: 75px; height: 75px; }
             .golden-icon span { font-size: 1.8rem; }
             .features-grid { grid-template-columns: 1fr; }
-            .form-row { flex-direction: column; gap: 0.5rem; }
             .cookie-consent { flex-direction: column; border-radius: 30px; padding: 1.2rem; text-align: center; }
             .cookie-content { flex-direction: column; }
             .language-dropdown { top: 5px; right: 5px; }
@@ -683,38 +597,6 @@
                 <span class="arabic-text">آمن تماماً</span>
                 <span class="english-text">Secure</span>
             </div>
-        </div>
-
-        <!-- نموذج الاسم والبريد الإلكتروني -->
-        <div class="form-section">
-            <div class="form-title">
-                <i class="fas fa-user" style="margin-left: 8px;"></i>
-                <span class="arabic-text">الاسم والبريد الإلكتروني</span>
-                <span class="english-text">Name & Email</span>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">
-                        <span class="arabic-text">الاسم</span>
-                        <span class="english-text">Name</span>
-                    </label>
-                    <input type="text" class="form-input" placeholder="hamza123123123" value="hamza123123123">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span class="arabic-text">البريد الإلكتروني</span>
-                        <span class="english-text">Email</span>
-                    </label>
-                    <input type="email" class="form-input" placeholder="example@email.com">
-                </div>
-            </div>
-            
-            <button class="submit-btn">
-                <span class="arabic-text">حفظ المعلومات</span>
-                <span class="english-text">Save Info</span>
-            </button>
         </div>
 
         <!-- قسم الدعم الفني -->
@@ -843,26 +725,6 @@
         acceptCookies.addEventListener('click', () => {
             localStorage.setItem('cookiesAccepted', 'true');
             cookieConsent.classList.remove('show');
-        });
-
-        // ===== نموذج الاسم والبريد =====
-        const submitBtn = document.querySelector('.submit-btn');
-        const nameInput = document.querySelector('input[type="text"]');
-        const emailInput = document.querySelector('input[type="email"]');
-
-        submitBtn.addEventListener('click', () => {
-            const name = nameInput.value;
-            const email = emailInput.value;
-            
-            if (name && email) {
-                alert(body.classList.contains('english-mode') 
-                    ? `Name: ${name}\nEmail: ${email}\n\nInformation saved!` 
-                    : `الاسم: ${name}\nالبريد: ${email}\n\nتم حفظ المعلومات!`);
-            } else {
-                alert(body.classList.contains('english-mode') 
-                    ? 'Please fill in all fields' 
-                    : 'الرجاء ملء جميع الحقول');
-            }
         });
     </script>
 </body>

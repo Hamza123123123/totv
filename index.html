@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -26,6 +27,26 @@
             padding: 1.5rem;
             position: relative;
             overflow-x: hidden;
+        }
+
+        body.english-mode {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body.english-mode .arabic-text {
+            display: none;
+        }
+
+        body.english-mode .english-text {
+            display: inline;
+        }
+
+        body:not(.english-mode) .english-text {
+            display: none;
+        }
+
+        body:not(.english-mode) .arabic-text {
+            display: inline;
         }
 
         /* تأثير الخلفية المتحركة */
@@ -49,6 +70,40 @@
             width: 100%;
             position: relative;
             z-index: 1;
+        }
+
+        /* زر اللغة - الكرة الأرضية */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .lang-btn i {
+            color: #FFD700;
         }
 
         /* الشعار - أيقونة فقط للشكل بدون رابط */
@@ -76,6 +131,10 @@
             font-size: 2.2rem;
             letter-spacing: 2px;
             font-family: 'Cairo', sans-serif;
+        }
+
+        body.english-mode .golden-icon span {
+            font-family: 'Poppins', sans-serif;
         }
 
         .app-title {
@@ -111,6 +170,11 @@
 
         .badge-4k i {
             color: #FFD700;
+        }
+
+        .badge-4k .arabic-text,
+        .badge-4k .english-text {
+            display: inline;
         }
 
         /* الوصف */
@@ -336,10 +400,22 @@
                 font-size: 1.2rem;
                 padding: 0.3rem 1.5rem;
             }
+            
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- زر تبديل اللغة - الكرة الأرضية -->
+    <div class="language-switcher">
+        <div class="lang-btn" id="languageToggle">
+            <i class="fas fa-globe"></i>
+        </div>
+    </div>
+
     <div class="container">
         <!-- الشعار - أيقونة فقط للشكل بدون رابط -->
         <div class="logo-section">
@@ -348,17 +424,23 @@
             </div>
             <h1 class="app-title">
                 TOTV
-                <small>التطبيق الرسمي</small>
+                <small>
+                    <span class="arabic-text">التطبيق الرسمي</span>
+                    <span class="english-text">Official App</span>
+                </small>
             </h1>
             <span class="badge-4k">
-                <i class="fas fa-bolt"></i> بث 4K مباشر
+                <i class="fas fa-bolt"></i>
+                <span class="arabic-text">بث 4K مباشر</span>
+                <span class="english-text">4K Live Streaming</span>
             </span>
         </div>
 
         <!-- الوصف -->
         <div class="description">
             <i class="fas fa-globe" style="color: #FFD700; margin-left: 8px;"></i>
-            تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.
+            <span class="arabic-text">تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.</span>
+            <span class="english-text">Experience global channels and exclusive content in high quality.</span>
         </div>
 
         <!-- أيقونة التحميل الذهبية - تحتوي على الرابط -->
@@ -369,7 +451,10 @@
                 <div class="icon-circle">
                     <i class="fas fa-download"></i>
                 </div>
-                <span class="download-text">تحميل APK</span>
+                <span class="download-text">
+                    <span class="arabic-text">تحميل APK</span>
+                    <span class="english-text">Download APK</span>
+                </span>
             </a>
         </div>
 
@@ -377,27 +462,33 @@
         <div class="features-grid">
             <div class="feature-item">
                 <i class="fas fa-tv"></i>
-                بث مباشر بجودة 4K
+                <span class="arabic-text">بث مباشر بجودة 4K</span>
+                <span class="english-text">4K Live Streaming</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-ban"></i>
-                بدون إعلانات
+                <span class="arabic-text">بدون إعلانات</span>
+                <span class="english-text">No Ads</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-film"></i>
-                مكتبة أفلام
+                <span class="arabic-text">مكتبة أفلام</span>
+                <span class="english-text">Movies Library</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-futbol"></i>
-                مباريات حصرية
+                <span class="arabic-text">مباريات حصرية</span>
+                <span class="english-text">Exclusive Matches</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-sync-alt"></i>
-                تحديث يومي
+                <span class="arabic-text">تحديث يومي</span>
+                <span class="english-text">Daily Updates</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-shield-alt"></i>
-                آمن تماماً
+                <span class="arabic-text">آمن تماماً</span>
+                <span class="english-text">100% Secure</span>
             </div>
         </div>
 
@@ -405,8 +496,14 @@
         <div class="support-section">
             <div class="support-card">
                 <i class="fab fa-telegram"></i>
-                <h3>الدعم الفني</h3>
-                <p>تواصل معنا مباشرة على تليجرام</p>
+                <h3>
+                    <span class="arabic-text">الدعم الفني</span>
+                    <span class="english-text">Support</span>
+                </h3>
+                <p>
+                    <span class="arabic-text">تواصل معنا مباشرة على تليجرام</span>
+                    <span class="english-text">Contact us on Telegram</span>
+                </p>
                 <a href="https://t.me/YAHJ8" target="_blank" class="support-link">
                     <i class="fab fa-telegram"></i> @YAHJ8
                 </a>
@@ -414,8 +511,14 @@
 
             <div class="support-card">
                 <i class="fas fa-envelope"></i>
-                <h3>البريد الإلكتروني</h3>
-                <p>للاقتراحات والشكاوى</p>
+                <h3>
+                    <span class="arabic-text">البريد الإلكتروني</span>
+                    <span class="english-text">Email</span>
+                </h3>
+                <p>
+                    <span class="arabic-text">للاقتراحات والشكاوى</span>
+                    <span class="english-text">Suggestions & Feedback</span>
+                </p>
                 <a href="mailto:totv.support@gmail.com" class="support-link">
                     <i class="far fa-envelope"></i> totv.support
                 </a>
@@ -425,9 +528,32 @@
         <!-- الفوتر -->
         <div class="footer">
             <div class="copyright">
-                <i class="far fa-copyright"></i> TOTV 2026 جميع الحقوق محفوظة
+                <i class="far fa-copyright"></i> 
+                <span class="arabic-text">TOTV 2026 جميع الحقوق محفوظة</span>
+                <span class="english-text">TOTV 2026 All Rights Reserved</span>
             </div>
         </div>
     </div>
+
+    <script>
+        const languageToggle = document.getElementById('languageToggle');
+        const body = document.body;
+        const html = document.documentElement;
+
+        languageToggle.addEventListener('click', () => {
+            body.classList.toggle('english-mode');
+            
+            // تبديل اتجاه الصفحة
+            if (body.classList.contains('english-mode')) {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                languageToggle.innerHTML = '<i class="fas fa-globe"></i>';
+            } else {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                languageToggle.innerHTML = '<i class="fas fa-globe"></i>';
+            }
+        });
+    </script>
 </body>
 </html>

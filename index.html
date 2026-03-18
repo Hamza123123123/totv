@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTV | التطبيق الرسمي</title>
+    <title>TOTV | التطبيق الرسمي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -45,19 +45,19 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 700px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
-        /* الشعار */
+        /* الشعار - أيقونة فقط للشكل بدون رابط */
         .logo-section {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .logo-icon {
+        .golden-icon {
             width: 100px;
             height: 100px;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
@@ -65,26 +65,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1rem;
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
             border: 3px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-icon span {
+        .golden-icon span {
             color: #000000;
             font-weight: 900;
             font-size: 2.2rem;
             letter-spacing: 2px;
+            font-family: 'Cairo', sans-serif;
         }
 
-        .logo-text {
-            font-size: 2.8rem;
+        .app-title {
+            font-size: 2.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .app-title small {
+            font-size: 1.8rem;
+            display: block;
+            font-weight: 700;
         }
 
         .badge-4k {
@@ -94,173 +101,134 @@
             background: rgba(255, 215, 0, 0.1);
             border: 2px solid #FFD700;
             color: #FFD700;
-            padding: 0.5rem 2rem;
+            padding: 0.4rem 1.8rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.2rem;
             backdrop-filter: blur(10px);
+            margin-top: 0.8rem;
+        }
+
+        .badge-4k i {
+            color: #FFD700;
         }
 
         /* الوصف */
         .description {
             text-align: center;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: #cccccc;
-            margin: 2rem 0 1rem;
-            line-height: 1.8;
+            margin: 2rem 0 2rem;
+            line-height: 1.7;
+            padding: 0 0.5rem;
         }
 
-        /* شريط التحميل */
-        .download-bar {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            border-radius: 60px;
-            padding: 1.5rem 2rem;
-            margin: 2.5rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        }
-
-        .download-bar p {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .download-bar p i {
-            color: #FFD700;
-        }
-
-        .download-badge {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
-            padding: 0.8rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            border: none;
-        }
-
-        /* بطاقة التحميل الرئيسية */
-        .main-download-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 215, 0, 0.15);
-            border-radius: 40px;
-            padding: 3rem;
-            margin: 3rem 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease;
-        }
-
-        .main-download-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.4);
-            box-shadow: 0 25px 45px rgba(255, 215, 0, 0.15);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .card-header i {
-            font-size: 2.5rem;
-            color: #FFD700;
-        }
-
-        .card-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2.5rem 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 1.2rem;
+        /* أيقونة التحميل الذهبية - تحتوي على الرابط */
+        .download-icon-wrapper {
             text-align: center;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            margin: 2.5rem 0;
+        }
+
+        .golden-download-icon {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .feature-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: #FFD700;
+        .icon-circle {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .icon-circle i {
+            font-size: 2.8rem;
+            color: #000000;
+        }
+
+        .download-text {
+            color: #FFD700;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.4rem 2rem;
+            border-radius: 50px;
+            border: 2px solid #FFD700;
+            backdrop-filter: blur(5px);
+        }
+
+        .golden-download-icon:hover .icon-circle {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        .golden-download-icon:hover .download-text {
+            background: #FFD700;
+            color: #000000;
+        }
+
+        /* شبكة المميزات الستة */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 25px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            color: #ffffff;
         }
 
         .feature-item i {
             color: #FFD700;
             font-size: 1.5rem;
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
-        .download-btn-main {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
-            text-decoration: none;
-            padding: 1.5rem;
-            border-radius: 60px;
-            font-weight: 900;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 2rem;
-            border: none;
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .download-btn-main:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5);
+        .feature-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: #FFD700;
+            transform: translateY(-3px);
         }
 
         /* قسم الدعم الفني */
         .support-section {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
-            margin: 4rem 0;
+            margin: 2.5rem 0 2rem;
         }
 
         .support-card {
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 215, 0, 0.15);
             border-radius: 30px;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             text-align: center;
-            min-width: 250px;
+            min-width: 220px;
             flex: 1;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -272,16 +240,22 @@
         }
 
         .support-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #FFD700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .support-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: #ffffff;
+        }
+
+        .support-card p {
+            color: #cccccc;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
         }
 
         .support-link {
@@ -289,13 +263,11 @@
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #000000;
             text-decoration: none;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.8rem;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-top: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            width: 100%;
             border: none;
         }
 
@@ -304,180 +276,137 @@
             box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
-        /* معلومات التطبيق */
-        .app-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .info-item {
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 30px;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #cccccc;
-        }
-
-        .info-item i {
-            color: #FFD700;
-        }
-
         /* الفوتر */
         .footer {
-            margin-top: 4rem;
+            margin-top: 3rem;
             text-align: center;
             border-top: 2px solid rgba(255, 215, 0, 0.15);
-            padding-top: 2.5rem;
+            padding-top: 2rem;
         }
 
         .copyright {
             background: rgba(255, 215, 0, 0.1);
             color: #FFD700;
             display: inline-block;
-            padding: 0.8rem 3rem;
+            padding: 0.6rem 2.5rem;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border: 2px solid rgba(255, 215, 0, 0.3);
             backdrop-filter: blur(10px);
         }
 
-        .contact-links {
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: #cccccc;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            color: #FFD700;
-        }
-
-        .contact-links a i {
-            color: #FFD700;
-        }
-
-        @media (max-width: 768px) {
-            .logo-text { font-size: 2.2rem; }
-            .download-bar p { font-size: 1.3rem; }
-            .download-btn-main { font-size: 1.4rem; padding: 1.2rem; }
-            .main-download-card { padding: 2rem; }
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .app-title {
+                font-size: 2rem;
+            }
+            
+            .app-title small {
+                font-size: 1.5rem;
+            }
+            
+            .golden-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .golden-icon span {
+                font-size: 1.8rem;
+            }
+            
+            .description {
+                font-size: 1.1rem;
+            }
+            
+            .icon-circle {
+                width: 75px;
+                height: 75px;
+            }
+            
+            .icon-circle i {
+                font-size: 2.2rem;
+            }
+            
+            .download-text {
+                font-size: 1.2rem;
+                padding: 0.3rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- الشعار -->
+        <!-- الشعار - أيقونة فقط للشكل بدون رابط -->
         <div class="logo-section">
-            <div class="logo-icon">
-                <span>OTV</span>
+            <div class="golden-icon">
+                <span>TOTV</span>
             </div>
-            <h1 class="logo-text">التطبيق الرسمي</h1>
-            <span class="badge-4k"><i class="fas fa-bolt"></i> بث 4K مباشر</span>
+            <h1 class="app-title">
+                TOTV
+                <small>التطبيق الرسمي</small>
+            </h1>
+            <span class="badge-4k">
+                <i class="fas fa-bolt"></i> بث 4K مباشر
+            </span>
         </div>
 
         <!-- الوصف -->
         <div class="description">
-            <i class="fas fa-globe" style="color: #FFD700; margin-left: 10px;"></i>
+            <i class="fas fa-globe" style="color: #FFD700; margin-left: 8px;"></i>
             تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.
         </div>
 
-        <!-- شريط التحميل -->
-        <div class="download-bar">
-            <p>
-                <i class="fas fa-download"></i>
-                حمل التطبيق للوصول إلى جميع الخدمات
-            </p>
-            <span class="download-badge">
-                <i class="fas fa-lock"></i>
-                تحميل APK
-            </span>
-        </div>
-
-        <!-- بطاقة التحميل الرئيسية -->
-        <div class="main-download-card">
-            <div class="card-header">
-                <i class="fas fa-crown"></i>
-                <h2>OTV+ | الإصدار الذهبي</h2>
-            </div>
-
-            <!-- المميزات -->
-            <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-tv"></i>
-                    بث مباشر بجودة 4K
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-ban"></i>
-                    بدون إعلانات
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-film"></i>
-                    مكتبة أفلام
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-futbol"></i>
-                    مباريات حصرية
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-sync-alt"></i>
-                    تحديث يومي
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-shield-alt"></i>
-                    آمن تماماً
-                </div>
-            </div>
-
-            <!-- زر التحميل المباشر -->
+        <!-- أيقونة التحميل الذهبية - تحتوي على الرابط -->
+        <div class="download-icon-wrapper">
             <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" 
-               class="download-btn-main" 
+               class="golden-download-icon" 
                download="totv.apk">
-                <i class="fas fa-download"></i>
-                تحميل للأندرويد APK
-                <i class="fas fa-arrow-left"></i>
+                <div class="icon-circle">
+                    <i class="fas fa-download"></i>
+                </div>
+                <span class="download-text">تحميل APK</span>
             </a>
-            
-            <!-- معلومات إضافية -->
-            <div class="app-info">
-                <span class="info-item">
-                    <i class="fas fa-code-branch"></i>
-                    الإصدار 4.2.0
-                </span>
-                <span class="info-item">
-                    <i class="fas fa-weight-hanging"></i>
-                    45 MB
-                </span>
-                <span class="info-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    آخر تحديث: 18/03/2026
-                </span>
+        </div>
+
+        <!-- شبكة المميزات الستة -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-tv"></i>
+                بث مباشر بجودة 4K
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-ban"></i>
+                بدون إعلانات
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-film"></i>
+                مكتبة أفلام
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-futbol"></i>
+                مباريات حصرية
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-sync-alt"></i>
+                تحديث يومي
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                آمن تماماً
             </div>
         </div>
 
-        <!-- قسم الدعم الفني -->
+        <!-- قسم الدعم الفني والبريد -->
         <div class="support-section">
             <div class="support-card">
                 <i class="fab fa-telegram"></i>
                 <h3>الدعم الفني</h3>
-                <p style="color: #cccccc; margin-bottom: 1rem;">تواصل معنا مباشرة</p>
+                <p>تواصل معنا مباشرة على تليجرام</p>
                 <a href="https://t.me/YAHJ8" target="_blank" class="support-link">
                     <i class="fab fa-telegram"></i> @YAHJ8
                 </a>
@@ -486,7 +415,7 @@
             <div class="support-card">
                 <i class="fas fa-envelope"></i>
                 <h3>البريد الإلكتروني</h3>
-                <p style="color: #cccccc; margin-bottom: 1px;">للاقتراحات والشكاوى</p>
+                <p>للاقتراحات والشكاوى</p>
                 <a href="mailto:totv.support@gmail.com" class="support-link">
                     <i class="far fa-envelope"></i> totv.support
                 </a>
@@ -496,18 +425,7 @@
         <!-- الفوتر -->
         <div class="footer">
             <div class="copyright">
-                <i class="far fa-copyright"></i> OTV 2026 جميع الحقوق محفوظة
-            </div>
-            <div class="contact-links">
-                <a href="https://t.me/YAHJ8" target="_blank">
-                    <i class="fab fa-telegram"></i> تليجرام: YAHJ8
-                </a>
-                <a href="mailto:totv.support@gmail.com">
-                    <i class="far fa-envelope"></i> totv.support@gmail.com
-                </a>
-                <a href="#">
-                    <i class="fas fa-info-circle"></i> عن التطبيق
-                </a>
+                <i class="far fa-copyright"></i> TOTV 2026 جميع الحقوق محفوظة
             </div>
         </div>
     </div>

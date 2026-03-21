@@ -129,11 +129,11 @@
             padding: 1rem 0;
         }
 
-        /* ===== أيقونة Premium مع القائمة المنسدلة (تم تحريكها لليمين قليلاً) ===== */
+        /* ===== أيقونة Premium مع القائمة المنسدلة (تم تحريكها لليمين) ===== */
         .premium-btn-wrapper {
             position: fixed;
             top: 15px;
-            left: 80px;
+            right: 80px;
             z-index: 100;
         }
 
@@ -169,7 +169,7 @@
         .pricing-dropdown {
             position: absolute;
             top: 60px;
-            left: 0;
+            right: 0;
             background: rgba(15, 15, 20, 0.98);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -415,139 +415,34 @@
             margin: 0.5rem 0;
         }
 
-        /* ===== زر نبذة عنا ===== */
-        .about-btn-wrapper {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0;
+        /* ===== صندوق نبذة عن الموقع (بدون رابط) ===== */
+        .about-section {
+            margin-top: 2rem;
+            text-align: center;
         }
 
-        .about-toggle-btn {
-            background: rgba(255, 215, 0, 0.15);
-            border: 1.5px solid #FFD700;
-            color: #FFD700;
-            padding: 0.7rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-        }
-
-        .about-toggle-btn:hover {
-            background: #FFD700;
-            color: #000000;
-            transform: scale(1.02);
-        }
-
-        /* ===== صندوق نبذة عن الموقع (مخفي في البداية) ===== */
-        .about-site-card {
-            background: rgba(255, 255, 255, 0.03);
+        .about-text-simple {
+            background: rgba(255, 215, 0, 0.05);
             border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 28px;
-            padding: 1.8rem;
-            margin: 1rem 0 1.5rem;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            display: none;
-        }
-
-        .about-site-card.show {
-            display: block;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .about-site-card:hover {
-            border-color: #FFD700;
-        }
-
-        .about-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.2rem;
-        }
-
-        .about-header i {
-            font-size: 2rem;
-            color: #FFD700;
-        }
-
-        .about-header h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #FFD700;
-        }
-
-        .about-text {
-            color: #e0e0e0;
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            color: #cccccc;
+            font-size: 0.95rem;
             line-height: 1.8;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
             text-align: justify;
+            backdrop-filter: blur(5px);
         }
 
-        .site-link-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50px;
-            padding: 0.8rem 1.2rem;
+        .about-title {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .site-link-box .link-label {
-            display: flex;
-            align-items: center;
+            justify-content: center;
             gap: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: #FFD700;
-            font-weight: 600;
-        }
-
-        .site-link-box .site-url {
-            color: #ffffff;
-            font-family: monospace;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            direction: ltr;
-            display: inline-block;
-        }
-
-        .copy-link-btn {
-            background: rgba(255, 215, 0, 0.15);
-            border: 1px solid #FFD700;
-            color: #FFD700;
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .copy-link-btn:hover {
-            background: #FFD700;
-            color: #000000;
+            margin-bottom: 0.5rem;
         }
 
         /* باقي الستايلات */
@@ -841,16 +736,16 @@
             .features-grid { grid-template-columns: 1fr; }
             .cookie-consent { flex-direction: column; border-radius: 30px; }
             .cookie-content { flex-direction: column; text-align: center; }
-            .site-link-box { flex-direction: column; text-align: center; }
-            .pricing-dropdown { left: -80px; min-width: 280px; }
+            .pricing-dropdown { right: -100px; min-width: 280px; }
             .price-card { flex-direction: column; text-align: center; gap: 0.8rem; }
             .subscribe-btn-card { width: 100%; justify-content: center; }
-            .premium-btn-wrapper { left: 15px; }
+            .premium-btn-wrapper { right: 60px; }
+            .premium-btn { padding: 8px 12px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- أيقونة Premium مع القائمة المنسدلة -->
+    <!-- أيقونة Premium مع القائمة المنسدلة (في اليمين) -->
     <div class="premium-btn-wrapper">
         <div class="premium-btn" id="premiumBtn">
             <i class="fas fa-crown"></i>
@@ -1010,52 +905,6 @@
             <span class="english-text">Watch your favorite content in high quality without interruptions</span>
         </div>
 
-        <!-- زر نبذة عنا -->
-        <div class="about-btn-wrapper">
-            <button class="about-toggle-btn" id="aboutToggleBtn">
-                <i class="fas fa-info-circle"></i>
-                <span class="arabic-text">نبذة عنا</span>
-                <span class="english-text">About Us</span>
-                <i class="fas fa-chevron-down" id="aboutIcon"></i>
-            </button>
-        </div>
-
-        <!-- صندوق نبذة عن الموقع (مخفي في البداية) -->
-        <div class="about-site-card" id="aboutCard">
-            <div class="about-header">
-                <i class="fas fa-info-circle"></i>
-                <h2>
-                    <span class="arabic-text">نبذة عن TOTV+</span>
-                    <span class="english-text">About TOTV+</span>
-                </h2>
-            </div>
-            <div class="about-text">
-                <span class="arabic-text">
-                    TOTV+ هي منصة متكاملة لمشاهدة أحدث الأفلام والمسلسلات والمباريات الرياضية بث مباشر. 
-                    نقدم لك تجربة مشاهدة فائقة الجودة بدقة 4K بدون إعلانات مزعجة، مع تحديثات يومية ومحتوى حصري من جميع أنحاء العالم. 
-                    حمل التطبيق الآن واستمتع بعالم من الترفيه بين يديك.
-                </span>
-                <span class="english-text">
-                    TOTV+ is a complete platform for watching the latest movies, series, and live sports matches. 
-                    We offer you a high-quality viewing experience in 4K without annoying ads, with daily updates and exclusive content from around the world. 
-                    Download the app now and enjoy a world of entertainment at your fingertips.
-                </span>
-            </div>
-            <div class="site-link-box">
-                <div class="link-label">
-                    <i class="fas fa-link"></i>
-                    <span class="arabic-text">رابط الموقع الرسمي:</span>
-                    <span class="english-text">Official Website:</span>
-                </div>
-                <div class="site-url" id="siteUrl">https://hamza123123123.github.io/totv/</div>
-                <button class="copy-link-btn" id="copyLinkBtn">
-                    <i class="fas fa-copy"></i>
-                    <span class="arabic-text">نسخ الرابط</span>
-                    <span class="english-text">Copy Link</span>
-                </button>
-            </div>
-        </div>
-
         <!-- أيقونة التحميل -->
         <div class="download-icon-wrapper">
             <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" 
@@ -1117,8 +966,8 @@
                     <span class="arabic-text">تواصل عبر تليجرام</span>
                     <span class="english-text">Contact on Telegram</span>
                 </p>
-                <a href="https://t.me/YAHJ8" target="_blank" class="support-link">
-                    <i class="fab fa-telegram"></i> @YAHJ8
+                <a href="https://t.me/TOTV_Support" target="_blank" class="support-link">
+                    <i class="fab fa-telegram"></i> @TOTV_Support
                 </a>
             </div>
 
@@ -1138,12 +987,33 @@
             </div>
         </div>
 
-        <!-- الفوتر -->
+        <!-- الفوتر مع نبذة عنا -->
         <div class="footer">
             <div class="copyright">
                 <i class="far fa-copyright"></i> 2026 TOTV+ | 
                 <span class="arabic-text">جميع الحقوق محفوظة</span>
                 <span class="english-text">All Rights Reserved</span>
+            </div>
+            
+            <!-- نبذة عنا تحت الحقوق -->
+            <div class="about-section">
+                <div class="about-title">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="arabic-text">نبذة عن TOTV+</span>
+                    <span class="english-text">About TOTV+</span>
+                </div>
+                <div class="about-text-simple">
+                    <span class="arabic-text">
+                        TOTV+ هي منصة متكاملة لمشاهدة أحدث الأفلام والمسلسلات والمباريات الرياضية بث مباشر. 
+                        نقدم لك تجربة مشاهدة فائقة الجودة بدقة 4K بدون إعلانات مزعجة، مع تحديثات يومية ومحتوى حصري من جميع أنحاء العالم. 
+                        حمل التطبيق الآن واستمتع بعالم من الترفيه بين يديك.
+                    </span>
+                    <span class="english-text">
+                        TOTV+ is a complete platform for watching the latest movies, series, and live sports matches. 
+                        We offer you a high-quality viewing experience in 4K without annoying ads, with daily updates and exclusive content from around the world. 
+                        Download the app now and enjoy a world of entertainment at your fingertips.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -1202,22 +1072,6 @@
         
         mainSubscribeBtn.addEventListener('click', redirectToTelegram);
         
-        // ===== زر نبذة عنا (إظهار/إخفاء) =====
-        const aboutToggleBtn = document.getElementById('aboutToggleBtn');
-        const aboutCard = document.getElementById('aboutCard');
-        const aboutIcon = document.getElementById('aboutIcon');
-        
-        aboutToggleBtn.addEventListener('click', () => {
-            aboutCard.classList.toggle('show');
-            if (aboutCard.classList.contains('show')) {
-                aboutIcon.classList.remove('fa-chevron-down');
-                aboutIcon.classList.add('fa-chevron-up');
-            } else {
-                aboutIcon.classList.remove('fa-chevron-up');
-                aboutIcon.classList.add('fa-chevron-down');
-            }
-        });
-        
         // ===== قائمة اللغة =====
         const languageBtn = document.getElementById('languageBtn');
         const langMenu = document.getElementById('langMenu');
@@ -1252,20 +1106,6 @@
                     html.setAttribute('dir', 'rtl');
                 }
                 langMenu.classList.remove('show');
-            });
-        });
-
-        // ===== نسخ رابط الموقع =====
-        const copyLinkBtn = document.getElementById('copyLinkBtn');
-        const siteUrl = document.getElementById('siteUrl');
-
-        copyLinkBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(siteUrl.innerText).then(() => {
-                const originalText = copyLinkBtn.innerHTML;
-                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> <span class="arabic-text">تم النسخ!</span><span class="english-text">Copied!</span>';
-                setTimeout(() => {
-                    copyLinkBtn.innerHTML = originalText;
-                }, 2000);
             });
         });
 

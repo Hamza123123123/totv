@@ -1,14 +1,74 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTV | التطبيق الرسمي</title>
+    
+    <!-- ===== معلومات الموقع الأساسية ===== -->
+    <title>TOTV+ | مشاهدة الأفلام والمسلسلات والمباريات مجاناً</title>
+    <meta name="description" content="منصة TOTV+ لمشاهدة أحدث الأفلام والمسلسلات والقنوات الرياضية بث مباشر بجودة عالية وبدون إعلانات.">
+    <meta name="keywords" content="TOTV, بث مباشر, مباريات اليوم, أفلام مترجمة, مسلسلات 2026, تطبيق TOTV, حمزة ظابط">
+    <meta name="author" content="Hamza Thabit Allawi">
+    
+    <!-- ===== تحسينات محركات البحث SEO ===== -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- ===== صورة الموقع لنتائج البحث ===== -->
+    <meta itemprop="image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    <link rel="image_src" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    
+    <!-- ===== معاينة التواصل الاجتماعي Open Graph ===== -->
+    <meta property="og:title" content="TOTV+ | عالم الترفيه بين يديك">
+    <meta property="og:description" content="شاهد محتواك المفضل بجودة عالية وبدون فواصل.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://hamza123123123.github.io/totv/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:site_name" content="TOTV+">
+    
+    <!-- ===== معاينة تويتر/X ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TOTV+ | عالم الترفيه بين يديك">
+    <meta name="twitter:description" content="شاهد محتواك المفضل بجودة عالية وبدون فواصل.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    
+    <!-- ===== أيقونة الموقع ===== -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
+    
+    <!-- ===== البيانات المنظمة Schema.org ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TOTV+",
+      "url": "https://hamza123123123.github.io/totv/",
+      "description": "منصة مشاهدة أفلام ومسلسلات ومباريات بث مباشر",
+      "image": "https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TOTV+",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png"
+        }
+      }
+    }
+    </script>
+    
+    <!-- ===== الخطوط ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- ===== أيقونات فونت Awesome ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -49,7 +109,6 @@
             display: inline;
         }
 
-        /* تأثير الخلفية البسيط */
         body::before {
             content: '';
             position: fixed;
@@ -62,7 +121,7 @@
         }
 
         .container {
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
             position: relative;
             z-index: 1;
@@ -70,7 +129,7 @@
             padding: 1rem 0;
         }
 
-        /* ===== أيقونة Premium في أعلى اليسار ===== */
+        /* ===== أيقونة Premium مع القائمة المنسدلة ===== */
         .premium-btn-wrapper {
             position: fixed;
             top: 15px;
@@ -78,7 +137,7 @@
             z-index: 100;
         }
 
-        .premium-link {
+        .premium-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(12px);
             border: 1.5px solid rgba(255, 255, 255, 0.4);
@@ -87,7 +146,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
+            cursor: pointer;
             color: #ffffff;
             font-weight: 700;
             font-size: 0.95rem;
@@ -95,23 +154,191 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .premium-link i {
+        .premium-btn i {
             font-size: 1.2rem;
             color: #FFD700;
         }
 
-        .premium-link span {
-            letter-spacing: 0.5px;
-        }
-
-        .premium-link:hover {
+        .premium-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             border-color: #FFD700;
             transform: scale(1.02);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== قائمة اللغة المنسدلة ===== */
+        /* قائمة الأسعار المنسدلة */
+        .pricing-dropdown {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 24px;
+            padding: 1.5rem;
+            min-width: 320px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px) scale(0.95);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .pricing-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            padding-bottom: 0.8rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.3rem;
+            color: #FFD700;
+            font-weight: 800;
+        }
+
+        .pricing-header p {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 0.3rem;
+        }
+
+        /* بطاقات الأسعار */
+        .pricing-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.02) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            border-color: #FFD700;
+            transform: translateX(-5px);
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        .price-card.popular {
+            border: 2px solid #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.05) 100%);
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FFD700;
+            color: #000000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            transform: rotate(15deg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-info {
+            flex: 1;
+        }
+
+        .price-plan {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .price-value {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #FFD700;
+            line-height: 1;
+        }
+
+        .price-value small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #aaa;
+        }
+
+        .price-original {
+            font-size: 0.8rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+
+        .price-save {
+            font-size: 0.7rem;
+            color: #4caf50;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .subscribe-btn-card {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subscribe-btn-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* زر الاشتراك الرئيسي */
+        .main-subscribe-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .main-subscribe-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ===== قائمة اللغة ===== */
         .language-dropdown {
             position: fixed;
             top: 15px;
@@ -133,7 +360,6 @@
             cursor: pointer;
             font-size: 1.3rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .lang-btn:hover {
@@ -156,7 +382,6 @@
             visibility: hidden;
             transform: translateY(-10px);
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
         .lang-menu.show {
@@ -182,7 +407,6 @@
         .lang-option.active {
             background: rgba(255, 215, 0, 0.3);
             color: #FFD700;
-            font-weight: 700;
         }
 
         .lang-divider {
@@ -191,10 +415,10 @@
             margin: 0.5rem 0;
         }
 
-        /* ===== الشعار ===== */
+        /* باقي الستايلات كما هي */
         .logo-section {
             text-align: center;
-            margin: 1rem 0 1.5rem;
+            margin: 1rem 0 1rem;
         }
 
         .golden-icon {
@@ -207,14 +431,12 @@
             justify-content: center;
             margin: 0 auto 0.8rem;
             box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .golden-icon span {
             color: #000000;
             font-weight: 900;
             font-size: 2rem;
-            letter-spacing: 1px;
         }
 
         .app-title {
@@ -224,13 +446,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.2rem;
-            line-height: 1.2;
         }
 
         .app-title small {
             font-size: 1.5rem;
             display: block;
-            font-weight: 700;
         }
 
         .badge-4k {
@@ -244,27 +464,106 @@
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
-            backdrop-filter: blur(5px);
             margin-top: 0.5rem;
         }
 
-        .badge-4k i {
-            color: #FFD700;
-            font-size: 1rem;
+        .about-site-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
-        /* ===== الوصف ===== */
+        .about-site-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .about-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-header i {
+            font-size: 2rem;
+            color: #FFD700;
+        }
+
+        .about-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFD700;
+        }
+
+        .about-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .site-link-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .site-link-box .link-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .site-link-box .site-url {
+            color: #ffffff;
+            font-family: monospace;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .copy-link-btn {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .copy-link-btn:hover {
+            background: #FFD700;
+            color: #000000;
+        }
+
         .description {
             text-align: center;
             font-size: 1.2rem;
             font-weight: 500;
             color: #e0e0e0;
-            margin: 1.5rem 0 1.5rem;
-            line-height: 1.6;
-            padding: 0 0.5rem;
+            margin: 0.5rem 0 1rem;
         }
 
-        /* ===== أيقونة التحميل ===== */
         .download-icon-wrapper {
             text-align: center;
             margin: 2rem 0;
@@ -274,9 +573,7 @@
             display: inline-flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
         .icon-circle {
@@ -289,7 +586,6 @@
             justify-content: center;
             margin-bottom: 0.6rem;
             box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -306,7 +602,6 @@
             padding: 0.3rem 1.8rem;
             border-radius: 50px;
             border: 1.5px solid #FFD700;
-            backdrop-filter: blur(5px);
         }
 
         .golden-download-icon:hover .icon-circle {
@@ -319,7 +614,6 @@
             color: #000000;
         }
 
-        /* ===== شبكة المميزات ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -334,10 +628,7 @@
             padding: 1rem 0.5rem;
             text-align: center;
             font-weight: 600;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
-            color: #ffffff;
         }
 
         .feature-item i {
@@ -350,10 +641,8 @@
         .feature-item:hover {
             background: rgba(255, 215, 0, 0.1);
             border-color: #FFD700;
-            transform: translateY(-2px);
         }
 
-        /* ===== قسم الدعم الفني ===== */
         .support-section {
             display: flex;
             flex-wrap: wrap;
@@ -370,13 +659,11 @@
             text-align: center;
             min-width: 200px;
             flex: 1;
-            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
 
         .support-card:hover {
             border-color: #FFD700;
-            transform: translateY(-2px);
         }
 
         .support-card i {
@@ -389,13 +676,6 @@
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .support-card p {
-            color: #cccccc;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
         }
 
         .support-link {
@@ -406,9 +686,7 @@
             padding: 0.6rem 1.5rem;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
             transition: all 0.3s ease;
-            border: none;
         }
 
         .support-link:hover {
@@ -416,7 +694,6 @@
             box-shadow: 0 8px 18px rgba(255, 215, 0, 0.3);
         }
 
-        /* ===== الفوتر ===== */
         .footer {
             margin-top: 2rem;
             text-align: center;
@@ -431,12 +708,9 @@
             padding: 0.5rem 2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
         }
 
-        /* ===== شريط الكوكيز ===== */
         .cookie-consent {
             position: fixed;
             bottom: 15px;
@@ -452,7 +726,6 @@
             justify-content: space-between;
             gap: 1.5rem;
             z-index: 1000;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             max-width: 700px;
             margin: 0 auto;
             transform: translateY(200%);
@@ -479,39 +752,27 @@
             align-items: center;
             justify-content: center;
             border: 1px solid #FFD700;
-            flex-shrink: 0;
         }
 
         .cookie-icon i {
             color: #FFD700;
-            font-size: 1.2rem;
         }
 
         .cookie-text {
             color: #e0e0e0;
             font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .cookie-text a {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: 600;
         }
 
         .cookie-buttons {
             display: flex;
             gap: 0.8rem;
-            flex-shrink: 0;
         }
 
         .cookie-btn {
             padding: 0.4rem 1.2rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
             border: none;
             font-family: inherit;
         }
@@ -521,45 +782,145 @@
             color: #000000;
         }
 
-        .cookie-btn.accept:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 12px rgba(255, 215, 0, 0.3);
-        }
-
         .cookie-btn.settings {
             background: transparent;
             color: #FFD700;
             border: 1px solid #FFD700;
         }
 
-        /* ===== تحسينات للجوال ===== */
         @media (max-width: 600px) {
             .container { padding: 0.5rem; }
-            .app-title { font-size: 2rem; }
-            .app-title small { font-size: 1.3rem; }
-            .golden-icon { width: 75px; height: 75px; }
-            .golden-icon span { font-size: 1.8rem; }
+            .app-title { font-size: 1.8rem; }
+            .golden-icon { width: 70px; height: 70px; }
             .features-grid { grid-template-columns: 1fr; }
-            .cookie-consent { flex-direction: column; border-radius: 30px; padding: 1.2rem; text-align: center; }
-            .cookie-content { flex-direction: column; }
-            .premium-link { padding: 8px 15px; font-size: 0.85rem; }
-            .premium-link i { font-size: 1rem; }
+            .cookie-consent { flex-direction: column; border-radius: 30px; }
+            .cookie-content { flex-direction: column; text-align: center; }
+            .about-site-card { padding: 1.2rem; }
+            .site-link-box { flex-direction: column; text-align: center; }
+            .pricing-dropdown { left: -50px; min-width: 280px; }
+            .price-card { flex-direction: column; text-align: center; gap: 0.8rem; }
+            .subscribe-btn-card { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- أيقونة Premium في أعلى اليسار -->
+    <!-- أيقونة Premium مع القائمة المنسدلة للأسعار -->
     <div class="premium-btn-wrapper">
-        <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="premium-link">
+        <div class="premium-btn" id="premiumBtn">
             <i class="fas fa-crown"></i>
-            <span>
-                <span class="arabic-text">اصبح عضو Premium</span>
-                <span class="english-text">Become Premium</span>
-            </span>
-        </a>
+            <span class="arabic-text">اصبح عضو Premium</span>
+            <span class="english-text">Become Premium</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+        </div>
+        
+        <!-- قائمة الأسعار المنسدلة -->
+        <div class="pricing-dropdown" id="pricingDropdown">
+            <div class="pricing-header">
+                <h3>
+                    <i class="fas fa-gem"></i>
+                    <span class="arabic-text">باقات الاشتراك المميز</span>
+                    <span class="english-text">Premium Plans</span>
+                </h3>
+                <p>
+                    <span class="arabic-text">استمتع بمزايا لا محدودة بأسعار خاصة</span>
+                    <span class="english-text">Enjoy unlimited features at special prices</span>
+                </p>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- الباقة الشهرية -->
+                <div class="price-card">
+                    <div class="badge-discount">
+                        <span class="arabic-text">خصم 20%</span>
+                        <span class="english-text">20% OFF</span>
+                    </div>
+                    <div class="price-info">
+                        <div class="price-plan">
+                            <span class="arabic-text">باقة شهرية</span>
+                            <span class="english-text">Monthly Plan</span>
+                        </div>
+                        <div>
+                            <span class="price-value">5,000 <small>د.ع</small></span>
+                            <span class="price-original">6,250 د.ع</span>
+                            <span class="price-save">وفر 1,250</span>
+                        </div>
+                    </div>
+                    <button class="subscribe-btn-card" data-plan="monthly">
+                        <i class="fas fa-star"></i>
+                        <span class="arabic-text">اشترك الآن</span>
+                        <span class="english-text">Subscribe Now</span>
+                    </button>
+                </div>
+                
+                <!-- الباقة الربع سنوية (3 أشهر) -->
+                <div class="price-card popular">
+                    <div class="badge-discount">
+                        <span class="arabic-text">الأفضل مبيعاً</span>
+                        <span class="english-text">Best Seller</span>
+                    </div>
+                    <div class="price-info">
+                        <div class="price-plan">
+                            <span class="arabic-text">باقة 3 أشهر</span>
+                            <span class="english-text">3 Months Plan</span>
+                            <span style="font-size: 0.7rem; color: #FFD700;"> ★★★</span>
+                        </div>
+                        <div>
+                            <span class="price-value">12,000 <small>د.ع</small></span>
+                            <span class="price-original">18,750 د.ع</span>
+                            <span class="price-save">وفر 6,750</span>
+                        </div>
+                        <div style="font-size: 0.7rem; color: #4caf50; margin-top: 4px;">
+                            <span class="arabic-text">✓ يوفر 36% عن الشهري</span>
+                            <span class="english-text">✓ Save 36% vs monthly</span>
+                        </div>
+                    </div>
+                    <button class="subscribe-btn-card" data-plan="quarterly">
+                        <i class="fas fa-crown"></i>
+                        <span class="arabic-text">اشترك الآن</span>
+                        <span class="english-text">Subscribe Now</span>
+                    </button>
+                </div>
+                
+                <!-- الباقة السنوية -->
+                <div class="price-card">
+                    <div class="badge-discount">
+                        <span class="arabic-text">خصم 50%</span>
+                        <span class="english-text">50% OFF</span>
+                    </div>
+                    <div class="price-info">
+                        <div class="price-plan">
+                            <span class="arabic-text">باقة سنوية</span>
+                            <span class="english-text">Yearly Plan</span>
+                        </div>
+                        <div>
+                            <span class="price-value">28,000 <small>د.ع</small></span>
+                            <span class="price-original">60,000 د.ع</span>
+                            <span class="price-save">وفر 32,000</span>
+                        </div>
+                        <div style="font-size: 0.7rem; color: #4caf50; margin-top: 4px;">
+                            <span class="arabic-text">✓ 4 أشهر مجانية</span>
+                            <span class="english-text">✓ 4 months free</span>
+                        </div>
+                    </div>
+                    <button class="subscribe-btn-card" data-plan="yearly">
+                        <i class="fas fa-gem"></i>
+                        <span class="arabic-text">اشترك الآن</span>
+                        <span class="english-text">Subscribe Now</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- زر الاشتراك الرئيسي -->
+            <button class="main-subscribe-btn" id="mainSubscribeBtn">
+                <i class="fab fa-telegram"></i>
+                <span class="arabic-text">اشترك عبر تليجرام @PaymentTOTVBOT</span>
+                <span class="english-text">Subscribe via Telegram @PaymentTOTVBOT</span>
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
     </div>
 
-    <!-- قائمة اللغة المنسدلة -->
+    <!-- قائمة اللغة -->
     <div class="language-dropdown">
         <div class="lang-btn" id="languageBtn">
             <i class="fas fa-globe"></i>
@@ -581,26 +942,62 @@
         <!-- الشعار -->
         <div class="logo-section">
             <div class="golden-icon">
-                <span>TOTV</span>
+                <span>TOTV+</span>
             </div>
             <h1 class="app-title">
-                TOTV
+                TOTV+
                 <small>
-                    <span class="arabic-text">التطبيق الرسمي</span>
-                    <span class="english-text">Official App</span>
+                    <span class="arabic-text">عالم الترفيه بين يديك</span>
+                    <span class="english-text">Entertainment at Your Fingertips</span>
                 </small>
             </h1>
             <span class="badge-4k">
                 <i class="fas fa-bolt"></i>
-                <span class="arabic-text">بث 4K مباشر</span>
-                <span class="english-text">4K Live</span>
+                <span class="arabic-text">بث مباشر 4K</span>
+                <span class="english-text">4K Live Streaming</span>
             </span>
         </div>
 
         <!-- الوصف -->
         <div class="description">
-            <span class="arabic-text">تجربة مشاهدة القنوات العالمية والمحتوى الحصري بجودة عالية.</span>
-            <span class="english-text">Experience global channels & exclusive content in high quality.</span>
+            <span class="arabic-text">شاهد محتواك المفضل بجودة عالية وبدون فواصل</span>
+            <span class="english-text">Watch your favorite content in high quality without interruptions</span>
+        </div>
+
+        <!-- صندوق نبذة عن الموقع -->
+        <div class="about-site-card">
+            <div class="about-header">
+                <i class="fas fa-info-circle"></i>
+                <h2>
+                    <span class="arabic-text">نبذة عن TOTV+</span>
+                    <span class="english-text">About TOTV+</span>
+                </h2>
+            </div>
+            <div class="about-text">
+                <span class="arabic-text">
+                    TOTV+ هي منصة متكاملة لمشاهدة أحدث الأفلام والمسلسلات والمباريات الرياضية بث مباشر. 
+                    نقدم لك تجربة مشاهدة فائقة الجودة بدقة 4K بدون إعلانات مزعجة، مع تحديثات يومية ومحتوى حصري من جميع أنحاء العالم. 
+                    حمل التطبيق الآن واستمتع بعالم من الترفيه بين يديك.
+                </span>
+                <span class="english-text">
+                    TOTV+ is a complete platform for watching the latest movies, series, and live sports matches. 
+                    We offer you a high-quality viewing experience in 4K without annoying ads, with daily updates and exclusive content from around the world. 
+                    Download the app now and enjoy a world of entertainment at your fingertips.
+                </span>
+            </div>
+            <div class="site-link-box">
+                <div class="link-label">
+                    <i class="fas fa-link"></i>
+                    <span class="arabic-text">رابط الموقع الرسمي:</span>
+                    <span class="english-text">Official Website:</span>
+                </div>
+                <div class="site-url" id="siteUrl">https://hamza123123123.github.io/totv/</div>
+                <button class="copy-link-btn" id="copyLinkBtn">
+                    <i class="fas fa-copy"></i>
+                    <span class="arabic-text">نسخ الرابط</span>
+                    <span class="english-text">Copy Link</span>
+                </button>
+            </div>
         </div>
 
         <!-- أيقونة التحميل -->
@@ -632,27 +1029,27 @@
             </div>
             <div class="feature-item">
                 <i class="fas fa-film"></i>
-                <span class="arabic-text">مكتبة أفلام</span>
-                <span class="english-text">Movies</span>
+                <span class="arabic-text">أفلام مترجمة</span>
+                <span class="english-text">Subtitled Movies</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-futbol"></i>
-                <span class="arabic-text">مباريات حصرية</span>
-                <span class="english-text">Matches</span>
+                <span class="arabic-text">مباريات اليوم</span>
+                <span class="english-text">Today's Matches</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-sync-alt"></i>
                 <span class="arabic-text">تحديث يومي</span>
-                <span class="english-text">Daily</span>
+                <span class="english-text">Daily Updates</span>
             </div>
             <div class="feature-item">
                 <i class="fas fa-shield-alt"></i>
                 <span class="arabic-text">آمن تماماً</span>
-                <span class="english-text">Secure</span>
+                <span class="english-text">Fully Secure</span>
             </div>
         </div>
 
-        <!-- قسم الدعم الفني -->
+        <!-- قسم الدعم -->
         <div class="support-section">
             <div class="support-card">
                 <i class="fab fa-telegram"></i>
@@ -676,8 +1073,8 @@
                     <span class="english-text">Email</span>
                 </h3>
                 <p>
-                    <span class="arabic-text">للاقتراحات</span>
-                    <span class="english-text">Suggestions</span>
+                    <span class="arabic-text">للاقتراحات والدعم</span>
+                    <span class="english-text">Suggestions & Support</span>
                 </p>
                 <a href="mailto:totv.support@gmail.com" class="support-link">
                     <i class="far fa-envelope"></i> totv.support
@@ -688,9 +1085,9 @@
         <!-- الفوتر -->
         <div class="footer">
             <div class="copyright">
-                <i class="far fa-copyright"></i> 
-                <span class="arabic-text">TOTV 2026</span>
-                <span class="english-text">TOTV 2026</span>
+                <i class="far fa-copyright"></i> 2026 TOTV+ | 
+                <span class="arabic-text">تطوير حمزة ثابت علاوي</span>
+                <span class="english-text">Developed by Hamza Thabit Allawi</span>
             </div>
         </div>
     </div>
@@ -719,6 +1116,36 @@
     </div>
 
     <script>
+        // ===== قائمة الأسعار =====
+        const premiumBtn = document.getElementById('premiumBtn');
+        const pricingDropdown = document.getElementById('pricingDropdown');
+        
+        premiumBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            pricingDropdown.classList.toggle('show');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!premiumBtn.contains(e.target) && !pricingDropdown.contains(e.target)) {
+                pricingDropdown.classList.remove('show');
+            }
+        });
+        
+        // ===== أزرار الاشتراك =====
+        const subscribeBtns = document.querySelectorAll('.subscribe-btn-card');
+        const mainSubscribeBtn = document.getElementById('mainSubscribeBtn');
+        const telegramLink = 'https://t.me/PaymentTOTVBOT';
+        
+        function redirectToTelegram() {
+            window.open(telegramLink, '_blank');
+        }
+        
+        subscribeBtns.forEach(btn => {
+            btn.addEventListener('click', redirectToTelegram);
+        });
+        
+        mainSubscribeBtn.addEventListener('click', redirectToTelegram);
+        
         // ===== قائمة اللغة =====
         const languageBtn = document.getElementById('languageBtn');
         const langMenu = document.getElementById('langMenu');
@@ -726,27 +1153,21 @@
         const body = document.body;
         const html = document.documentElement;
 
-        // فتح/غلق قائمة اللغة
         languageBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langMenu.classList.toggle('show');
         });
 
-        // غلق القائمة عند الضغط خارجها
         document.addEventListener('click', (e) => {
             if (!languageBtn.contains(e.target) && !langMenu.contains(e.target)) {
                 langMenu.classList.remove('show');
             }
         });
 
-        // اختيار اللغة
         langOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const lang = option.dataset.lang;
-                
-                // إزالة active من جميع الخيارات
                 langOptions.forEach(opt => opt.classList.remove('active'));
-                // إضافة active للخيار المختار
                 option.classList.add('active');
                 
                 if (lang === 'en') {
@@ -758,9 +1179,21 @@
                     html.setAttribute('lang', 'ar');
                     html.setAttribute('dir', 'rtl');
                 }
-                
-                // غلق القائمة بعد الاختيار
                 langMenu.classList.remove('show');
+            });
+        });
+
+        // ===== نسخ رابط الموقع =====
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const siteUrl = document.getElementById('siteUrl');
+
+        copyLinkBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(siteUrl.innerText).then(() => {
+                const originalText = copyLinkBtn.innerHTML;
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> <span class="arabic-text">تم النسخ!</span><span class="english-text">Copied!</span>';
+                setTimeout(() => {
+                    copyLinkBtn.innerHTML = originalText;
+                }, 2000);
             });
         });
 
@@ -768,7 +1201,6 @@
         const cookieConsent = document.getElementById('cookieConsent');
         const acceptCookies = document.getElementById('acceptCookies');
 
-        // التحقق مما إذا كان المستخدم وافق مسبقاً
         if (!localStorage.getItem('cookiesAccepted')) {
             setTimeout(() => {
                 cookieConsent.classList.add('show');

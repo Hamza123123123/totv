@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>+TOTV | باقات الاشتراك المميز</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        body.english-mode { font-family: 'Poppins', sans-serif; }
+        body.english-mode .arabic-text { display: none; }
+        body.english-mode .english-text { display: inline; }
+        body:not(.english-mode) .english-text { display: none; }
+        body:not(.english-mode) .arabic-text { display: inline; }
+
+        .back-btn {
+            position: fixed; top: 20px; left: 20px;
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50px;
+            padding: 10px 20px; display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: #fff; font-weight: 700; font-size: 0.95rem;
+            transition: all 0.3s ease; z-index: 100;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.02); }
+        .language-dropdown { position: fixed; top: 20px; right: 20px; z-index: 100; }
+        .lang-btn {
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.4); color: #fff;
+            width: 45px; height: 45px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem;
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.05); }
+        .lang-menu {
+            position: absolute; top: 55px; right: 0;
+            background: rgba(20,20,20,0.95); backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255,215,0,0.3); border-radius: 20px;
+            padding: 0.8rem; min-width: 140px; opacity: 0; visibility: hidden;
+            transform: translateY(-10px); transition: all 0.3s ease;
+        }
+        .lang-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .lang-option {
+            padding: 0.8rem 1.2rem; border-radius: 12px; cursor: pointer;
+            transition: all 0.2s ease; color: #fff; font-weight: 500; text-align: center;
+        }
+        .lang-option:hover { background: rgba(255,215,0,0.2); }
+        .lang-option.active { background: rgba(255,215,0,0.3); color: #FFD700; }
+        .lang-divider { height: 1px; background: rgba(255,255,255,0.2); margin: 0.5rem 0; }
+
+        .container { max-width: 900px; width: 100%; margin: 3rem auto; }
+        .pricing-header { text-align: center; margin-bottom: 3rem; }
+        .logo-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 1rem;
+        }
+        .logo-icon span { color: #000; font-weight: 900; font-size: 1.8rem; }
+        .pricing-header h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .pricing-header p { color: #ccc; font-size: 1.1rem; }
+        .pricing-cards { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 3rem; }
+        .price-card {
+            flex: 1; min-width: 280px; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,215,0,0.2); border-radius: 32px;
+            padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease;
+            position: relative; backdrop-filter: blur(10px);
+        }
+        .price-card:hover { transform: translateY(-10px); border-color: #FFD700; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .price-card.popular { border: 2px solid #FFD700; background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.02) 100%); transform: scale(1.02); }
+        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #FFD700; color: #000; padding: 0.3rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 800; white-space: nowrap; }
+        .price-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; color: #FFD700; }
+        .price-card .price { font-size: 2.5rem; font-weight: 900; margin: 1rem 0; color: #fff; }
+        .price-card .price small { font-size: 1rem; color: #aaa; }
+        .price-card .original-price { font-size: 0.9rem; color: #888; text-decoration: line-through; margin-bottom: 0.5rem; }
+        .price-card .save { font-size: 0.8rem; color: #4caf50; font-weight: 600; margin-bottom: 1rem; }
+        .price-card .features-list { list-style: none; margin: 1.5rem 0; text-align: center; }
+        .price-card .features-list li { margin-bottom: 0.8rem; color: #ccc; font-size: 0.95rem; }
+        .price-card .features-list i { color: #FFD700; margin-left: 8px; }
+        .subscribe-btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000; border: none; padding: 0.9rem 2rem; border-radius: 50px;
+            font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+            width: 100%; font-family: inherit; display: flex; align-items: center;
+            justify-content: center; gap: 8px; text-decoration: none;
+        }
+        .subscribe-btn:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(255,215,0,0.4); }
+        .features-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,215,0,0.2); }
+        .features-section h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #FFD700; }
+        .premium-features { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+        .premium-feature { display: flex; align-items: center; gap: 10px; background: rgba(255,215,0,0.05); padding: 0.7rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,215,0,0.2); }
+        .premium-feature i { color: #FFD700; font-size: 1.2rem; }
+        .footer { margin-top: 3rem; text-align: center; border-top: 1px solid rgba(255,215,0,0.15); padding-top: 1.5rem; }
+        .copyright { background: rgba(255,215,0,0.08); color: #FFD700; display: inline-block; padding: 0.5rem 2rem; border-radius: 60px; font-weight: 600; font-size: 0.9rem; }
+        @media (max-width: 700px) {
+            .price-card.popular { transform: scale(1); }
+            .pricing-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i><span class="arabic-text">العودة للرئيسية</span><span class="english-text">Back to Home</span></a>
+    <div class="language-dropdown">
+        <div class="lang-btn" id="languageBtn"><i class="fas fa-globe"></i></div>
+        <div class="lang-menu" id="langMenu">
+            <div class="lang-option active" data-lang="ar"><span class="arabic-text">العربية</span><span class="english-text">Arabic</span></div>
+            <div class="lang-divider"></div>
+            <div class="lang-option" data-lang="en"><span class="arabic-text">ENGLISH</span><span class="english-text">English</span></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pricing-header">
+            <div class="logo-icon"><span>+TOTV</span></div>
+            <h1><span class="arabic-text">باقات الاشتراك المميز</span><span class="english-text">Premium Subscription Plans</span></h1>
+            <p><span class="arabic-text">اختر الباقة المناسبة لك واستمتع بمزايا لا محدودة</span><span class="english-text">Choose the right plan for you and enjoy unlimited features</span></p>
+        </div>
+        <div class="pricing-cards">
+            <div class="price-card">
+                <h3><span class="arabic-text">شهري</span><span class="english-text">Monthly</span></h3>
+                <div class="price">5,000 <small>د.ع</small></div>
+                <div class="original-price">6,250 د.ع</div>
+                <div class="save"><i class="fas fa-tag"></i> وفر 1,250 د.ع</div>
+                <ul class="features-list"><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live Streaming</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بدون إعلانات</span><span class="english-text">No Ads</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">مكتبة أفلام ومسلسلات</span><span class="english-text">Movies & Series Library</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">دعم فني 24/7</span><span class="english-text">24/7 Support</span></li></ul>
+                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="subscribe-btn"><i class="fab fa-telegram"></i><span class="arabic-text">اشترك الآن</span><span class="english-text">Subscribe Now</span></a>
+            </div>
+            <div class="price-card popular">
+                <div class="popular-badge"><span class="arabic-text">الأفضل مبيعاً</span><span class="english-text">Best Seller</span></div>
+                <h3><span class="arabic-text">3 أشهر</span><span class="english-text">3 Months</span></h3>
+                <div class="price">12,000 <small>د.ع</small></div>
+                <div class="original-price">18,750 د.ع</div>
+                <div class="save"><i class="fas fa-tag"></i> وفر 6,750 د.ع | خصم 36%</div>
+                <ul class="features-list"><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live Streaming</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بدون إعلانات</span><span class="english-text">No Ads</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">مكتبة أفلام ومسلسلات</span><span class="english-text">Movies & Series Library</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">دعم فني 24/7</span><span class="english-text">24/7 Support</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">محتويات حصرية</span><span class="english-text">Exclusive Content</span></li></ul>
+                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="subscribe-btn"><i class="fab fa-telegram"></i><span class="arabic-text">اشترك الآن</span><span class="english-text">Subscribe Now</span></a>
+            </div>
+            <div class="price-card">
+                <h3><span class="arabic-text">سنوي</span><span class="english-text">Yearly</span></h3>
+                <div class="price">28,000 <small>د.ع</small></div>
+                <div class="original-price">60,000 د.ع</div>
+                <div class="save"><i class="fas fa-tag"></i> وفر 32,000 د.ع | خصم 50%</div>
+                <ul class="features-list"><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live Streaming</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">بدون إعلانات</span><span class="english-text">No Ads</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">مكتبة أفلام ومسلسلات</span><span class="english-text">Movies & Series Library</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">دعم فني 24/7</span><span class="english-text">24/7 Support</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">محتويات حصرية</span><span class="english-text">Exclusive Content</span></li><li><i class="fas fa-check-circle"></i> <span class="arabic-text">4 أشهر مجانية</span><span class="english-text">4 Months Free</span></li></ul>
+                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="subscribe-btn"><i class="fab fa-telegram"></i><span class="arabic-text">اشترك الآن</span><span class="english-text">Subscribe Now</span></a>
+            </div>
+        </div>
+        <div class="features-section">
+            <h3><i class="fas fa-gem"></i> <span class="arabic-text">مميزات الاشتراك المميز</span><span class="english-text">Premium Features</span></h3>
+            <div class="premium-features"><div class="premium-feature"><i class="fas fa-tv"></i> <span class="arabic-text">جودة 4K فائقة</span><span class="english-text">Ultra HD 4K</span></div><div class="premium-feature"><i class="fas fa-ban"></i> <span class="arabic-text">بدون إعلانات</span><span class="english-text">Ad-Free</span></div><div class="premium-feature"><i class="fas fa-download"></i> <span class="arabic-text">تحميل للمشاهدة بدون نت</span><span class="english-text">Offline Download</span></div><div class="premium-feature"><i class="fas fa-headset"></i> <span class="arabic-text">دعم فني 24/7</span><span class="english-text">24/7 Support</span></div><div class="premium-feature"><i class="fas fa-calendar-alt"></i> <span class="arabic-text">تحديثات يومية</span><span class="english-text">Daily Updates</span></div></div>
+        </div>
+        <div class="footer"><div class="copyright"><i class="far fa-copyright"></i> 2026 +TOTV | <span class="arabic-text">جميع الحقوق محفوظة</span><span class="english-text">All Rights Reserved</span></div></div>
+    </div>
+    <script>
+        const languageBtn = document.getElementById('languageBtn');
+        const langMenu = document.getElementById('langMenu');
+        const langOptions = document.querySelectorAll('.lang-option');
+        const body = document.body;
+        const html = document.documentElement;
+        languageBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('show'); });
+        document.addEventListener('click', (e) => { if (!languageBtn.contains(e.target) && !langMenu.contains(e.target)) langMenu.classList.remove('show'); });
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.dataset.lang;
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                if (lang === 'en') { body.classList.add('english-mode'); html.setAttribute('lang', 'en'); html.setAttribute('dir', 'ltr'); }
+                else { body.classList.remove('english-mode'); html.setAttribute('lang', 'ar'); html.setAttribute('dir', 'rtl'); }
+                langMenu.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

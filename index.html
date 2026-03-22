@@ -3,79 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ===== معلومات الموقع الأساسية ===== -->
     <title>+TOTV | مشاهدة الأفلام والمسلسلات والمباريات مجاناً</title>
-    <meta name="description" content="منصة +TOTV لمشاهدة أحدث الأفلام والمسلسلات والقنوات الرياضية بث مباشر بجودة عالية وبدون إعلانات.">
-    <meta name="keywords" content="+TOTV, بث مباشر, مباريات اليوم, أفلام مترجمة, مسلسلات 2026, تطبيق TOTV">
-    <meta name="author" content="+TOTV">
-    
-    <!-- ===== تحسينات محركات البحث SEO ===== -->
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    
-    <!-- ===== صورة الموقع لنتائج البحث ===== -->
-    <meta itemprop="image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    <link rel="image_src" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    
-    <!-- ===== معاينة التواصل الاجتماعي Open Graph ===== -->
-    <meta property="og:title" content="+TOTV | عالم الترفيه بين يديك">
-    <meta property="og:description" content="شاهد محتواك المفضل بجودة عالية وبدون فواصل.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://hamza123123123.github.io/totv/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_AR">
-    <meta property="og:site_name" content="+TOTV">
-    
-    <!-- ===== معاينة تويتر/X ===== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="+TOTV | عالم الترفيه بين يديك">
-    <meta name="twitter:description" content="شاهد محتواك المفضل بجودة عالية وبدون فواصل.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    
-    <!-- ===== أيقونة الموقع ===== -->
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png">
-    
-    <!-- ===== البيانات المنظمة Schema.org ===== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "+TOTV",
-      "url": "https://hamza123123123.github.io/totv/",
-      "description": "منصة مشاهدة أفلام ومسلسلات ومباريات بث مباشر",
-      "image": "https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png",
-      "publisher": {
-        "@type": "Organization",
-        "name": "+TOTV",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://raw.githubusercontent.com/Hamza123123123/totv/main/logo.png"
-        }
-      }
-    }
-    </script>
-    
-    <!-- ===== الخطوط ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- ===== أيقونات فونت Awesome ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -86,447 +21,200 @@
             justify-content: center;
             padding: 1rem;
             position: relative;
-            overflow-x: hidden;
         }
+        body.english-mode { font-family: 'Poppins', sans-serif; }
+        body.english-mode .arabic-text { display: none; }
+        body.english-mode .english-text { display: inline; }
+        body:not(.english-mode) .english-text { display: none; }
+        body:not(.english-mode) .arabic-text { display: inline; }
+        .container { max-width: 750px; width: 100%; padding: 1rem 0; }
 
-        body.english-mode {
-            font-family: 'Poppins', sans-serif;
+        /* نافذة الترحيب */
+        .welcome-popup {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            padding: 1rem; opacity: 0; visibility: hidden; transition: all 0.4s ease;
         }
-
-        body.english-mode .arabic-text {
-            display: none;
+        .welcome-popup.show { opacity: 1; visibility: visible; }
+        .popup-content {
+            max-width: 500px; width: 100%;
+            background: linear-gradient(135deg, #1a1a2a 0%, #0f0f1a 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 40px;
+            padding: 2rem; text-align: center; transform: scale(0.9);
+            transition: transform 0.3s ease; position: relative;
         }
-
-        body.english-mode .english-text {
-            display: inline;
+        .welcome-popup.show .popup-content { transform: scale(1); }
+        .close-popup {
+            position: absolute; top: 15px; left: 15px;
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            width: 35px; height: 35px; border-radius: 50%; cursor: pointer;
+            font-size: 1.2rem; transition: all 0.3s ease;
         }
-
-        body:not(.english-mode) .english-text {
-            display: none;
-        }
-
-        body:not(.english-mode) .arabic-text {
-            display: inline;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.02) 0%, transparent 70%);
-            z-index: 0;
-            top: 0;
-            left: 0;
-        }
-
-        .container {
-            max-width: 750px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            padding: 1rem 0;
-        }
-
-        /* ===== أيقونة Premium ===== */
-        .premium-btn-wrapper {
-            position: fixed;
-            top: 15px;
-            right: 80px;
-            z-index: 100;
-        }
-
-        .premium-btn {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50px;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .premium-btn i {
-            font-size: 1.2rem;
-            color: #FFD700;
-        }
-
-        .premium-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: #FFD700;
-            transform: scale(1.02);
-        }
-
-        /* ===== قائمة اللغة ===== */
-        .language-dropdown {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 100;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: #FFD700;
-            transform: scale(1.05);
-        }
-
-        .lang-menu {
-            position: absolute;
-            top: 55px;
-            right: 0;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            padding: 0.8rem;
-            min-width: 140px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .lang-menu.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-option {
-            padding: 0.8rem 1.2rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #ffffff;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .lang-option:hover {
-            background: rgba(255, 215, 0, 0.2);
-        }
-
-        .lang-option.active {
-            background: rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-        }
-
-        .lang-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 0.5rem 0;
-        }
-
-        /* باقي الستايلات */
-        .logo-section {
-            text-align: center;
-            margin: 1rem 0 1rem;
-        }
-
-        .golden-icon {
-            width: 85px;
-            height: 85px;
+        .close-popup:hover { background: rgba(255,215,0,0.3); transform: rotate(90deg); }
+        .popup-icon {
+            width: 80px; height: 80px;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.8rem;
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 1rem;
         }
-
-        .golden-icon span {
-            color: #000000;
-            font-weight: 900;
-            font-size: 2rem;
-        }
-
-        .app-title {
-            font-size: 2.2rem;
-            font-weight: 900;
+        .popup-icon i { font-size: 2.5rem; color: #000000; }
+        .popup-content h2 {
+            font-size: 1.8rem; font-weight: 800;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.2rem;
-        }
-
-        .app-title small {
-            font-size: 1.5rem;
-            display: block;
-        }
-
-        .badge-4k {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1.5px solid #FFD700;
-            color: #FFD700;
-            padding: 0.3rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        .description {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #e0e0e0;
-            margin: 0.5rem 0 1rem;
-        }
-
-        .download-icon-wrapper {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .golden-download-icon {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .icon-circle {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.6rem;
-            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .icon-circle i {
-            font-size: 2.5rem;
-            color: #000000;
-        }
-
-        .download-text {
-            color: #FFD700;
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0.3rem 1.8rem;
-            border-radius: 50px;
-            border: 1.5px solid #FFD700;
-        }
-
-        .golden-download-icon:hover .icon-circle {
-            transform: scale(1.08);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.6);
-        }
-
-        .golden-download-icon:hover .download-text {
-            background: #FFD700;
-            color: #000000;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 20px;
-            padding: 1rem 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item i {
-            color: #FFD700;
-            font-size: 1.3rem;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-
-        .feature-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: #FFD700;
-        }
-
-        .support-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            justify-content: center;
-            margin: 2rem 0 1.5rem;
-        }
-
-        .support-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 25px;
-            padding: 1.2rem 1.5rem;
-            text-align: center;
-            min-width: 200px;
-            flex: 1;
-            transition: all 0.3s ease;
-        }
-
-        .support-card:hover {
-            border-color: #FFD700;
-        }
-
-        .support-card i {
-            font-size: 2rem;
-            color: #FFD700;
-            margin-bottom: 0.6rem;
-        }
-
-        .support-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
-
-        .support-link {
-            display: inline-block;
+        .welcome-message { color: #ccc; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .quick-prices { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin: 1.5rem 0; }
+        .quick-price {
+            background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 20px; padding: 0.6rem 1rem; text-align: center; flex: 1; min-width: 100px;
+        }
+        .quick-price .plan { font-size: 0.8rem; color: #FFD700; font-weight: 600; }
+        .quick-price .amount { font-size: 1.3rem; font-weight: 800; color: #fff; }
+        .quick-price .amount small { font-size: 0.7rem; color: #aaa; }
+        .popup-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .popup-btn {
+            flex: 1; padding: 0.8rem; border-radius: 50px; font-weight: 700;
+            font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+            border: none; font-family: inherit; text-decoration: none; text-align: center;
+        }
+        .popup-btn.primary {
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #000000;
-            text-decoration: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
+        }
+        .popup-btn.primary:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(255,215,0,0.4); }
+        .popup-btn.secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+        .popup-btn.secondary:hover { background: rgba(255,255,255,0.2); }
+
+        .premium-btn-wrapper { position: fixed; top: 15px; right: 80px; z-index: 100; }
+        .premium-btn {
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50px;
+            padding: 10px 20px; display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: #fff; font-weight: 700; font-size: 0.95rem;
             transition: all 0.3s ease;
         }
+        .premium-btn i { font-size: 1.2rem; color: #FFD700; }
+        .premium-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.02); }
 
-        .support-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 18px rgba(255, 215, 0, 0.3);
+        .language-dropdown { position: fixed; top: 15px; right: 15px; z-index: 100; }
+        .lang-btn {
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.4); color: #fff;
+            width: 45px; height: 45px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem;
         }
-
-        .footer {
-            margin-top: 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 215, 0, 0.15);
-            padding-top: 1.5rem;
+        .lang-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.05); }
+        .lang-menu {
+            position: absolute; top: 55px; right: 0;
+            background: rgba(20,20,20,0.95); backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255,215,0,0.3); border-radius: 20px;
+            padding: 0.8rem; min-width: 140px; opacity: 0; visibility: hidden;
+            transform: translateY(-10px); transition: all 0.3s ease;
         }
+        .lang-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .lang-option {
+            padding: 0.8rem 1.2rem; border-radius: 12px; cursor: pointer;
+            transition: all 0.2s ease; color: #fff; font-weight: 500; text-align: center;
+        }
+        .lang-option:hover { background: rgba(255,215,0,0.2); }
+        .lang-option.active { background: rgba(255,215,0,0.3); color: #FFD700; }
+        .lang-divider { height: 1px; background: rgba(255,255,255,0.2); margin: 0.5rem 0; }
 
+        .logo-section { text-align: center; margin: 1rem 0; }
+        .golden-icon {
+            width: 85px; height: 85px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 0.8rem;
+        }
+        .golden-icon span { color: #000; font-weight: 900; font-size: 2rem; }
+        .app-title {
+            font-size: 2.2rem; font-weight: 900;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .app-title small { font-size: 1.5rem; display: block; }
+        .badge-4k {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,215,0,0.1); border: 1.5px solid #FFD700;
+            color: #FFD700; padding: 0.3rem 1.5rem; border-radius: 50px;
+            font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem;
+        }
+        .description { text-align: center; font-size: 1.2rem; font-weight: 500; color: #e0e0e0; margin: 0.5rem 0 1rem; }
+        .download-icon-wrapper { text-align: center; margin: 2rem 0; }
+        .golden-download-icon { display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; }
+        .icon-circle {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 0.6rem;
+            transition: all 0.3s ease;
+        }
+        .icon-circle i { font-size: 2.5rem; color: #000; }
+        .download-text {
+            color: #FFD700; font-size: 1.3rem; font-weight: 800;
+            background: rgba(0,0,0,0.4); padding: 0.3rem 1.8rem;
+            border-radius: 50px; border: 1.5px solid #FFD700;
+        }
+        .golden-download-icon:hover .icon-circle { transform: scale(1.08); }
+        .golden-download-icon:hover .download-text { background: #FFD700; color: #000; }
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; }
+        .feature-item {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,215,0,0.15);
+            border-radius: 20px; padding: 1rem 0.5rem; text-align: center; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .feature-item i { color: #FFD700; font-size: 1.3rem; display: block; margin-bottom: 0.4rem; }
+        .feature-item:hover { background: rgba(255,215,0,0.1); border-color: #FFD700; }
+        .support-section { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; margin: 2rem 0 1.5rem; }
+        .support-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.15);
+            border-radius: 25px; padding: 1.2rem 1.5rem; text-align: center;
+            min-width: 200px; flex: 1; transition: all 0.3s ease;
+        }
+        .support-card:hover { border-color: #FFD700; }
+        .support-card i { font-size: 2rem; color: #FFD700; margin-bottom: 0.6rem; }
+        .support-card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .support-link {
+            display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000; text-decoration: none; padding: 0.6rem 1.5rem;
+            border-radius: 50px; font-weight: 700; transition: all 0.3s ease;
+        }
+        .support-link:hover { transform: scale(1.05); box-shadow: 0 8px 18px rgba(255,215,0,0.3); }
+        .footer { margin-top: 2rem; text-align: center; border-top: 1px solid rgba(255,215,0,0.15); padding-top: 1.5rem; }
         .copyright {
-            background: rgba(255, 215, 0, 0.08);
-            color: #FFD700;
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            background: rgba(255,215,0,0.08); color: #FFD700;
+            display: inline-block; padding: 0.5rem 2rem; border-radius: 60px;
+            font-weight: 600; font-size: 0.9rem;
         }
-
         .cookie-consent {
-            position: fixed;
-            bottom: 15px;
-            left: 15px;
-            right: 15px;
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 50px;
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            z-index: 1000;
-            max-width: 700px;
-            margin: 0 auto;
-            transform: translateY(200%);
+            position: fixed; bottom: 15px; left: 15px; right: 15px;
+            background: rgba(15,15,15,0.95); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.2); border-radius: 50px;
+            padding: 0.8rem 1.5rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 1.5rem; z-index: 1000;
+            max-width: 700px; margin: 0 auto; transform: translateY(200%);
             transition: transform 0.5s ease;
         }
-
-        .cookie-consent.show {
-            transform: translateY(0);
-        }
-
-        .cookie-content {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex: 1;
-        }
-
+        .cookie-consent.show { transform: translateY(0); }
+        .cookie-content { display: flex; align-items: center; gap: 0.8rem; flex: 1; }
         .cookie-icon {
-            background: rgba(255, 215, 0, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #FFD700;
+            background: rgba(255,215,0,0.1); width: 40px; height: 40px;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; border: 1px solid #FFD700;
         }
-
-        .cookie-icon i {
-            color: #FFD700;
-        }
-
-        .cookie-text {
-            color: #e0e0e0;
-            font-size: 0.9rem;
-        }
-
-        .cookie-buttons {
-            display: flex;
-            gap: 0.8rem;
-        }
-
+        .cookie-icon i { color: #FFD700; }
+        .cookie-text { color: #e0e0e0; font-size: 0.9rem; }
+        .cookie-buttons { display: flex; gap: 0.8rem; }
         .cookie-btn {
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
+            padding: 0.4rem 1.2rem; border-radius: 50px; font-weight: 600;
+            cursor: pointer; border: none; font-family: inherit;
         }
-
-        .cookie-btn.accept {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
-        }
-
-        .cookie-btn.settings {
-            background: transparent;
-            color: #FFD700;
-            border: 1px solid #FFD700;
-        }
-
+        .cookie-btn.accept { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000; }
+        .cookie-btn.settings { background: transparent; color: #FFD700; border: 1px solid #FFD700; }
         @media (max-width: 600px) {
             .container { padding: 0.5rem; }
             .app-title { font-size: 1.8rem; }
@@ -540,7 +228,6 @@
     </style>
 </head>
 <body>
-    <!-- أيقونة Premium (تفتح صفحة الاشتراكات) -->
     <div class="premium-btn-wrapper">
         <a href="subscription.html" class="premium-btn">
             <i class="fas fa-crown"></i>
@@ -550,217 +237,118 @@
         </a>
     </div>
 
-    <!-- قائمة اللغة -->
     <div class="language-dropdown">
-        <div class="lang-btn" id="languageBtn">
-            <i class="fas fa-globe"></i>
-        </div>
+        <div class="lang-btn" id="languageBtn"><i class="fas fa-globe"></i></div>
         <div class="lang-menu" id="langMenu">
-            <div class="lang-option active" data-lang="ar">
-                <span class="arabic-text">العربية</span>
-                <span class="english-text">Arabic</span>
-            </div>
+            <div class="lang-option active" data-lang="ar"><span class="arabic-text">العربية</span><span class="english-text">Arabic</span></div>
             <div class="lang-divider"></div>
-            <div class="lang-option" data-lang="en">
-                <span class="arabic-text">ENGLISH</span>
-                <span class="english-text">English</span>
-            </div>
+            <div class="lang-option" data-lang="en"><span class="arabic-text">ENGLISH</span><span class="english-text">English</span></div>
         </div>
     </div>
 
     <div class="container">
-        <!-- الشعار -->
         <div class="logo-section">
-            <div class="golden-icon">
-                <span>+TOTV</span>
-            </div>
-            <h1 class="app-title">
-                +TOTV
-                <small>
-                    <span class="arabic-text">عالم الترفيه بين يديك</span>
-                    <span class="english-text">Entertainment at Your Fingertips</span>
-                </small>
-            </h1>
-            <span class="badge-4k">
-                <i class="fas fa-bolt"></i>
-                <span class="arabic-text">بث مباشر 4K</span>
-                <span class="english-text">4K Live Streaming</span>
-            </span>
+            <div class="golden-icon"><span>+TOTV</span></div>
+            <h1 class="app-title">+TOTV<small><span class="arabic-text">عالم الترفيه بين يديك</span><span class="english-text">Entertainment at Your Fingertips</span></small></h1>
+            <span class="badge-4k"><i class="fas fa-bolt"></i><span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live Streaming</span></span>
         </div>
-
-        <!-- الوصف -->
-        <div class="description">
-            <span class="arabic-text">شاهد محتواك المفضل بجودة عالية وبدون فواصل</span>
-            <span class="english-text">Watch your favorite content in high quality without interruptions</span>
-        </div>
-
-        <!-- أيقونة التحميل -->
+        <div class="description"><span class="arabic-text">شاهد محتواك المفضل بجودة عالية وبدون فواصل</span><span class="english-text">Watch your favorite content in high quality without interruptions</span></div>
         <div class="download-icon-wrapper">
-            <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" 
-               class="golden-download-icon" 
-               download="totv.apk">
-                <div class="icon-circle">
-                    <i class="fas fa-download"></i>
-                </div>
-                <span class="download-text">
-                    <span class="arabic-text">تحميل APK</span>
-                    <span class="english-text">Download APK</span>
-                </span>
+            <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" class="golden-download-icon" download="totv.apk">
+                <div class="icon-circle"><i class="fas fa-download"></i></div>
+                <span class="download-text"><span class="arabic-text">تحميل APK</span><span class="english-text">Download APK</span></span>
             </a>
         </div>
-
-        <!-- شبكة المميزات -->
         <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-tv"></i>
-                <span class="arabic-text">بث مباشر 4K</span>
-                <span class="english-text">4K Live</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-ban"></i>
-                <span class="arabic-text">بدون إعلانات</span>
-                <span class="english-text">No Ads</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-film"></i>
-                <span class="arabic-text">أفلام مترجمة</span>
-                <span class="english-text">Subtitled Movies</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-futbol"></i>
-                <span class="arabic-text">مباريات اليوم</span>
-                <span class="english-text">Today's Matches</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-sync-alt"></i>
-                <span class="arabic-text">تحديث يومي</span>
-                <span class="english-text">Daily Updates</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-shield-alt"></i>
-                <span class="arabic-text">آمن تماماً</span>
-                <span class="english-text">Fully Secure</span>
-            </div>
+            <div class="feature-item"><i class="fas fa-tv"></i><span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live</span></div>
+            <div class="feature-item"><i class="fas fa-ban"></i><span class="arabic-text">بدون إعلانات</span><span class="english-text">No Ads</span></div>
+            <div class="feature-item"><i class="fas fa-film"></i><span class="arabic-text">أفلام مترجمة</span><span class="english-text">Subtitled Movies</span></div>
+            <div class="feature-item"><i class="fas fa-futbol"></i><span class="arabic-text">مباريات اليوم</span><span class="english-text">Today's Matches</span></div>
+            <div class="feature-item"><i class="fas fa-sync-alt"></i><span class="arabic-text">تحديث يومي</span><span class="english-text">Daily Updates</span></div>
+            <div class="feature-item"><i class="fas fa-shield-alt"></i><span class="arabic-text">آمن تماماً</span><span class="english-text">Fully Secure</span></div>
         </div>
-
-        <!-- قسم الدعم -->
         <div class="support-section">
-            <div class="support-card">
-                <i class="fab fa-telegram"></i>
-                <h3>
-                    <span class="arabic-text">الدعم الفني</span>
-                    <span class="english-text">Support</span>
-                </h3>
-                <p>
-                    <span class="arabic-text">تواصل عبر تليجرام</span>
-                    <span class="english-text">Contact on Telegram</span>
-                </p>
-                <a href="https://t.me/TOTV_Support" target="_blank" class="support-link">
-                    <i class="fab fa-telegram"></i> @TOTV_Support
-                </a>
-            </div>
-
-            <div class="support-card">
-                <i class="fas fa-envelope"></i>
-                <h3>
-                    <span class="arabic-text">البريد الإلكتروني</span>
-                    <span class="english-text">Email</span>
-                </h3>
-                <p>
-                    <span class="arabic-text">للاقتراحات والدعم</span>
-                    <span class="english-text">Suggestions & Support</span>
-                </p>
-                <a href="mailto:totv.support@gmail.com" class="support-link">
-                    <i class="far fa-envelope"></i> totv.support
-                </a>
-            </div>
+            <div class="support-card"><i class="fab fa-telegram"></i><h3><span class="arabic-text">الدعم الفني</span><span class="english-text">Support</span></h3><p><span class="arabic-text">تواصل عبر تليجرام</span><span class="english-text">Contact on Telegram</span></p><a href="https://t.me/TOTV_Support" target="_blank" class="support-link"><i class="fab fa-telegram"></i> @TOTV_Support</a></div>
+            <div class="support-card"><i class="fas fa-envelope"></i><h3><span class="arabic-text">البريد الإلكتروني</span><span class="english-text">Email</span></h3><p><span class="arabic-text">للاقتراحات والدعم</span><span class="english-text">Suggestions & Support</span></p><a href="mailto:totv.support@gmail.com" class="support-link"><i class="far fa-envelope"></i> totv.support</a></div>
         </div>
-
-        <!-- الفوتر (بدون نبذة) -->
-        <div class="footer">
-            <div class="copyright">
-                <i class="far fa-copyright"></i> 2026 +TOTV | 
-                <span class="arabic-text">جميع الحقوق محفوظة</span>
-                <span class="english-text">All Rights Reserved</span>
-            </div>
-        </div>
+        <div class="footer"><div class="copyright"><i class="far fa-copyright"></i> 2026 +TOTV | <span class="arabic-text">جميع الحقوق محفوظة</span><span class="english-text">All Rights Reserved</span></div></div>
     </div>
 
-    <!-- شريط الكوكيز -->
     <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <div class="cookie-icon">
-                <i class="fas fa-cookie-bite"></i>
+        <div class="cookie-content"><div class="cookie-icon"><i class="fas fa-cookie-bite"></i></div><div class="cookie-text"><span class="arabic-text">نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستمرارك في التصفح، فإنك توافق على استخدامها.</span><span class="english-text">We use cookies to enhance your experience. By continuing, you agree to their use.</span></div></div>
+        <div class="cookie-buttons"><button class="cookie-btn accept" id="acceptCookies"><span class="arabic-text">موافق</span><span class="english-text">Accept</span></button><button class="cookie-btn settings" id="cookieSettings"><span class="arabic-text">إعدادات</span><span class="english-text">Settings</span></button></div>
+    </div>
+
+    <!-- نافذة الترحيب -->
+    <div class="welcome-popup" id="welcomePopup">
+        <div class="popup-content">
+            <button class="close-popup" id="closePopupBtn"><i class="fas fa-times"></i></button>
+            <div class="popup-icon"><i class="fas fa-crown"></i></div>
+            <h2><span class="arabic-text">مرحباً بك في +TOTV</span><span class="english-text">Welcome to +TOTV</span></h2>
+            <div class="welcome-message">
+                <span class="arabic-text">استمتع بأفضل تجربة مشاهدة بجودة 4K بدون إعلانات! اختر الباقة المناسبة لك وابدأ المتعة الآن.</span>
+                <span class="english-text">Enjoy the best viewing experience in 4K without ads! Choose the right plan for you and start the fun now.</span>
             </div>
-            <div class="cookie-text">
-                <span class="arabic-text">نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستمرارك في التصفح، فإنك توافق على استخدامها.</span>
-                <span class="english-text">We use cookies to enhance your experience. By continuing, you agree to their use.</span>
+            <div class="quick-prices">
+                <div class="quick-price"><div class="plan"><span class="arabic-text">شهري</span><span class="english-text">Monthly</span></div><div class="amount">5,000 <small>د.ع</small></div></div>
+                <div class="quick-price"><div class="plan"><span class="arabic-text">3 أشهر</span><span class="english-text">3 Months</span></div><div class="amount">12,000 <small>د.ع</small></div></div>
+                <div class="quick-price"><div class="plan"><span class="arabic-text">سنوي</span><span class="english-text">Yearly</span></div><div class="amount">28,000 <small>د.ع</small></div></div>
             </div>
-        </div>
-        <div class="cookie-buttons">
-            <button class="cookie-btn accept" id="acceptCookies">
-                <span class="arabic-text">موافق</span>
-                <span class="english-text">Accept</span>
-            </button>
-            <button class="cookie-btn settings" id="cookieSettings">
-                <span class="arabic-text">إعدادات</span>
-                <span class="english-text">Settings</span>
-            </button>
+            <div class="popup-buttons">
+                <a href="subscription.html" class="popup-btn primary"><i class="fas fa-crown"></i> <span class="arabic-text">اشترك الآن</span><span class="english-text">Subscribe Now</span></a>
+                <button class="popup-btn secondary" id="skipPopupBtn"><span class="arabic-text">تخطي</span><span class="english-text">Skip</span></button>
+            </div>
         </div>
     </div>
 
     <script>
-        // ===== قائمة اللغة =====
+        // نافذة الترحيب
+        const welcomePopup = document.getElementById('welcomePopup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        const skipPopupBtn = document.getElementById('skipPopupBtn');
+        
+        function hidePopup() {
+            welcomePopup.classList.remove('show');
+            localStorage.setItem('welcomeSeen', 'true');
+        }
+        
+        if (!localStorage.getItem('welcomeSeen')) {
+            setTimeout(() => {
+                welcomePopup.classList.add('show');
+            }, 500);
+        }
+        
+        closePopupBtn.addEventListener('click', hidePopup);
+        skipPopupBtn.addEventListener('click', hidePopup);
+        welcomePopup.addEventListener('click', (e) => {
+            if (e.target === welcomePopup) hidePopup();
+        });
+
+        // قائمة اللغة
         const languageBtn = document.getElementById('languageBtn');
         const langMenu = document.getElementById('langMenu');
         const langOptions = document.querySelectorAll('.lang-option');
         const body = document.body;
         const html = document.documentElement;
 
-        languageBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('show');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!languageBtn.contains(e.target) && !langMenu.contains(e.target)) {
-                langMenu.classList.remove('show');
-            }
-        });
-
+        languageBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('show'); });
+        document.addEventListener('click', (e) => { if (!languageBtn.contains(e.target) && !langMenu.contains(e.target)) langMenu.classList.remove('show'); });
         langOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const lang = option.dataset.lang;
                 langOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
-                
-                if (lang === 'en') {
-                    body.classList.add('english-mode');
-                    html.setAttribute('lang', 'en');
-                    html.setAttribute('dir', 'ltr');
-                } else {
-                    body.classList.remove('english-mode');
-                    html.setAttribute('lang', 'ar');
-                    html.setAttribute('dir', 'rtl');
-                }
+                if (lang === 'en') { body.classList.add('english-mode'); html.setAttribute('lang', 'en'); html.setAttribute('dir', 'ltr'); }
+                else { body.classList.remove('english-mode'); html.setAttribute('lang', 'ar'); html.setAttribute('dir', 'rtl'); }
                 langMenu.classList.remove('show');
             });
         });
 
-        // ===== شريط الكوكيز =====
+        // الكوكيز
         const cookieConsent = document.getElementById('cookieConsent');
         const acceptCookies = document.getElementById('acceptCookies');
-
-        if (!localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => {
-                cookieConsent.classList.add('show');
-            }, 1000);
-        }
-
-        acceptCookies.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieConsent.classList.remove('show');
-        });
+        if (!localStorage.getItem('cookiesAccepted')) { setTimeout(() => { cookieConsent.classList.add('show'); }, 1000); }
+        acceptCookies.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'true'); cookieConsent.classList.remove('show'); });
     </script>
 </body>
 </html>

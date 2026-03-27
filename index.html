@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOTV+ | عالم السينما بلا حدود</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -30,18 +31,20 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Navigation - 3 Lines Style */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 20px 5%;
             background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
         }
 
         .logo-area {
@@ -64,10 +67,10 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Navigation Menu - New Style */
+        /* Navigation Menu - 3 Lines Style */
         .nav-menu {
             display: flex;
-            gap: 35px;
+            gap: 30px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -76,29 +79,37 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s;
-            position: relative;
             padding: 8px 0;
+            position: relative;
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            color: var(--gold);
         }
 
         .nav-link:hover {
             color: var(--gold);
         }
 
-        .nav-link::before {
-            content: '+';
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--gold);
-            transition: all 0.3s;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
         }
 
-        .nav-link:hover::before {
-            transform: scale(1.1);
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -109,47 +120,79 @@
             justify-content: center;
             text-align: center;
             padding: 120px 5% 80px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7));
+            position: relative;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
+            z-index: 2;
         }
 
         .hero-logo {
-            width: 120px;
-            margin-bottom: 30px;
+            width: 100px;
+            margin-bottom: 20px;
             filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
             animation: logoFloat 3s ease-in-out infinite;
         }
 
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: linear-gradient(135deg, var(--gold), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
         }
 
         /* Category Buttons */
         .category-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .cat-btn {
@@ -157,22 +200,26 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,215,0,0.3);
             color: var(--text);
-            padding: 15px 40px;
+            padding: 12px 35px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+        }
+
+        .cat-btn i {
+            font-size: 1.2rem;
         }
 
         .cat-btn:hover, .cat-btn.active {
             background: linear-gradient(135deg, var(--gold-dark), var(--gold));
             color: var(--black);
             border-color: var(--gold);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(255,215,0,0.4);
         }
 
@@ -212,9 +259,9 @@
         /* Movies Grid */
         .movies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
@@ -224,44 +271,43 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
         }
 
         .movie-card:hover {
-            transform: translateY(-10px) scale(1.03);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(255,215,0,0.3);
             outline: 2px solid var(--gold);
         }
 
         .movie-poster {
             width: 100%;
-            height: 330px;
+            height: 300px;
             object-fit: cover;
         }
 
         .movie-info {
-            padding: 15px;
+            padding: 12px;
         }
 
         .movie-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .movie-meta {
             display: flex;
             justify-content: space-between;
             color: var(--gold);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* Cast Grid */
         .cast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -272,7 +318,7 @@
         }
 
         .cast-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             outline: 2px solid var(--gold);
             border-radius: 15px;
         }
@@ -282,31 +328,31 @@
             aspect-ratio: 2/3;
             border-radius: 15px;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .cast-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
         }
 
         .cast-role {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
         }
 
         /* Pricing Grid */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            max-width: 1300px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .price-card {
             background: linear-gradient(135deg, var(--surface), var(--surface-light));
-            padding: 40px;
+            padding: 35px;
             border-radius: 25px;
             border: 2px solid rgba(255,215,0,0.2);
             transition: all 0.3s;
@@ -315,51 +361,56 @@
 
         .price-card:hover, .price-card.popular {
             border-color: var(--gold);
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(255,215,0,0.2);
         }
 
         .popular-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             background: linear-gradient(135deg, var(--gold-dark), var(--gold));
             color: var(--black);
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
         }
 
         .plan-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             margin-bottom: 15px;
             color: var(--gold);
         }
 
         .price {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .price small {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
         }
 
         .features-list {
             list-style: none;
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .features-list li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .features-list li i {
+            color: var(--gold);
+            width: 20px;
         }
 
         .payment-btn {
@@ -373,11 +424,50 @@
             transition: all 0.3s;
             font-weight: 600;
             margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .payment-btn:hover {
             background: var(--gold);
             color: var(--black);
+            border-color: var(--gold);
+        }
+
+        /* Download Section */
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,215,0,0.3);
+            color: var(--text);
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--black);
+            transform: translateY(-3px);
             border-color: var(--gold);
         }
 
@@ -413,39 +503,8 @@
         }
 
         .contact-btn:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             filter: brightness(1.1);
-        }
-
-        /* Download Section */
-        .download-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px 45px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,215,0,0.3);
-            color: var(--text);
-        }
-
-        .download-btn:hover {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            color: var(--black);
-            transform: translateY(-5px);
-            border-color: var(--gold);
         }
 
         /* Modal */
@@ -470,7 +529,7 @@
         .modal-content {
             background: var(--surface);
             border-radius: 20px;
-            max-width: 800px;
+            max-width: 750px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -488,36 +547,36 @@
             border: none;
             color: white;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             z-index: 10;
         }
 
         .modal-backdrop {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 25px;
         }
 
         .modal-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
             color: var(--gold);
         }
 
         .modal-overview {
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--text-dim);
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         /* Footer */
         footer {
             background: var(--dark);
-            padding: 50px 5%;
+            padding: 40px 5%;
             text-align: center;
             border-top: 1px solid rgba(255,215,0,0.1);
         }
@@ -536,52 +595,68 @@
 
         @media (max-width: 768px) {
             .hero-title { font-size: 2rem; }
-            .cat-btn { padding: 10px 25px; font-size: 1rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .cat-btn { padding: 8px 20px; font-size: 0.9rem; }
             .section-title { font-size: 1.8rem; }
-            .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-            .movie-poster { height: 240px; }
+            .movies-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+            .movie-poster { height: 220px; }
             .nav-menu { gap: 12px; }
-            .nav-link { font-size: 0.9rem; }
+            .nav-link { font-size: 0.85rem; }
+            .stats-grid { gap: 25px; }
+            .stat-number { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation - 3 Lines Style -->
     <nav class="navbar">
         <div class="logo-area">
-            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="logo">
+            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="logo" onerror="this.src='https://via.placeholder.com/50x50?text=TOTV'">
             <div class="brand">TOTV+</div>
         </div>
         <div class="nav-menu">
-            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;">الرئيسية</a>
-            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;">الأفلام</a>
-            <a href="#" class="nav-link" onclick="showSectionFromNav('cast'); return false;">النجوم</a>
-            <a href="#" class="nav-link" onclick="showSectionFromNav('download'); return false;">تحميل التطبيقات</a>
-            <a href="#" class="nav-link" onclick="showSectionFromNav('pricing'); return false;">الأشعار</a>
-            <a href="#" class="nav-link" onclick="showSectionFromNav('contact'); return false;">تواصل</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;"><i class="fas fa-film"></i> الأفلام</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('cast'); return false;"><i class="fas fa-star"></i> النجوم</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('download'); return false;"><i class="fas fa-download"></i> تحميل التطبيقات</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('pricing'); return false;"><i class="fas fa-tags"></i> الأسعار</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('contact'); return false;"><i class="fas fa-envelope"></i> تواصل</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="hero-logo">
-            <h1 class="hero-title">TOTV+ Premium</h1>
-            <p class="hero-subtitle">عالم السينما والمسلسلات بجودة 4K Ultra HD<br>استمتع بتجربة مشاهدة لا مثيل لها</p>
+            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="hero-logo" onerror="this.src='https://via.placeholder.com/100x100?text=TOTV'">
+            <h1 class="hero-title">عالم السينما بلا حدود</h1>
+            <p class="hero-subtitle">استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD<br>على جميع أجهزتك في أي وقت وأي مكان</p>
             
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">دعم فني</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">أجهزة متزامنة</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4K</span>
+                    <span class="stat-label">جودة فائقة</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">فيلم ومسلسل</span>
+                </div>
+            </div>
+
             <div class="category-buttons">
                 <button class="cat-btn active" onclick="showSection('movies')">
-                    <span>🎬</span> الأفلام
-                </button>
-                <button class="cat-btn" onclick="showSection('cast')">
-                    <span>⭐</span> النجوم
+                    <i class="fas fa-film"></i> استكشف المحتوى
                 </button>
                 <button class="cat-btn" onclick="showSection('pricing')">
-                    <span>💎</span> الباقات
-                </button>
-                <button class="cat-btn" onclick="showSection('contact')">
-                    <span>📞</span> تواصل معنا
+                    <i class="fas fa-gem"></i> اشترك الآن
                 </button>
             </div>
         </div>
@@ -590,7 +665,7 @@
     <!-- Movies Section -->
     <div id="movies-section" class="content-section active">
         <div class="section-header">
-            <h2 class="section-title">🎬 أشهر الأفلام</h2>
+            <h2 class="section-title"><i class="fas fa-fire"></i> أشهر الأفلام</h2>
             <p class="section-desc">اختر فيلمك المفضل واستمتع بمشاهدته بجودة عالية</p>
         </div>
         <div class="movies-grid" id="movies-grid"></div>
@@ -599,7 +674,7 @@
     <!-- Cast Section -->
     <div id="cast-section" class="content-section">
         <div class="section-header">
-            <h2 class="section-title">⭐ نجوم هوليوود</h2>
+            <h2 class="section-title"><i class="fas fa-star"></i> نجوم هوليوود</h2>
             <p class="section-desc">تعرف على أشهر نجوم السينما العالمية</p>
         </div>
         <div class="cast-grid" id="cast-grid"></div>
@@ -608,7 +683,7 @@
     <!-- Pricing Section -->
     <div id="pricing-section" class="content-section">
         <div class="section-header">
-            <h2 class="section-title">💎 اشترك الآن</h2>
+            <h2 class="section-title"><i class="fas fa-tags"></i> اشترك الآن</h2>
             <p class="section-desc">اختر الباقة المناسبة لك واستمتع بكل المميزات</p>
         </div>
         <div class="pricing-grid" id="pricing-grid"></div>
@@ -617,40 +692,37 @@
     <!-- Download Section -->
     <div id="download-section" class="content-section">
         <div class="section-header">
-            <h2 class="section-title">📱 تحميل تطبيق TOTV+</h2>
+            <h2 class="section-title"><i class="fas fa-download"></i> حمل التطبيق مجاناً</h2>
             <p class="section-desc">حمّل التطبيق الآن واستمتع بمشاهدة أفلامك المفضلة في أي وقت وأي مكان</p>
         </div>
         <div style="text-align: center;">
             <div class="download-buttons">
                 <a href="#" class="download-btn">
-                    📱 تحميل لأجهزة الأندرويد
+                    <i class="fab fa-android"></i> أندرويد
                 </a>
                 <a href="#" class="download-btn">
-                    🍎 تحميل لأجهزة iOS
+                    <i class="fab fa-apple"></i> iOS
                 </a>
                 <a href="#" class="download-btn">
-                    💻 تحميل لـ Windows
+                    <i class="fab fa-windows"></i> Windows
                 </a>
             </div>
-            <p style="color: var(--text-dim); margin-top: 40px; font-size: 1rem;">
-                التطبيق متوفر لجميع الأجهزة الذكية والتلفزيونات الذكية
-            </p>
         </div>
     </div>
 
     <!-- Contact Section -->
     <div id="contact-section" class="content-section">
         <div class="section-header">
-            <h2 class="section-title">📞 تواصل مع الدعم الفني</h2>
+            <h2 class="section-title"><i class="fas fa-headset"></i> تواصل مع الدعم الفني</h2>
             <p class="section-desc">فريق الدعم متواجد 24 ساعة للإجابة على استفساراتك</p>
         </div>
         <div style="text-align: center;">
             <div class="contact-buttons">
                 <a href="https://wa.me/9647714415816" class="contact-btn whatsapp">
-                    💬 واتساب
+                    <i class="fab fa-whatsapp"></i> واتساب
                 </a>
-                <a href="mailto:tot.Support@gmail.com" class="contact-btn email">
-                    📧 tot.Support@gmail.com
+                <a href="mailto:totv.Support@gmail.com" class="contact-btn email">
+                    <i class="fas fa-envelope"></i> totv.Support@gmail.com
                 </a>
             </div>
         </div>
@@ -659,19 +731,19 @@
     <!-- Footer -->
     <footer>
         <p>© 2024 TOTV+ Premium - تجربة سينمائية استثنائية</p>
-        <p style="color: var(--gold); margin-top: 10px;">⭐ استمتع بأفضل الأفلام والمسلسلات ⭐</p>
+        <p style="color: var(--gold); margin-top: 10px;"><i class="fas fa-star"></i> استمتع بأفضل الأفلام والمسلسلات <i class="fas fa-star"></i></p>
     </footer>
 
     <!-- Modal -->
     <div class="modal" id="movieModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">✕</button>
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
             <img id="modalBackdrop" class="modal-backdrop" src="" alt="">
             <div class="modal-body">
                 <h2 class="modal-title" id="modalTitle"></h2>
                 <p class="modal-overview" id="modalOverview"></p>
                 <button class="payment-btn" onclick="closeModal(); showSection('pricing')">
-                    ⭐ اشترك الآن لمشاهدة الفيلم
+                    <i class="fas fa-gem"></i> اشترك الآن لمشاهدة الفيلم
                 </button>
             </div>
         </div>
@@ -682,7 +754,6 @@
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // Show/Hide sections
         function showSection(section) {
             document.querySelectorAll('.content-section').forEach(el => {
                 el.classList.remove('active');
@@ -696,7 +767,6 @@
                 const targetBtn = event.target.closest('.cat-btn');
                 if (targetBtn) targetBtn.classList.add('active');
             }
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -709,18 +779,15 @@
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Fetch and display movies
         async function fetchMovies() {
             try {
                 const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar-SA`);
                 const data = await res.json();
                 displayMovies(data.results.slice(0, 12));
             } catch (error) {
-                console.error('Error:', error);
                 displaySampleMovies();
             }
         }
@@ -734,16 +801,14 @@
                 card.className = 'movie-card';
                 card.onclick = () => openModal(movie);
                 
+                const posterUrl = movie.poster_path ? IMG_URL + movie.poster_path : 'https://via.placeholder.com/300x450?text=TOTV+Movie';
                 card.innerHTML = `
-                    <img src="${IMG_URL}${movie.poster_path}" 
-                         alt="${movie.title}" 
-                         class="movie-poster"
-                         onerror="this.src='https://via.placeholder.com/300x450?text=TOTV+'">
+                    <img src="${posterUrl}" alt="${movie.title}" class="movie-poster">
                     <div class="movie-info">
                         <div class="movie-title">${movie.title}</div>
                         <div class="movie-meta">
-                            <span>⭐ ${movie.vote_average.toFixed(1)}</span>
-                            <span>📅 ${(movie.release_date || '').slice(0, 4)}</span>
+                            <span><i class="fas fa-star"></i> ${movie.vote_average.toFixed(1)}</span>
+                            <span><i class="fas fa-calendar"></i> ${(movie.release_date || '').slice(0, 4)}</span>
                         </div>
                     </div>
                 `;
@@ -752,27 +817,27 @@
         }
 
         function displaySampleMovies() {
-            const sampleMovies = [
-                { title: 'المهمة المستحيلة', vote_average: 8.2, release_date: '2023-01-01' },
-                { title: 'جون ويك 4', vote_average: 8.5, release_date: '2023-03-24' },
-                { title: 'أوبنهايمر', vote_average: 8.8, release_date: '2023-07-21' },
-                { title: 'باربي', vote_average: 7.8, release_date: '2023-07-21' }
+            const moviesList = [
+                { title: 'المهمة المستحيلة', vote: 8.2, year: '2023' },
+                { title: 'جون ويك 4', vote: 8.5, year: '2023' },
+                { title: 'أوبنهايمر', vote: 8.8, year: '2023' },
+                { title: 'باربي', vote: 7.8, year: '2023' }
             ];
             
             const grid = document.getElementById('movies-grid');
             grid.innerHTML = '';
             
             for(let i = 0; i < 12; i++) {
-                const movie = sampleMovies[i % sampleMovies.length];
+                const movie = moviesList[i % moviesList.length];
                 const card = document.createElement('div');
                 card.className = 'movie-card';
                 card.innerHTML = `
-                    <img src="https://via.placeholder.com/300x450?text=TOTV+Movie" class="movie-poster">
+                    <img src="https://via.placeholder.com/300x450?text=TOTV+${movie.title}" class="movie-poster">
                     <div class="movie-info">
                         <div class="movie-title">${movie.title} ${Math.floor(i/4)+1}</div>
                         <div class="movie-meta">
-                            <span>⭐ ${movie.vote_average}</span>
-                            <span>📅 ${movie.release_date.slice(0,4)}</span>
+                            <span><i class="fas fa-star"></i> ${movie.vote}</span>
+                            <span><i class="fas fa-calendar"></i> ${movie.year}</span>
                         </div>
                     </div>
                 `;
@@ -780,14 +845,12 @@
             }
         }
 
-        // Fetch and display cast
         async function fetchCast() {
             try {
                 const res = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&language=ar-SA`);
                 const data = await res.json();
                 displayCast(data.results.slice(0, 12));
             } catch (error) {
-                console.error('Error:', error);
                 displaySampleCast();
             }
         }
@@ -799,12 +862,9 @@
             people.forEach(person => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
-                
+                const photoUrl = person.profile_path ? IMG_URL + person.profile_path : 'https://via.placeholder.com/180x270?text=' + person.name;
                 card.innerHTML = `
-                    <img src="${IMG_URL}${person.profile_path}" 
-                         alt="${person.name}" 
-                         class="cast-photo"
-                         onerror="this.src='https://via.placeholder.com/180x270?text=${person.name}'">
+                    <img src="${photoUrl}" alt="${person.name}" class="cast-photo">
                     <div class="cast-name">${person.name}</div>
                     <div class="cast-role">${person.known_for_department}</div>
                 `;
@@ -829,12 +889,11 @@
             });
         }
 
-        // Display pricing
         function displayPricing() {
             const pricing = [
-                { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K', 'دعم فني 24/7'] },
-                { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم'] },
-                { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري'] }
+                { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K Ultra HD', 'دعم فني 24/7', 'تحديثات يومية'] },
+                { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم', 'بث على 4 أجهزة'] },
+                { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري', 'بث غير محدود'] }
             ];
             
             const grid = document.getElementById('pricing-grid');
@@ -845,32 +904,31 @@
                 card.className = `price-card ${plan.popular ? 'popular' : ''}`;
                 
                 card.innerHTML = `
-                    ${plan.popular ? '<div class="popular-badge">⭐ الأكثر طلباً</div>' : ''}
+                    ${plan.popular ? '<div class="popular-badge"><i class="fas fa-crown"></i> الأكثر طلباً</div>' : ''}
                     <h3 class="plan-name">${plan.name}</h3>
-                    <div class="price">${plan.price} <small>د.ع</small></div>
+                    <div class="price">${plan.price} <small>دينار عراقي</small></div>
                     <div style="color: var(--text-dim); margin-bottom: 20px;">لـ ${plan.period}</div>
                     <ul class="features-list">
-                        ${plan.features.map(f => `<li>✓ ${f}</li>`).join('')}
+                        ${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
                     </ul>
                     <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')">
-                        💳 اشترك الآن
+                        <i class="fab fa-whatsapp"></i> اشترك الآن
                     </button>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Payment function
         function payViaWhatsapp(plan, price) {
             const phone = '9647714415816';
             const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV+ Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
             window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
 
-        // Modal functions
         function openModal(movie) {
             const modal = document.getElementById('movieModal');
-            document.getElementById('modalBackdrop').src = `${IMG_URL}${movie.backdrop_path || movie.poster_path}`;
+            const backdropUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : (movie.poster_path ? IMG_URL + movie.poster_path : 'https://via.placeholder.com/800x300?text=TOTV+Movie');
+            document.getElementById('modalBackdrop').src = backdropUrl;
             document.getElementById('modalTitle').textContent = movie.title;
             document.getElementById('modalOverview').textContent = movie.overview || 'لا يوجد وصف متوفر لهذا الفيلم حالياً.';
             modal.classList.add('active');
@@ -890,7 +948,6 @@
             if (e.target.id === 'movieModal') closeModal();
         });
 
-        // Initialize
         window.addEventListener('load', () => {
             fetchMovies();
             fetchCast();

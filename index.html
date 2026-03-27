@@ -227,7 +227,7 @@
             margin-top: 30px;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn-primary, .btn-secondary, .btn-premium {
             padding: 15px 40px;
             border-radius: 50px;
             font-weight: 700;
@@ -261,6 +261,23 @@
         .btn-secondary:hover {
             background: rgba(255,215,0,0.15);
             transform: translateY(-3px);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #9b4dff, #5e2a9e);
+            color: white;
+            box-shadow: 0 5px 20px rgba(155,77,255,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(155,77,255,0.6);
+        }
+
+        .flip-icon {
+            display: inline-block;
+            transform: scaleX(-1);
         }
 
         /* Content Sections - Hidden by default */
@@ -470,6 +487,16 @@
             color: var(--black);
         }
 
+        .telegram-btn {
+            background: linear-gradient(135deg, #0088cc, #005f8c);
+            border: none;
+            color: white;
+        }
+
+        .telegram-btn:hover {
+            background: linear-gradient(135deg, #0099e6, #0077b3);
+        }
+
         /* Download Section */
         .download-buttons {
             display: flex;
@@ -523,6 +550,11 @@
 
         .whatsapp {
             background: #25D366;
+            color: white;
+        }
+
+        .telegram-contact {
+            background: linear-gradient(135deg, #0088cc, #005f8c);
             color: white;
         }
 
@@ -643,7 +675,7 @@
             <a class="sidebar-link" onclick="showSection('home'); toggleSidebar();">الرئيسية</a>
             <a class="sidebar-link" onclick="showSection('movies'); toggleSidebar();">الأفلام</a>
             <a class="sidebar-link" onclick="showSection('cast'); toggleSidebar();">النجوم</a>
-            <a class="sidebar-link" onclick="showSection('download'); toggleSidebar();">تحميل التطبيقات</a>
+            <a class="sidebar-link" onclick="showSection('download'); toggleSidebar();">تحميل التطبيق</a>
             <a class="sidebar-link" onclick="showSection('pricing'); toggleSidebar();">الأسعار</a>
             <a class="sidebar-link" onclick="showSection('contact'); toggleSidebar();">تواصل</a>
         </div>
@@ -681,6 +713,9 @@
                 </button>
                 <button class="btn-secondary" onclick="showSection('movies')">
                     <i class="fas fa-film"></i> استكشف المحتوى
+                </button>
+                <button class="btn-premium" onclick="goToPricing()">
+                    <i class="fas fa-crown flip-icon"></i> اصبح عضو Premium
                 </button>
             </div>
         </div>
@@ -732,6 +767,9 @@
                 <a href="https://wa.me/9647714415816" class="contact-btn whatsapp">
                     <i class="fab fa-whatsapp"></i> واتساب
                 </a>
+                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="contact-btn telegram-contact">
+                    <i class="fab fa-telegram"></i> بوت الدفع
+                </a>
                 <a href="mailto:totv.Support@gmail.com" class="contact-btn email">
                     <i class="fas fa-envelope"></i> totv.Support@gmail.com
                 </a>
@@ -775,7 +813,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Go to download (Android only)
+        // Go to pricing section
+        function goToPricing() {
+            showSection('pricing');
+        }
+
+        // Go to download
         function goToDownload() {
             showSection('download');
         }
@@ -911,7 +954,7 @@
             });
         }
 
-        // Display pricing
+        // Display pricing with Telegram payment
         function displayPricing() {
             const pricing = [
                 { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K Ultra HD', 'دعم فني 24/7'] },
@@ -934,12 +977,21 @@
                     <ul class="features-list">
                         ${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
                     </ul>
+                    <button class="payment-btn telegram-btn" onclick="payViaTelegram('${plan.name}', '${plan.price} د.ع')">
+                        <i class="fab fa-telegram"></i> اشترك عبر تيليجرام
+                    </button>
                     <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')">
-                        <i class="fab fa-whatsapp"></i> اشترك الآن
+                        <i class="fab fa-whatsapp"></i> اشترك عبر واتساب
                     </button>
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        function payViaTelegram(plan, price) {
+            const botUsername = 'PaymentTOTVBOT';
+            const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV+ Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
+            window.open(`https://t.me/${botUsername}?start=subscribe_${plan.replace(/ /g, '_')}`, '_blank');
         }
 
         function payViaWhatsapp(plan, price) {

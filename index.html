@@ -41,6 +41,13 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .logo {
@@ -57,10 +64,41 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .logo-area {
+        /* Navigation Menu - New Style */
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 5px;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link::before {
+            content: '+';
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover::before {
+            transform: scale(1.1);
         }
 
         /* Hero Section */
@@ -70,7 +108,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 5%;
+            padding: 120px 5% 80px;
             background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
         }
 
@@ -379,6 +417,37 @@
             filter: brightness(1.1);
         }
 
+        /* Download Section */
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,215,0,0.3);
+            color: var(--text);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--black);
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -454,12 +523,25 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-title { font-size: 2rem; }
             .cat-btn { padding: 10px 25px; font-size: 1rem; }
             .section-title { font-size: 1.8rem; }
             .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
             .movie-poster { height: 240px; }
+            .nav-menu { gap: 12px; }
+            .nav-link { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -470,6 +552,14 @@
         <div class="logo-area">
             <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="logo">
             <div class="brand">TOTV+</div>
+        </div>
+        <div class="nav-menu">
+            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;">الرئيسية</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('movies'); return false;">الأفلام</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('cast'); return false;">النجوم</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('download'); return false;">تحميل التطبيقات</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('pricing'); return false;">الأشعار</a>
+            <a href="#" class="nav-link" onclick="showSectionFromNav('contact'); return false;">تواصل</a>
         </div>
     </nav>
 
@@ -524,6 +614,30 @@
         <div class="pricing-grid" id="pricing-grid"></div>
     </div>
 
+    <!-- Download Section -->
+    <div id="download-section" class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">📱 تحميل تطبيق TOTV+</h2>
+            <p class="section-desc">حمّل التطبيق الآن واستمتع بمشاهدة أفلامك المفضلة في أي وقت وأي مكان</p>
+        </div>
+        <div style="text-align: center;">
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    📱 تحميل لأجهزة الأندرويد
+                </a>
+                <a href="#" class="download-btn">
+                    🍎 تحميل لأجهزة iOS
+                </a>
+                <a href="#" class="download-btn">
+                    💻 تحميل لـ Windows
+                </a>
+            </div>
+            <p style="color: var(--text-dim); margin-top: 40px; font-size: 1rem;">
+                التطبيق متوفر لجميع الأجهزة الذكية والتلفزيونات الذكية
+            </p>
+        </div>
+    </div>
+
     <!-- Contact Section -->
     <div id="contact-section" class="content-section">
         <div class="section-header">
@@ -570,21 +684,32 @@
 
         // Show/Hide sections
         function showSection(section) {
-            // Hide all sections
             document.querySelectorAll('.content-section').forEach(el => {
                 el.classList.remove('active');
             });
-            
-            // Show selected section
             document.getElementById(`${section}-section`).classList.add('active');
             
-            // Update active button style
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.closest('.cat-btn').classList.add('active');
+            if (event && event.target) {
+                const targetBtn = event.target.closest('.cat-btn');
+                if (targetBtn) targetBtn.classList.add('active');
+            }
             
-            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSectionFromNav(section) {
+            document.querySelectorAll('.content-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -626,7 +751,6 @@
             });
         }
 
-        // Sample movies if API fails
         function displaySampleMovies() {
             const sampleMovies = [
                 { title: 'المهمة المستحيلة', vote_average: 8.2, release_date: '2023-01-01' },
@@ -758,12 +882,10 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
 
-        // Close modal on outside click
         document.getElementById('movieModal').addEventListener('click', (e) => {
             if (e.target.id === 'movieModal') closeModal();
         });

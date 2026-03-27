@@ -3,352 +3,778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>+TOTV | مشاهدة الأفلام والمسلسلات والمباريات مجاناً</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>TOTV+ | عالم السينما بلا حدود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --gold-dark: #B8860B;
+            --black: #000000;
+            --dark: #0a0a0a;
+            --surface: #141414;
+            --surface-light: #1f1f1f;
+            --text: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
         body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #ffffff;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: var(--black);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.8));
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
-            padding: 1rem;
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            width: 120px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
+
+        /* Category Buttons */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .cat-btn {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,215,0,0.3);
+            color: var(--text);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--black);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 80px 5%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--text));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Movies Grid */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .movie-card {
+            background: var(--surface);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
             position: relative;
         }
-        body.english-mode { font-family: 'Poppins', sans-serif; }
-        body.english-mode .arabic-text { display: none; }
-        body.english-mode .english-text { display: inline; }
-        body:not(.english-mode) .english-text { display: none; }
-        body:not(.english-mode) .arabic-text { display: inline; }
-        .container { max-width: 750px; width: 100%; padding: 1rem 0; }
 
-        /* نافذة الترحيب */
-        .welcome-popup {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            padding: 1rem; opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        .movie-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.3);
+            outline: 2px solid var(--gold);
         }
-        .welcome-popup.show { opacity: 1; visibility: visible; }
-        .popup-content {
-            max-width: 500px; width: 100%;
-            background: linear-gradient(135deg, #1a1a2a 0%, #0f0f1a 100%);
-            border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 40px;
-            padding: 2rem; text-align: center; transform: scale(0.9);
-            transition: transform 0.3s ease; position: relative;
-        }
-        .welcome-popup.show .popup-content { transform: scale(1); }
-        .close-popup {
-            position: absolute; top: 15px; left: 15px;
-            background: rgba(255,255,255,0.1); border: none; color: #fff;
-            width: 35px; height: 35px; border-radius: 50%; cursor: pointer;
-            font-size: 1.2rem; transition: all 0.3s ease;
-        }
-        .close-popup:hover { background: rgba(255,215,0,0.3); transform: rotate(90deg); }
-        .popup-icon {
-            width: 80px; height: 80px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; margin: 0 auto 1rem;
-        }
-        .popup-icon i { font-size: 2.5rem; color: #000000; }
-        .popup-content h2 {
-            font-size: 1.8rem; font-weight: 800;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        .welcome-message { color: #ccc; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; }
-        .quick-prices { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin: 1.5rem 0; }
-        .quick-price {
-            background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 20px; padding: 0.6rem 1rem; text-align: center; flex: 1; min-width: 100px;
-        }
-        .quick-price .plan { font-size: 0.8rem; color: #FFD700; font-weight: 600; }
-        .quick-price .amount { font-size: 1.3rem; font-weight: 800; color: #fff; }
-        .quick-price .amount small { font-size: 0.7rem; color: #aaa; }
-        .popup-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
-        .popup-btn {
-            flex: 1; padding: 0.8rem; border-radius: 50px; font-weight: 700;
-            font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
-            border: none; font-family: inherit; text-decoration: none; text-align: center;
-        }
-        .popup-btn.primary {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
-        }
-        .popup-btn.primary:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(255,215,0,0.4); }
-        .popup-btn.secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-        .popup-btn.secondary:hover { background: rgba(255,255,255,0.2); }
 
-        .premium-btn-wrapper { position: fixed; top: 15px; right: 80px; z-index: 100; }
-        .premium-btn {
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50px;
-            padding: 10px 20px; display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: #fff; font-weight: 700; font-size: 0.95rem;
-            transition: all 0.3s ease;
+        .movie-poster {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
         }
-        .premium-btn i { font-size: 1.2rem; color: #FFD700; }
-        .premium-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.02); }
 
-        .language-dropdown { position: fixed; top: 15px; right: 15px; z-index: 100; }
-        .lang-btn {
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255,255,255,0.4); color: #fff;
-            width: 45px; height: 45px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem;
+        .movie-info {
+            padding: 15px;
         }
-        .lang-btn:hover { background: rgba(255,255,255,0.3); border-color: #FFD700; transform: scale(1.05); }
-        .lang-menu {
-            position: absolute; top: 55px; right: 0;
-            background: rgba(20,20,20,0.95); backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(255,215,0,0.3); border-radius: 20px;
-            padding: 0.8rem; min-width: 140px; opacity: 0; visibility: hidden;
-            transform: translateY(-10px); transition: all 0.3s ease;
-        }
-        .lang-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        .lang-option {
-            padding: 0.8rem 1.2rem; border-radius: 12px; cursor: pointer;
-            transition: all 0.2s ease; color: #fff; font-weight: 500; text-align: center;
-        }
-        .lang-option:hover { background: rgba(255,215,0,0.2); }
-        .lang-option.active { background: rgba(255,215,0,0.3); color: #FFD700; }
-        .lang-divider { height: 1px; background: rgba(255,255,255,0.2); margin: 0.5rem 0; }
 
-        .logo-section { text-align: center; margin: 1rem 0; }
-        .golden-icon {
-            width: 85px; height: 85px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; margin: 0 auto 0.8rem;
+        .movie-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-        .golden-icon span { color: #000; font-weight: 900; font-size: 2rem; }
-        .app-title {
-            font-size: 2.2rem; font-weight: 900;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gold);
+            font-size: 0.9rem;
         }
-        .app-title small { font-size: 1.5rem; display: block; }
-        .badge-4k {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(255,215,0,0.1); border: 1.5px solid #FFD700;
-            color: #FFD700; padding: 0.3rem 1.5rem; border-radius: 50px;
-            font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem;
+
+        /* Cast Grid */
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .description { text-align: center; font-size: 1.2rem; font-weight: 500; color: #e0e0e0; margin: 0.5rem 0 1rem; }
-        .download-icon-wrapper { text-align: center; margin: 2rem 0; }
-        .golden-download-icon { display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; }
-        .icon-circle {
-            width: 80px; height: 80px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 0.6rem;
-            transition: all 0.3s ease;
+
+        .cast-card {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .icon-circle i { font-size: 2.5rem; color: #000; }
-        .download-text {
-            color: #FFD700; font-size: 1.3rem; font-weight: 800;
-            background: rgba(0,0,0,0.4); padding: 0.3rem 1.8rem;
-            border-radius: 50px; border: 1.5px solid #FFD700;
+
+        .cast-card:hover {
+            transform: translateY(-10px);
+            outline: 2px solid var(--gold);
+            border-radius: 15px;
         }
-        .golden-download-icon:hover .icon-circle { transform: scale(1.08); }
-        .golden-download-icon:hover .download-text { background: #FFD700; color: #000; }
-        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; }
-        .feature-item {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,215,0,0.15);
-            border-radius: 20px; padding: 1rem 0.5rem; text-align: center; font-weight: 600;
-            transition: all 0.3s ease;
+
+        .cast-photo {
+            width: 100%;
+            aspect-ratio: 2/3;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-bottom: 15px;
         }
-        .feature-item i { color: #FFD700; font-size: 1.3rem; display: block; margin-bottom: 0.4rem; }
-        .feature-item:hover { background: rgba(255,215,0,0.1); border-color: #FFD700; }
-        .support-section { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; margin: 2rem 0 1.5rem; }
-        .support-card {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.15);
-            border-radius: 25px; padding: 1.2rem 1.5rem; text-align: center;
-            min-width: 200px; flex: 1; transition: all 0.3s ease;
+
+        .cast-name {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
-        .support-card:hover { border-color: #FFD700; }
-        .support-card i { font-size: 2rem; color: #FFD700; margin-bottom: 0.6rem; }
-        .support-card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .support-link {
-            display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000; text-decoration: none; padding: 0.6rem 1.5rem;
-            border-radius: 50px; font-weight: 700; transition: all 0.3s ease;
+
+        .cast-role {
+            font-size: 0.9rem;
+            color: var(--text-dim);
         }
-        .support-link:hover { transform: scale(1.05); box-shadow: 0 8px 18px rgba(255,215,0,0.3); }
-        .footer { margin-top: 2rem; text-align: center; border-top: 1px solid rgba(255,215,0,0.15); padding-top: 1.5rem; }
-        .copyright {
-            background: rgba(255,215,0,0.08); color: #FFD700;
-            display: inline-block; padding: 0.5rem 2rem; border-radius: 60px;
-            font-weight: 600; font-size: 0.9rem;
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
         }
-        .cookie-consent {
-            position: fixed; bottom: 15px; left: 15px; right: 15px;
-            background: rgba(15,15,15,0.95); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,0,0.2); border-radius: 50px;
-            padding: 0.8rem 1.5rem; display: flex; align-items: center;
-            justify-content: space-between; gap: 1.5rem; z-index: 1000;
-            max-width: 700px; margin: 0 auto; transform: translateY(200%);
-            transition: transform 0.5s ease;
+
+        .price-card {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            padding: 40px;
+            border-radius: 25px;
+            border: 2px solid rgba(255,215,0,0.2);
+            transition: all 0.3s;
+            position: relative;
         }
-        .cookie-consent.show { transform: translateY(0); }
-        .cookie-content { display: flex; align-items: center; gap: 0.8rem; flex: 1; }
-        .cookie-icon {
-            background: rgba(255,215,0,0.1); width: 40px; height: 40px;
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; border: 1px solid #FFD700;
+
+        .price-card:hover, .price-card.popular {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.2);
         }
-        .cookie-icon i { color: #FFD700; }
-        .cookie-text { color: #e0e0e0; font-size: 0.9rem; }
-        .cookie-buttons { display: flex; gap: 0.8rem; }
-        .cookie-btn {
-            padding: 0.4rem 1.2rem; border-radius: 50px; font-weight: 600;
-            cursor: pointer; border: none; font-family: inherit;
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--black);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
         }
-        .cookie-btn.accept { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000; }
-        .cookie-btn.settings { background: transparent; color: #FFD700; border: 1px solid #FFD700; }
-        @media (max-width: 600px) {
-            .container { padding: 0.5rem; }
-            .app-title { font-size: 1.8rem; }
-            .golden-icon { width: 70px; height: 70px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .cookie-consent { flex-direction: column; border-radius: 30px; }
-            .cookie-content { flex-direction: column; text-align: center; }
-            .premium-btn-wrapper { right: 60px; }
-            .premium-btn { padding: 8px 12px; font-size: 0.8rem; }
+
+        .plan-name {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .price small {
+            font-size: 1rem;
+            color: var(--text-dim);
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-btn {
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            color: var(--text);
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .payment-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        /* Contact Section */
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .email {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.8);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+
+        .modal-backdrop {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .modal-overview {
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 50px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,215,0,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .cat-btn { padding: 10px 25px; font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .movie-poster { height: 240px; }
         }
     </style>
 </head>
 <body>
-    <div class="premium-btn-wrapper">
-        <a href="subscription.html" class="premium-btn">
-            <i class="fas fa-crown"></i>
-            <span class="arabic-text">اصبح عضو Premium</span>
-            <span class="english-text">Become Premium</span>
-            <i class="fas fa-arrow-left"></i>
-        </a>
-    </div>
 
-    <div class="language-dropdown">
-        <div class="lang-btn" id="languageBtn"><i class="fas fa-globe"></i></div>
-        <div class="lang-menu" id="langMenu">
-            <div class="lang-option active" data-lang="ar"><span class="arabic-text">العربية</span><span class="english-text">Arabic</span></div>
-            <div class="lang-divider"></div>
-            <div class="lang-option" data-lang="en"><span class="arabic-text">ENGLISH</span><span class="english-text">English</span></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-area">
+            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="logo">
+            <div class="brand">TOTV+</div>
         </div>
-    </div>
+    </nav>
 
-    <div class="container">
-        <div class="logo-section">
-            <div class="golden-icon"><span>+TOTV</span></div>
-            <h1 class="app-title">+TOTV<small><span class="arabic-text">عالم الترفيه بين يديك</span><span class="english-text">Entertainment at Your Fingertips</span></small></h1>
-            <span class="badge-4k"><i class="fas fa-bolt"></i><span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live Streaming</span></span>
-        </div>
-        <div class="description"><span class="arabic-text">شاهد محتواك المفضل بجودة عالية وبدون فواصل</span><span class="english-text">Watch your favorite content in high quality without interruptions</span></div>
-        <div class="download-icon-wrapper">
-            <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" class="golden-download-icon" download="totv.apk">
-                <div class="icon-circle"><i class="fas fa-download"></i></div>
-                <span class="download-text"><span class="arabic-text">تحميل APK</span><span class="english-text">Download APK</span></span>
-            </a>
-        </div>
-        <div class="features-grid">
-            <div class="feature-item"><i class="fas fa-tv"></i><span class="arabic-text">بث مباشر 4K</span><span class="english-text">4K Live</span></div>
-            <div class="feature-item"><i class="fas fa-ban"></i><span class="arabic-text">بدون إعلانات</span><span class="english-text">No Ads</span></div>
-            <div class="feature-item"><i class="fas fa-film"></i><span class="arabic-text">أفلام مترجمة</span><span class="english-text">Subtitled Movies</span></div>
-            <div class="feature-item"><i class="fas fa-futbol"></i><span class="arabic-text">مباريات اليوم</span><span class="english-text">Today's Matches</span></div>
-            <div class="feature-item"><i class="fas fa-sync-alt"></i><span class="arabic-text">تحديث يومي</span><span class="english-text">Daily Updates</span></div>
-            <div class="feature-item"><i class="fas fa-shield-alt"></i><span class="arabic-text">آمن تماماً</span><span class="english-text">Fully Secure</span></div>
-        </div>
-        <div class="support-section">
-            <div class="support-card"><i class="fab fa-telegram"></i><h3><span class="arabic-text">الدعم الفني</span><span class="english-text">Support</span></h3><p><span class="arabic-text">تواصل عبر تليجرام</span><span class="english-text">Contact on Telegram</span></p><a href="https://t.me/TOTV_Support" target="_blank" class="support-link"><i class="fab fa-telegram"></i> @TOTV_Support</a></div>
-            <div class="support-card"><i class="fas fa-envelope"></i><h3><span class="arabic-text">البريد الإلكتروني</span><span class="english-text">Email</span></h3><p><span class="arabic-text">للاقتراحات والدعم</span><span class="english-text">Suggestions & Support</span></p><a href="mailto:totv.support@gmail.com" class="support-link"><i class="far fa-envelope"></i> totv.support</a></div>
-        </div>
-        <div class="footer"><div class="copyright"><i class="far fa-copyright"></i> 2026 +TOTV | <span class="arabic-text">جميع الحقوق محفوظة</span><span class="english-text">All Rights Reserved</span></div></div>
-    </div>
-
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content"><div class="cookie-icon"><i class="fas fa-cookie-bite"></i></div><div class="cookie-text"><span class="arabic-text">نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستمرارك في التصفح، فإنك توافق على استخدامها.</span><span class="english-text">We use cookies to enhance your experience. By continuing, you agree to their use.</span></div></div>
-        <div class="cookie-buttons"><button class="cookie-btn accept" id="acceptCookies"><span class="arabic-text">موافق</span><span class="english-text">Accept</span></button><button class="cookie-btn settings" id="cookieSettings"><span class="arabic-text">إعدادات</span><span class="english-text">Settings</span></button></div>
-    </div>
-
-    <!-- نافذة الترحيب -->
-    <div class="welcome-popup" id="welcomePopup">
-        <div class="popup-content">
-            <button class="close-popup" id="closePopupBtn"><i class="fas fa-times"></i></button>
-            <div class="popup-icon"><i class="fas fa-crown"></i></div>
-            <h2><span class="arabic-text">مرحباً بك في +TOTV</span><span class="english-text">Welcome to +TOTV</span></h2>
-            <div class="welcome-message">
-                <span class="arabic-text">استمتع بأفضل تجربة مشاهدة بجودة 4K بدون إعلانات! اختر الباقة المناسبة لك وابدأ المتعة الآن.</span>
-                <span class="english-text">Enjoy the best viewing experience in 4K without ads! Choose the right plan for you and start the fun now.</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="/mnt/user-data/uploads/photo_5328065686024163609_y.jpg" alt="TOTV+" class="hero-logo">
+            <h1 class="hero-title">TOTV+ Premium</h1>
+            <p class="hero-subtitle">عالم السينما والمسلسلات بجودة 4K Ultra HD<br>استمتع بتجربة مشاهدة لا مثيل لها</p>
+            
+            <div class="category-buttons">
+                <button class="cat-btn active" onclick="showSection('movies')">
+                    <span>🎬</span> الأفلام
+                </button>
+                <button class="cat-btn" onclick="showSection('cast')">
+                    <span>⭐</span> النجوم
+                </button>
+                <button class="cat-btn" onclick="showSection('pricing')">
+                    <span>💎</span> الباقات
+                </button>
+                <button class="cat-btn" onclick="showSection('contact')">
+                    <span>📞</span> تواصل معنا
+                </button>
             </div>
-            <div class="quick-prices">
-                <div class="quick-price"><div class="plan"><span class="arabic-text">شهري</span><span class="english-text">Monthly</span></div><div class="amount">5,000 <small>د.ع</small></div></div>
-                <div class="quick-price"><div class="plan"><span class="arabic-text">3 أشهر</span><span class="english-text">3 Months</span></div><div class="amount">12,000 <small>د.ع</small></div></div>
-                <div class="quick-price"><div class="plan"><span class="arabic-text">سنوي</span><span class="english-text">Yearly</span></div><div class="amount">28,000 <small>د.ع</small></div></div>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <div id="movies-section" class="content-section active">
+        <div class="section-header">
+            <h2 class="section-title">🎬 أشهر الأفلام</h2>
+            <p class="section-desc">اختر فيلمك المفضل واستمتع بمشاهدته بجودة عالية</p>
+        </div>
+        <div class="movies-grid" id="movies-grid"></div>
+    </div>
+
+    <!-- Cast Section -->
+    <div id="cast-section" class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">⭐ نجوم هوليوود</h2>
+            <p class="section-desc">تعرف على أشهر نجوم السينما العالمية</p>
+        </div>
+        <div class="cast-grid" id="cast-grid"></div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing-section" class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">💎 اشترك الآن</h2>
+            <p class="section-desc">اختر الباقة المناسبة لك واستمتع بكل المميزات</p>
+        </div>
+        <div class="pricing-grid" id="pricing-grid"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section" class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">📞 تواصل مع الدعم الفني</h2>
+            <p class="section-desc">فريق الدعم متواجد 24 ساعة للإجابة على استفساراتك</p>
+        </div>
+        <div style="text-align: center;">
+            <div class="contact-buttons">
+                <a href="https://wa.me/9647714415816" class="contact-btn whatsapp">
+                    💬 واتساب
+                </a>
+                <a href="mailto:tot.Support@gmail.com" class="contact-btn email">
+                    📧 tot.Support@gmail.com
+                </a>
             </div>
-            <div class="popup-buttons">
-                <a href="subscription.html" class="popup-btn primary"><i class="fas fa-crown"></i> <span class="arabic-text">اشترك الآن</span><span class="english-text">Subscribe Now</span></a>
-                <button class="popup-btn secondary" id="skipPopupBtn"><span class="arabic-text">تخطي</span><span class="english-text">Skip</span></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 TOTV+ Premium - تجربة سينمائية استثنائية</p>
+        <p style="color: var(--gold); margin-top: 10px;">⭐ استمتع بأفضل الأفلام والمسلسلات ⭐</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <img id="modalBackdrop" class="modal-backdrop" src="" alt="">
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-overview" id="modalOverview"></p>
+                <button class="payment-btn" onclick="closeModal(); showSection('pricing')">
+                    ⭐ اشترك الآن لمشاهدة الفيلم
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // نافذة الترحيب
-        const welcomePopup = document.getElementById('welcomePopup');
-        const closePopupBtn = document.getElementById('closePopupBtn');
-        const skipPopupBtn = document.getElementById('skipPopupBtn');
-        
-        function hidePopup() {
-            welcomePopup.classList.remove('show');
-            localStorage.setItem('welcomeSeen', 'true');
-        }
-        
-        if (!localStorage.getItem('welcomeSeen')) {
-            setTimeout(() => {
-                welcomePopup.classList.add('show');
-            }, 500);
-        }
-        
-        closePopupBtn.addEventListener('click', hidePopup);
-        skipPopupBtn.addEventListener('click', hidePopup);
-        welcomePopup.addEventListener('click', (e) => {
-            if (e.target === welcomePopup) hidePopup();
-        });
+        const API_KEY = '5b166a24c91f59178e8ce30f1f3735c0';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // قائمة اللغة
-        const languageBtn = document.getElementById('languageBtn');
-        const langMenu = document.getElementById('langMenu');
-        const langOptions = document.querySelectorAll('.lang-option');
-        const body = document.body;
-        const html = document.documentElement;
-
-        languageBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('show'); });
-        document.addEventListener('click', (e) => { if (!languageBtn.contains(e.target) && !langMenu.contains(e.target)) langMenu.classList.remove('show'); });
-        langOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const lang = option.dataset.lang;
-                langOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-                if (lang === 'en') { body.classList.add('english-mode'); html.setAttribute('lang', 'en'); html.setAttribute('dir', 'ltr'); }
-                else { body.classList.remove('english-mode'); html.setAttribute('lang', 'ar'); html.setAttribute('dir', 'rtl'); }
-                langMenu.classList.remove('show');
+        // Show/Hide sections
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(el => {
+                el.classList.remove('active');
             });
+            
+            // Show selected section
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            // Update active button style
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.cat-btn').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Fetch and display movies
+        async function fetchMovies() {
+            try {
+                const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar-SA`);
+                const data = await res.json();
+                displayMovies(data.results.slice(0, 12));
+            } catch (error) {
+                console.error('Error:', error);
+                displaySampleMovies();
+            }
+        }
+
+        function displayMovies(movies) {
+            const grid = document.getElementById('movies-grid');
+            grid.innerHTML = '';
+            
+            movies.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.onclick = () => openModal(movie);
+                
+                card.innerHTML = `
+                    <img src="${IMG_URL}${movie.poster_path}" 
+                         alt="${movie.title}" 
+                         class="movie-poster"
+                         onerror="this.src='https://via.placeholder.com/300x450?text=TOTV+'">
+                    <div class="movie-info">
+                        <div class="movie-title">${movie.title}</div>
+                        <div class="movie-meta">
+                            <span>⭐ ${movie.vote_average.toFixed(1)}</span>
+                            <span>📅 ${(movie.release_date || '').slice(0, 4)}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Sample movies if API fails
+        function displaySampleMovies() {
+            const sampleMovies = [
+                { title: 'المهمة المستحيلة', vote_average: 8.2, release_date: '2023-01-01' },
+                { title: 'جون ويك 4', vote_average: 8.5, release_date: '2023-03-24' },
+                { title: 'أوبنهايمر', vote_average: 8.8, release_date: '2023-07-21' },
+                { title: 'باربي', vote_average: 7.8, release_date: '2023-07-21' }
+            ];
+            
+            const grid = document.getElementById('movies-grid');
+            grid.innerHTML = '';
+            
+            for(let i = 0; i < 12; i++) {
+                const movie = sampleMovies[i % sampleMovies.length];
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <img src="https://via.placeholder.com/300x450?text=TOTV+Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <div class="movie-title">${movie.title} ${Math.floor(i/4)+1}</div>
+                        <div class="movie-meta">
+                            <span>⭐ ${movie.vote_average}</span>
+                            <span>📅 ${movie.release_date.slice(0,4)}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        // Fetch and display cast
+        async function fetchCast() {
+            try {
+                const res = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&language=ar-SA`);
+                const data = await res.json();
+                displayCast(data.results.slice(0, 12));
+            } catch (error) {
+                console.error('Error:', error);
+                displaySampleCast();
+            }
+        }
+
+        function displayCast(people) {
+            const grid = document.getElementById('cast-grid');
+            grid.innerHTML = '';
+            
+            people.forEach(person => {
+                const card = document.createElement('div');
+                card.className = 'cast-card';
+                
+                card.innerHTML = `
+                    <img src="${IMG_URL}${person.profile_path}" 
+                         alt="${person.name}" 
+                         class="cast-photo"
+                         onerror="this.src='https://via.placeholder.com/180x270?text=${person.name}'">
+                    <div class="cast-name">${person.name}</div>
+                    <div class="cast-role">${person.known_for_department}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function displaySampleCast() {
+            const sampleCast = ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور', 'سكارليت جوهانسون', 'أنجلينا جولي'];
+            const grid = document.getElementById('cast-grid');
+            grid.innerHTML = '';
+            
+            sampleCast.forEach(name => {
+                const card = document.createElement('div');
+                card.className = 'cast-card';
+                card.innerHTML = `
+                    <img src="https://via.placeholder.com/180x270?text=${name}" class="cast-photo">
+                    <div class="cast-name">${name}</div>
+                    <div class="cast-role">ممثل مشهور</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Display pricing
+        function displayPricing() {
+            const pricing = [
+                { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K', 'دعم فني 24/7'] },
+                { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم'] },
+                { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري'] }
+            ];
+            
+            const grid = document.getElementById('pricing-grid');
+            grid.innerHTML = '';
+            
+            pricing.forEach(plan => {
+                const card = document.createElement('div');
+                card.className = `price-card ${plan.popular ? 'popular' : ''}`;
+                
+                card.innerHTML = `
+                    ${plan.popular ? '<div class="popular-badge">⭐ الأكثر طلباً</div>' : ''}
+                    <h3 class="plan-name">${plan.name}</h3>
+                    <div class="price">${plan.price} <small>د.ع</small></div>
+                    <div style="color: var(--text-dim); margin-bottom: 20px;">لـ ${plan.period}</div>
+                    <ul class="features-list">
+                        ${plan.features.map(f => `<li>✓ ${f}</li>`).join('')}
+                    </ul>
+                    <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')">
+                        💳 اشترك الآن
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Payment function
+        function payViaWhatsapp(plan, price) {
+            const phone = '9647714415816';
+            const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV+ Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+        }
+
+        // Modal functions
+        function openModal(movie) {
+            const modal = document.getElementById('movieModal');
+            document.getElementById('modalBackdrop').src = `${IMG_URL}${movie.backdrop_path || movie.poster_path}`;
+            document.getElementById('modalTitle').textContent = movie.title;
+            document.getElementById('modalOverview').textContent = movie.overview || 'لا يوجد وصف متوفر لهذا الفيلم حالياً.';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('movieModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
 
-        // الكوكيز
-        const cookieConsent = document.getElementById('cookieConsent');
-        const acceptCookies = document.getElementById('acceptCookies');
-        if (!localStorage.getItem('cookiesAccepted')) { setTimeout(() => { cookieConsent.classList.add('show'); }, 1000); }
-        acceptCookies.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'true'); cookieConsent.classList.remove('show'); });
+        // Close modal on outside click
+        document.getElementById('movieModal').addEventListener('click', (e) => {
+            if (e.target.id === 'movieModal') closeModal();
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            fetchMovies();
+            fetchCast();
+            displayPricing();
+        });
     </script>
+
 </body>
 </html>

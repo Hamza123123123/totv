@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تحميل تطبيق TOTV | عالم السينما والرياضة</title>
     
-    <!-- ===== SEO META TAGS ===== -->
     <meta name="description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD.">
-    <meta name="keywords" content="تحميل تطبيق totv, تحميل totv, totv app, تطبيق totv, تنزيل totv, بث مباشر مباريات, مشاهدة مباريات اليوم, أفلام, مسلسلات, كرة قدم, TOTV">
+    <meta name="keywords" content="تحميل تطبيق totv, تحميل totv, totv app, تطبيق totv, تنزيل totv, بث مباشر مباريات, مشاهدة مباريات اليوم, كرة قدم, TOTV">
     <meta name="author" content="TOTV">
     <meta name="robots" content="index, follow">
     
-    <!-- ===== OPEN GRAPH META TAGS ===== -->
     <meta property="og:title" content="تحميل تطبيق TOTV | عالم السينما والرياضة">
     <meta property="og:description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات وبث مباشر مباريات كرة القدم">
     <meta property="og:image" content="https://totv.app/logo44.png">
@@ -19,758 +17,121 @@
     <meta property="og:url" content="https://totv.app">
     <meta property="og:site_name" content="TOTV">
     
-    <!-- ===== TWITTER CARD ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="تحميل تطبيق TOTV">
     <meta name="twitter:description" content="مشاهدة الأفلام والمسلسلات وبث مباشر مباريات كرة القدم">
     <meta name="twitter:image" content="https://totv.app/logo44.png">
     
-    <!-- ===== CANONICAL URL ===== -->
     <link rel="canonical" href="https://totv.app">
     
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --gold: #FFD700;
-            --gold-dark: #B8860B;
-            --black: #000000;
-            --dark: #0a0a0a;
-            --surface: #141414;
-            --surface-light: #1f1f1f;
-            --text: #ffffff;
-            --text-dim: #b3b3b3;
-        }
-
-        body {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
-            background: var(--black);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 5%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .navbar.scrolled {
-            background: rgba(0,0,0,0.98);
-            backdrop-filter: blur(20px);
-            padding: 12px 5%;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            filter: drop-shadow(0 0 20px rgba(255,215,0,0.8));
-            object-fit: contain;
-        }
-
-        .brand {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--gold), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .menu-btn {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,215,0,0.3);
-            color: var(--gold);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .menu-btn:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            backdrop-filter: blur(20px);
-            z-index: 2000;
-            transition: right 0.3s ease;
-            padding: 80px 25px;
-            border-left: 2px solid rgba(255,215,0,0.3);
-        }
-
-        .sidebar.active {
-            right: 0;
-        }
-
-        .sidebar-close {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: var(--gold);
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-
-        .sidebar-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .sidebar-link {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,215,0,0.2);
-            transition: all 0.3s;
-            display: block;
-            cursor: pointer;
-        }
-
-        .sidebar-link:hover {
-            color: var(--gold);
-            padding-right: 15px;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 5% 80px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7));
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-logo {
-            width: 120px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
-            animation: logoFloat 3s ease-in-out infinite;
-            object-fit: contain;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--gold), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 30px;
-        }
-
-        .premium-banner {
-            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(184,134,11,0.25));
-            border: 2px solid var(--gold);
-            border-radius: 60px;
-            padding: 12px 25px;
-            margin: 20px auto 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255,215,0,0.3);
-        }
-
-        .premium-banner:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 35px rgba(255,215,0,0.6);
-        }
-
-        .premium-banner .premium-text {
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--gold), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin: 40px 0;
-            padding: 25px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--gold);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            color: var(--black);
-            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255,215,0,0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            color: var(--text);
-            border: 2px solid var(--gold);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,215,0,0.15);
-            transform: translateY(-3px);
-        }
-
-        .content-section {
-            display: none;
-            padding: 80px 5%;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--gold), var(--text));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
-
-        .section-desc {
-            text-align: center;
-            color: var(--text-dim);
-            margin-bottom: 50px;
-            font-size: 1rem;
-        }
-
-        .movies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .movie-card {
-            background: var(--surface);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .movie-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255,215,0,0.3);
-            outline: 2px solid var(--gold);
-        }
-
-        .movie-poster {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-        }
-
-        .movie-info {
-            padding: 12px;
-        }
-
-        .movie-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .movie-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gold);
-            font-size: 0.8rem;
-        }
-
-        /* Sports Grid */
-        .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .player-card {
-            background: var(--surface);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .player-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255,215,0,0.3);
-            outline: 2px solid var(--gold);
-        }
-
-        .player-photo {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-        }
-
-        .player-info {
-            padding: 12px;
-        }
-
-        .player-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-
-        .player-team {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            color: var(--gold);
-            font-size: 0.8rem;
-        }
-
-        .live-match-btn {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .live-btn {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-            padding: 18px 50px;
-            border-radius: 60px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 30px rgba(220,53,69,0.4);
-            animation: pulseRed 2s infinite;
-        }
-
-        .live-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(220,53,69,0.6);
-        }
-
-        @keyframes pulseRed {
-            0%, 100% { box-shadow: 0 10px 30px rgba(220,53,69,0.4); }
-            50% { box-shadow: 0 15px 40px rgba(220,53,69,0.7); }
-        }
-
-        .cast-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .cast-card {
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .cast-card:hover {
-            transform: translateY(-5px);
-            outline: 2px solid var(--gold);
-            border-radius: 12px;
-        }
-
-        .cast-photo {
-            width: 100%;
-            aspect-ratio: 2/3;
-            border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .cast-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-
-        .cast-role {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .price-card {
-            background: linear-gradient(135deg, var(--surface), var(--surface-light));
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(255,215,0,0.2);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .price-card:hover, .price-card.popular {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            color: var(--black);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: var(--gold);
-        }
-
-        .price {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 5px;
-        }
-
-        .price small {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .features-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-        }
-
-        .features-list li i {
-            color: var(--gold);
-        }
-
-        .payment-btn {
-            width: 100%;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,215,0,0.3);
-            color: var(--text);
-            padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .payment-btn:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        .telegram-btn {
-            background: linear-gradient(135deg, #0088cc, #005f8c);
-            border: none;
-            color: white;
-        }
-
-        .download-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.1);
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .telegram-contact {
-            background: linear-gradient(135deg, #0088cc, #005f8c);
-            color: white;
-        }
-
-        .email {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        footer {
-            background: var(--dark);
-            padding: 40px 5%;
-            text-align: center;
-            border-top: 1px solid rgba(255,215,0,0.1);
-        }
-
-        .footer-logo {
-            width: 50px;
-            margin-bottom: 15px;
-            object-fit: contain;
-        }
-
-        .floating-contact {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            z-index: 1500;
-        }
-
-        .float-btn {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: #25D366;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37,211,102,0.5);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-
-        .loading.hidden {
-            display: none;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255,215,0,0.2);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .section-title { font-size: 1.6rem; }
-            .movies-grid, .sports-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-            .movie-poster, .player-photo { height: 200px; }
-            .premium-banner .premium-text { font-size: 1rem; }
-            .live-btn { font-size: 1rem; padding: 12px 30px; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold: #FFD700; --gold-dark: #B8860B; --black: #000000; --dark: #0a0a0a; --surface: #141414; --surface-light: #1f1f1f; --text: #ffffff; --text-dim: #b3b3b3; }
+        body { font-family: 'Cairo', 'Tajawal', sans-serif; background: var(--black); color: var(--text); overflow-x: hidden; }
+        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 5%; background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%); display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        .navbar.scrolled { background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); padding: 12px 5%; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo { width: 50px; height: 50px; filter: drop-shadow(0 0 20px rgba(255,215,0,0.8)); object-fit: contain; }
+        .brand { font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .menu-btn { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 2px solid rgba(255,215,0,0.3); color: var(--gold); width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .menu-btn:hover { background: var(--gold); color: var(--black); }
+        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); z-index: 2000; transition: right 0.3s ease; padding: 80px 25px; border-left: 2px solid rgba(255,215,0,0.3); }
+        .sidebar.active { right: 0; }
+        .sidebar-close { position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: var(--gold); font-size: 1.3rem; cursor: pointer; }
+        .sidebar-menu { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-link { color: var(--text); text-decoration: none; font-size: 1.2rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,215,0,0.2); transition: all 0.3s; display: block; cursor: pointer; }
+        .sidebar-link:hover { color: var(--gold); padding-right: 15px; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 5% 80px; background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)); }
+        .hero-content { max-width: 800px; }
+        .hero-logo { width: 120px; margin-bottom: 30px; filter: drop-shadow(0 0 30px rgba(255,215,0,0.8)); animation: logoFloat 3s ease-in-out infinite; object-fit: contain; }
+        @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .hero-title { font-size: 3rem; font-weight: 900; margin-bottom: 20px; background: linear-gradient(135deg, var(--gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; }
+        .premium-banner { background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(184,134,11,0.25)); border: 2px solid var(--gold); border-radius: 60px; padding: 12px 25px; margin: 20px auto 30px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: all 0.3s; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+        .premium-banner:hover { transform: scale(1.02); box-shadow: 0 0 35px rgba(255,215,0,0.6); }
+        .premium-banner .premium-text { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, var(--gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stats-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 40px 0; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 20px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 1.8rem; font-weight: 900; color: var(--gold); display: block; }
+        .stat-label { font-size: 0.85rem; color: var(--text-dim); }
+        .hero-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .btn-primary, .btn-secondary { padding: 15px 40px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; border: none; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); box-shadow: 0 5px 20px rgba(255,215,0,0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,215,0,0.6); }
+        .btn-secondary { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: var(--text); border: 2px solid var(--gold); }
+        .btn-secondary:hover { background: rgba(255,215,0,0.15); transform: translateY(-3px); }
+        .content-section { display: none; padding: 80px 5%; animation: fadeIn 0.5s ease; }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; background: linear-gradient(135deg, var(--gold), var(--text)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; }
+        .section-desc { text-align: center; color: var(--text-dim); margin-bottom: 50px; font-size: 1rem; }
+        .movies-grid, .sports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .movie-card, .player-card { background: var(--surface); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s; }
+        .movie-card:hover, .player-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255,215,0,0.3); outline: 2px solid var(--gold); }
+        .movie-poster, .player-photo { width: 100%; height: 270px; object-fit: cover; }
+        .movie-info, .player-info { padding: 12px; }
+        .movie-title, .player-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; text-align: center; }
+        .movie-meta, .player-team { display: flex; justify-content: center; gap: 10px; color: var(--gold); font-size: 0.8rem; }
+        .live-match-btn { display: flex; justify-content: center; margin-bottom: 50px; }
+        .live-btn { background: linear-gradient(135deg, #dc3545, #c82333); color: white; padding: 18px 50px; border-radius: 60px; font-size: 1.3rem; font-weight: 800; border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 15px; box-shadow: 0 10px 30px rgba(220,53,69,0.4); animation: pulseRed 2s infinite; }
+        .live-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(220,53,69,0.6); }
+        @keyframes pulseRed { 0%, 100% { box-shadow: 0 10px 30px rgba(220,53,69,0.4); } 50% { box-shadow: 0 15px 40px rgba(220,53,69,0.7); } }
+        .cast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .cast-card { text-align: center; cursor: pointer; transition: all 0.3s; }
+        .cast-card:hover { transform: translateY(-5px); outline: 2px solid var(--gold); border-radius: 12px; }
+        .cast-photo { width: 100%; aspect-ratio: 2/3; border-radius: 12px; object-fit: cover; margin-bottom: 10px; }
+        .cast-name { font-size: 0.95rem; font-weight: 700; }
+        .cast-role { font-size: 0.8rem; color: var(--text-dim); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .price-card { background: linear-gradient(135deg, var(--surface), var(--surface-light)); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,215,0,0.2); transition: all 0.3s; position: relative; }
+        .price-card:hover, .price-card.popular { border-color: var(--gold); transform: translateY(-5px); }
+        .popular-badge { position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; }
+        .plan-name { font-size: 1.5rem; font-weight: 900; margin-bottom: 10px; color: var(--gold); }
+        .price { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
+        .price small { font-size: 0.8rem; color: var(--text-dim); }
+        .features-list { list-style: none; margin: 20px 0; }
+        .features-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        .features-list li i { color: var(--gold); }
+        .payment-btn { width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,215,0,0.3); color: var(--text); padding: 12px; border-radius: 10px; cursor: pointer; transition: all 0.3s; font-weight: 600; margin-top: 10px; }
+        .payment-btn:hover { background: var(--gold); color: var(--black); }
+        .telegram-btn { background: linear-gradient(135deg, #0088cc, #005f8c); border: none; color: white; }
+        .download-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
+        .download-btn { display: inline-flex; align-items: center; gap: 12px; padding: 15px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: all 0.3s; background: linear-gradient(135deg, #25D366, #128C7E); color: white; border: none; cursor: pointer; }
+        .download-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .contact-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 12px; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+        .whatsapp { background: #25D366; color: white; }
+        .telegram-contact { background: linear-gradient(135deg, #0088cc, #005f8c); color: white; }
+        .email { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .contact-btn:hover { transform: translateY(-3px); }
+        footer { background: var(--dark); padding: 40px 5%; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); }
+        .footer-logo { width: 50px; margin-bottom: 15px; object-fit: contain; }
+        .floating-contact { position: fixed; bottom: 25px; left: 25px; z-index: 1500; }
+        .float-btn { width: 55px; height: 55px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; box-shadow: 0 5px 20px rgba(37,211,102,0.5); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .loading.hidden { display: none; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,215,0,0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 768px) { .hero-title { font-size: 2rem; } .hero-subtitle { font-size: 1rem; } .section-title { font-size: 1.6rem; } .movies-grid, .sports-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; } .movie-poster, .player-photo { height: 200px; } .live-btn { font-size: 1rem; padding: 12px 30px; } }
     </style>
 </head>
 <body>
 
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <div class="loading" id="loading"><div class="spinner"></div></div>
 
     <nav class="navbar" id="navbar">
         <div class="logo-area">
             <img src="logo44.png" alt="تحميل تطبيق TOTV" class="logo">
             <div class="brand">TOTV</div>
         </div>
-        <button class="menu-btn" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
     </nav>
 
     <div class="sidebar" id="sidebar">
-        <button class="sidebar-close" onclick="toggleSidebar()">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="sidebar-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
         <div class="sidebar-menu">
             <a class="sidebar-link" onclick="showSection('home'); toggleSidebar();">الرئيسية</a>
             <a class="sidebar-link" onclick="showSection('movies'); toggleSidebar();">الأفلام</a>
@@ -787,19 +148,13 @@
             <img src="logo44.png" alt="تحميل تطبيق TOTV" class="hero-logo">
             <h1 class="hero-title">عالم السينما والرياضة</h1>
             <p class="hero-subtitle">تحميل تطبيق TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD</p>
-            
-            <div class="premium-banner" onclick="goToPricing()">
-                <span class="premium-text">اصبح عضو Premium</span>
-                <i class="fas fa-crown"></i>
-            </div>
-            
+            <div class="premium-banner" onclick="goToPricing()"><span class="premium-text">اصبح عضو Premium</span><i class="fas fa-crown"></i></div>
             <div class="stats-grid">
                 <div class="stat-item"><span class="stat-number">24/7</span><span class="stat-label">دعم فني</span></div>
                 <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">أجهزة متزامنة</span></div>
                 <div class="stat-item"><span class="stat-number">4K</span><span class="stat-label">جودة فائقة</span></div>
                 <div class="stat-item"><span class="stat-number">10K+</span><span class="stat-label">فيلم ومسلسل</span></div>
             </div>
-
             <div class="hero-actions">
                 <button class="btn-primary" onclick="goToDownload()"><i class="fab fa-android"></i> تحميل تطبيق TOTV</button>
                 <button class="btn-secondary" onclick="showSection('movies')"><i class="fas fa-film"></i> استكشف المحتوى</button>
@@ -822,14 +177,9 @@
     <div id="sports-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-futbol"></i> نجوم كرة القدم</h2>
         <p class="section-desc">أشهر لاعبي كرة القدم حول العالم</p>
-        
         <div class="live-match-btn">
-            <button class="live-btn" onclick="goToDownload()">
-                <i class="fas fa-play-circle"></i> مشاهدة جميع المباريات بث مباشر
-                <i class="fas fa-tv"></i>
-            </button>
+            <button class="live-btn" onclick="goToDownload()"><i class="fas fa-play-circle"></i> مشاهدة جميع المباريات بث مباشر <i class="fas fa-tv"></i></button>
         </div>
-        
         <div class="sports-grid" id="sports-grid"></div>
     </div>
 
@@ -837,9 +187,7 @@
         <h2 class="section-title"><i class="fas fa-download"></i> تحميل تطبيق TOTV</h2>
         <p class="section-desc">حمّل تطبيق TOTV الآن واستمتع بمشاهدة أفلامك ومبارياتك المفضلة</p>
         <div style="text-align: center;">
-            <div class="download-buttons">
-                <button class="download-btn" onclick="downloadApp()"><i class="fab fa-android"></i> تحميل تطبيق TOTV لأندرويد</button>
-            </div>
+            <div class="download-buttons"><button class="download-btn" onclick="downloadApp()"><i class="fab fa-android"></i> تحميل تطبيق TOTV لأندرويد</button></div>
             <p style="color: var(--text-dim); margin-top: 30px;">تطبيق TOTV متوفر لأجهزة الأندرويد فقط حالياً</p>
         </div>
     </div>
@@ -868,39 +216,34 @@
         <p class="footer-text" style="font-size: 0.8rem;">totv.app | تحميل تطبيق TOTV | بث مباشر مباريات</p>
     </footer>
 
-    <div class="floating-contact">
-        <a href="https://wa.me/9647714415816" class="float-btn"><i class="fab fa-whatsapp"></i></a>
-    </div>
+    <div class="floating-contact"><a href="https://wa.me/9647714415816" class="float-btn"><i class="fab fa-whatsapp"></i></a></div>
 
     <script>
         const API_KEY = '5b166a24c91f59178e8ce30f1f3735c0';
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // صور حقيقية للاعبين من الإنترنت
+        // صور صحيحة لكل لاعب
         const players = [
-            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://media.api-sports.io/football/players/187.png" },
-            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://media.api-sports.io/football/players/359.png" },
-            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://media.api-sports.io/football/players/1419.png" },
-            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://media.api-sports.io/football/players/354.png" },
-            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://media.api-sports.io/football/players/159.png" },
-            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://media.api-sports.io/football/players/3230.png" },
-            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://media.api-sports.io/football/players/1836.png" },
-            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://media.api-sports.io/football/players/3061.png" },
-            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://media.api-sports.io/football/players/186.png" },
-            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://media.api-sports.io/football/players/329.png" },
-            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://media.api-sports.io/football/players/367.png" },
-            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://media.api-sports.io/football/players/362.png" }
+            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://cdn.fifaratings.com/assets/img/players/158023.png" },
+            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://cdn.fifaratings.com/assets/img/players/20801.png" },
+            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://cdn.fifaratings.com/assets/img/players/190871.png" },
+            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://cdn.fifaratings.com/assets/img/players/231747.png" },
+            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://cdn.fifaratings.com/assets/img/players/209331.png" },
+            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://cdn.fifaratings.com/assets/img/players/239085.png" },
+            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://cdn.fifaratings.com/assets/img/players/233049.png" },
+            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://cdn.fifaratings.com/assets/img/players/238486.png" },
+            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://cdn.fifaratings.com/assets/img/players/192985.png" },
+            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://cdn.fifaratings.com/assets/img/players/202126.png" },
+            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://cdn.fifaratings.com/assets/img/players/188545.png" },
+            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://cdn.fifaratings.com/assets/img/players/177003.png" }
         ];
 
         function showSection(section) {
             document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
             document.getElementById('home-section').style.display = 'none';
-            if (section === 'home') {
-                document.getElementById('home-section').style.display = 'flex';
-            } else {
-                document.getElementById(`${section}-section`).classList.add('active');
-            }
+            if (section === 'home') document.getElementById('home-section').style.display = 'flex';
+            else document.getElementById(`${section}-section`).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -909,10 +252,7 @@
         function downloadApp() { alert('📱 جاري تحويلك لتحميل تطبيق TOTV لأندرويد'); }
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
 
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
 
         function displaySportsPlayers() {
             const grid = document.getElementById('sports-grid');
@@ -925,10 +265,7 @@
                     <img src="${player.image}" class="player-photo" onerror="this.src='https://via.placeholder.com/300x300?text=${player.name}'">
                     <div class="player-info">
                         <div class="player-name">${player.name}</div>
-                        <div class="player-team">
-                            <span><i class="fas fa-futbol"></i> ${player.team}</span>
-                            <span>${player.country}</span>
-                        </div>
+                        <div class="player-team"><span><i class="fas fa-futbol"></i> ${player.team}</span><span>${player.country}</span></div>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -947,13 +284,7 @@
                     card.onclick = () => goToDownload();
                     card.innerHTML = `
                         <img src="${IMG_URL}${movie.poster_path}" class="movie-poster" onerror="this.src='https://via.placeholder.com/300x450?text=TOTV'">
-                        <div class="movie-info">
-                            <div class="movie-title">${movie.title}</div>
-                            <div class="movie-meta">
-                                <span>⭐ ${movie.vote_average.toFixed(1)}</span>
-                                <span>📅 ${(movie.release_date || '').slice(0, 4)}</span>
-                            </div>
-                        </div>
+                        <div class="movie-info"><div class="movie-title">${movie.title}</div><div class="movie-meta"><span>⭐ ${movie.vote_average.toFixed(1)}</span><span>📅 ${(movie.release_date || '').slice(0, 4)}</span></div></div>
                     `;
                     grid.appendChild(card);
                 });
@@ -967,13 +298,7 @@
                 const card = document.createElement('div');
                 card.className = 'movie-card';
                 card.onclick = () => goToDownload();
-                card.innerHTML = `
-                    <img src="https://via.placeholder.com/300x450?text=TOTV+Movie" class="movie-poster">
-                    <div class="movie-info">
-                        <div class="movie-title">فيلم ${i}</div>
-                        <div class="movie-meta"><span>⭐ 8.5</span><span>📅 2024</span></div>
-                    </div>
-                `;
+                card.innerHTML = `<img src="https://via.placeholder.com/300x450?text=TOTV+Movie" class="movie-poster"><div class="movie-info"><div class="movie-title">فيلم ${i}</div><div class="movie-meta"><span>⭐ 8.5</span><span>📅 2024</span></div></div>`;
                 grid.appendChild(card);
             }
         }
@@ -988,11 +313,7 @@
                     const card = document.createElement('div');
                     card.className = 'cast-card';
                     card.onclick = () => goToDownload();
-                    card.innerHTML = `
-                        <img src="${IMG_URL}${person.profile_path}" class="cast-photo" onerror="this.src='https://via.placeholder.com/180x270?text=${person.name}'">
-                        <div class="cast-name">${person.name}</div>
-                        <div class="cast-role">${person.known_for_department}</div>
-                    `;
+                    card.innerHTML = `<img src="${IMG_URL}${person.profile_path}" class="cast-photo" onerror="this.src='https://via.placeholder.com/180x270?text=${person.name}'"><div class="cast-name">${person.name}</div><div class="cast-role">${person.known_for_department}</div>`;
                     grid.appendChild(card);
                 });
             } catch { displaySampleCast(); }
@@ -1001,8 +322,7 @@
         function displaySampleCast() {
             const grid = document.getElementById('cast-grid');
             grid.innerHTML = '';
-            const names = ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور'];
-            names.forEach(name => {
+            ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور'].forEach(name => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
                 card.onclick = () => goToDownload();
@@ -1022,15 +342,7 @@
             pricing.forEach(plan => {
                 const card = document.createElement('div');
                 card.className = `price-card ${plan.popular ? 'popular' : ''}`;
-                card.innerHTML = `
-                    ${plan.popular ? '<div class="popular-badge"><i class="fas fa-crown"></i> الأكثر طلباً</div>' : ''}
-                    <h3 class="plan-name">${plan.name}</h3>
-                    <div class="price">${plan.price} <small>د.ع</small></div>
-                    <div style="color: var(--text-dim); margin-bottom: 15px;">لـ ${plan.period}</div>
-                    <ul class="features-list">${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}</ul>
-                    <button class="payment-btn telegram-btn" onclick="payViaTelegram('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-telegram"></i> اشترك عبر تيليجرام</button>
-                    <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-whatsapp"></i> اشترك عبر واتساب</button>
-                `;
+                card.innerHTML = `${plan.popular ? '<div class="popular-badge"><i class="fas fa-crown"></i> الأكثر طلباً</div>' : ''}<h3 class="plan-name">${plan.name}</h3><div class="price">${plan.price} <small>د.ع</small></div><div style="color: var(--text-dim); margin-bottom: 15px;">لـ ${plan.period}</div><ul class="features-list">${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}</ul><button class="payment-btn telegram-btn" onclick="payViaTelegram('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-telegram"></i> اشترك عبر تيليجرام</button><button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-whatsapp"></i> اشترك عبر واتساب</button>`;
                 grid.appendChild(card);
             });
         }

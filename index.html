@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تحميل تطبيق TOTV | عالم السينما والرياضة</title>
     
-    <!-- ===== FAVICON (أيقونة الموقع) ===== -->
+    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://totv.app/logo44.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://totv.app/logo44.png">
     <link rel="apple-touch-icon" href="https://totv.app/logo44.png">
@@ -229,20 +229,20 @@
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // صور لاعبين
+        // صور لاعبين من ويكيبيديا - روابط مباشرة ومضمونة
         const players = [
-            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/158023.png" },
-            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/20801.png" },
-            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/190871.png" },
-            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/231747.png" },
-            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/209331.png" },
-            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/239085.png" },
-            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/233049.png" },
-            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/238486.png" },
-            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/192985.png" },
-            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/202126.png" },
-            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/188545.png" },
-            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/177003.png" }
+            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg" },
+            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg" },
+            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Neymar_2018.jpg" },
+            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Kylian_Mbapp%C3%A9_2018.jpg" },
+            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Mohamed_Salah_2018.jpg" },
+            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Erling_Haaland_2023.jpg" },
+            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Vin%C3%ADcius_J%C3%BAnior_2021.jpg" },
+            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Jude_Bellingham_2023.jpg" },
+            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Kevin_De_Bruyne_2018.jpg" },
+            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Antoine_Griezmann_2018.jpg" },
+            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Robert_Lewandowski_2022.jpg" },
+            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Luka_Modri%C4%87_2021.jpg" }
         ];
 
         function showSection(section) {

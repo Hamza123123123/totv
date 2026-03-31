@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تحميل تطبيق TOTV | عالم السينما والرياضة</title>
     
+    <!-- ===== FAVICON (أيقونة الموقع) ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://totv.app/logo44.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://totv.app/logo44.png">
+    <link rel="apple-touch-icon" href="https://totv.app/logo44.png">
+    <link rel="shortcut icon" href="https://totv.app/logo44.png">
+    
     <meta name="description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD.">
     <meta name="keywords" content="تحميل تطبيق totv, تحميل totv, totv app, تطبيق totv, تنزيل totv, بث مباشر مباريات, كرة قدم, TOTV">
     <meta name="author" content="TOTV">
@@ -70,7 +76,7 @@
         .movies-grid, .sports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
         .movie-card, .player-card { background: var(--surface); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s; }
         .movie-card:hover, .player-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255,215,0,0.3); outline: 2px solid var(--gold); }
-        .movie-poster, .player-photo { width: 100%; height: 270px; object-fit: cover; }
+        .movie-poster, .player-photo { width: 100%; height: 270px; object-fit: cover; background: #1a1a1a; }
         .movie-info, .player-info { padding: 12px; }
         .movie-title, .player-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; text-align: center; }
         .movie-meta, .player-team { display: flex; justify-content: center; gap: 10px; color: var(--gold); font-size: 0.8rem; }
@@ -81,7 +87,7 @@
         .cast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
         .cast-card { text-align: center; cursor: pointer; transition: all 0.3s; }
         .cast-card:hover { transform: translateY(-5px); outline: 2px solid var(--gold); border-radius: 12px; }
-        .cast-photo { width: 100%; aspect-ratio: 2/3; border-radius: 12px; object-fit: cover; margin-bottom: 10px; }
+        .cast-photo { width: 100%; aspect-ratio: 2/3; border-radius: 12px; object-fit: cover; margin-bottom: 10px; background: #1a1a1a; }
         .cast-name { font-size: 0.95rem; font-weight: 700; }
         .cast-role { font-size: 0.8rem; color: var(--text-dim); }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
@@ -124,7 +130,7 @@
 
     <nav class="navbar" id="navbar">
         <div class="logo-area">
-            <img src="logo44.png" alt="تحميل تطبيق TOTV" class="logo">
+            <img src="https://totv.app/logo44.png" alt="تحميل تطبيق TOTV" class="logo">
             <div class="brand">TOTV</div>
         </div>
         <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
@@ -145,7 +151,7 @@
 
     <section class="hero" id="home-section">
         <div class="hero-content">
-            <img src="logo44.png" alt="تحميل تطبيق TOTV" class="hero-logo">
+            <img src="https://totv.app/logo44.png" alt="تحميل تطبيق TOTV" class="hero-logo">
             <h1 class="hero-title">عالم السينما والرياضة</h1>
             <p class="hero-subtitle">تحميل تطبيق TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD</p>
             <div class="premium-banner" onclick="goToPricing()"><span class="premium-text">اصبح عضو Premium</span><i class="fas fa-crown"></i></div>
@@ -211,7 +217,7 @@
     </div>
 
     <footer>
-        <img src="logo44.png" alt="تحميل تطبيق TOTV" class="footer-logo">
+        <img src="https://totv.app/logo44.png" alt="تحميل تطبيق TOTV" class="footer-logo">
         <p class="footer-text">© 2025 TOTV - تجربة سينمائية ورياضية استثنائية</p>
         <p class="footer-text" style="font-size: 0.8rem;">totv.app | تحميل تطبيق TOTV | بث مباشر مباريات</p>
     </footer>
@@ -223,20 +229,20 @@
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // صور مضمونة 100% من مصادر مستقلة
+        // صور لاعبين
         const players = [
-            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://i.imgur.com/7Z5qX8E.jpg" },
-            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://i.imgur.com/YQv3ZqK.jpg" },
-            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://i.imgur.com/pJ8zY5n.jpg" },
-            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://i.imgur.com/4XRq8Lv.jpg" },
-            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://i.imgur.com/aB3qX9K.jpg" },
-            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://i.imgur.com/rV8nXqM.jpg" },
-            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://i.imgur.com/tL5mXqR.jpg" },
-            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://i.imgur.com/xZ7nYqV.jpg" },
-            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://i.imgur.com/vB4nYqW.jpg" },
-            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://i.imgur.com/mK8nXqP.jpg" },
-            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://i.imgur.com/nV7nYqT.jpg" },
-            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://i.imgur.com/qW6nXqS.jpg" }
+            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/158023.png" },
+            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/20801.png" },
+            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/190871.png" },
+            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/231747.png" },
+            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/209331.png" },
+            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/239085.png" },
+            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/233049.png" },
+            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/238486.png" },
+            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/192985.png" },
+            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/202126.png" },
+            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/188545.png" },
+            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://res.cloudinary.com/demo/image/fetch/https://cdn.fifaratings.com/assets/img/players/177003.png" }
         ];
 
         function showSection(section) {
@@ -262,7 +268,7 @@
                 card.className = 'player-card';
                 card.onclick = () => goToDownload();
                 card.innerHTML = `
-                    <img src="${player.image}" class="player-photo" onerror="this.src='https://i.imgur.com/default.png'">
+                    <img src="${player.image}" class="player-photo" onerror="this.src='https://via.placeholder.com/300x300?text=${player.name}'">
                     <div class="player-info">
                         <div class="player-name">${player.name}</div>
                         <div class="player-team"><span><i class="fas fa-futbol"></i> ${player.team}</span><span>${player.country}</span></div>

@@ -6,14 +6,14 @@
     <title>تحميل تطبيق TOTV | عالم السينما والرياضة</title>
     
     <!-- ===== SEO META TAGS ===== -->
-    <meta name="description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD. أكثر من 10,000 فيلم ومسلسل ومباريات حصرية.">
+    <meta name="description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD.">
     <meta name="keywords" content="تحميل تطبيق totv, تحميل totv, totv app, تطبيق totv, تنزيل totv, بث مباشر مباريات, مشاهدة مباريات اليوم, أفلام, مسلسلات, كرة قدم, TOTV">
     <meta name="author" content="TOTV">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="robots" content="index, follow">
     
     <!-- ===== OPEN GRAPH META TAGS ===== -->
     <meta property="og:title" content="تحميل تطبيق TOTV | عالم السينما والرياضة">
-    <meta property="og:description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات العالمية وبث مباشر مباريات كرة القدم بجودة 4K Ultra HD">
+    <meta property="og:description" content="تحميل تطبيق TOTV الرسمي - مشاهدة الأفلام والمسلسلات وبث مباشر مباريات كرة القدم">
     <meta property="og:image" content="https://totv.app/logo44.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://totv.app">
@@ -27,32 +27,6 @@
     
     <!-- ===== CANONICAL URL ===== -->
     <link rel="canonical" href="https://totv.app">
-    
-    <!-- ===== STRUCTURED DATA ===== -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "TOTV",
-        "url": "https://totv.app",
-        "description": "تحميل تطبيق TOTV لمشاهدة الأفلام والمسلسلات وبث مباشر مباريات كرة القدم"
-    }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "TOTV",
-        "url": "https://totv.app",
-        "logo": "https://totv.app/logo44.png",
-        "sameAs": [
-            "https://wa.me/9647714415816",
-            "https://t.me/PaymentTOTVBOT",
-            "mailto:totv.Support@gmail.com"
-        ]
-    }
-    </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -72,7 +46,6 @@
             --surface-light: #1f1f1f;
             --text: #ffffff;
             --text-dim: #b3b3b3;
-            --sport: #00a86b;
         }
 
         body {
@@ -82,7 +55,6 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -122,7 +94,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Menu Button */
         .menu-btn {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -144,7 +115,6 @@
             color: var(--black);
         }
 
-        /* Sidebar Menu */
         .sidebar {
             position: fixed;
             top: 0;
@@ -200,7 +170,6 @@
             padding-right: 15px;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -243,7 +212,6 @@
             margin-bottom: 30px;
         }
 
-        /* Premium Banner */
         .premium-banner {
             background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(184,134,11,0.25));
             border: 2px solid var(--gold);
@@ -273,7 +241,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Stats */
         .stats-grid {
             display: flex;
             justify-content: center;
@@ -301,7 +268,6 @@
             color: var(--text-dim);
         }
 
-        /* Buttons */
         .hero-actions {
             display: flex;
             gap: 20px;
@@ -346,7 +312,6 @@
             transform: translateY(-3px);
         }
 
-        /* Content Sections */
         .content-section {
             display: none;
             padding: 80px 5%;
@@ -379,7 +344,6 @@
             font-size: 1rem;
         }
 
-        /* Movies Grid */
         .movies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -425,7 +389,7 @@
             font-size: 0.8rem;
         }
 
-        /* Sports Grid (كرة القدم) */
+        /* Sports Grid */
         .sports-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -473,7 +437,6 @@
             font-size: 0.8rem;
         }
 
-        /* Live Match Button */
         .live-match-btn {
             display: flex;
             justify-content: center;
@@ -507,7 +470,6 @@
             50% { box-shadow: 0 15px 40px rgba(220,53,69,0.7); }
         }
 
-        /* Cast Grid */
         .cast-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -546,7 +508,6 @@
             color: var(--text-dim);
         }
 
-        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -641,11 +602,6 @@
             color: white;
         }
 
-        .telegram-btn:hover {
-            background: linear-gradient(135deg, #0099e6, #0077b3);
-        }
-
-        /* Download Section */
         .download-buttons {
             display: flex;
             justify-content: center;
@@ -675,7 +631,6 @@
             filter: brightness(1.1);
         }
 
-        /* Contact Section */
         .contact-buttons {
             display: flex;
             justify-content: center;
@@ -715,7 +670,6 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
         footer {
             background: var(--dark);
             padding: 40px 5%;
@@ -729,7 +683,6 @@
             object-fit: contain;
         }
 
-        /* Floating WhatsApp */
         .floating-contact {
             position: fixed;
             bottom: 25px;
@@ -757,7 +710,6 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Loading */
         .loading {
             position: fixed;
             top: 0;
@@ -801,12 +753,10 @@
 </head>
 <body>
 
-    <!-- Loading -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
 
-    <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="logo-area">
             <img src="logo44.png" alt="تحميل تطبيق TOTV" class="logo">
@@ -817,7 +767,6 @@
         </button>
     </nav>
 
-    <!-- Sidebar Menu -->
     <div class="sidebar" id="sidebar">
         <button class="sidebar-close" onclick="toggleSidebar()">
             <i class="fas fa-times"></i>
@@ -833,7 +782,6 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero" id="home-section">
         <div class="hero-content">
             <img src="logo44.png" alt="تحميل تطبيق TOTV" class="hero-logo">
@@ -846,55 +794,35 @@
             </div>
             
             <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">دعم فني</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">أجهزة متزامنة</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">4K</span>
-                    <span class="stat-label">جودة فائقة</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">فيلم ومسلسل</span>
-                </div>
+                <div class="stat-item"><span class="stat-number">24/7</span><span class="stat-label">دعم فني</span></div>
+                <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">أجهزة متزامنة</span></div>
+                <div class="stat-item"><span class="stat-number">4K</span><span class="stat-label">جودة فائقة</span></div>
+                <div class="stat-item"><span class="stat-number">10K+</span><span class="stat-label">فيلم ومسلسل</span></div>
             </div>
 
             <div class="hero-actions">
-                <button class="btn-primary" onclick="goToDownload()">
-                    <i class="fab fa-android"></i> تحميل تطبيق TOTV
-                </button>
-                <button class="btn-secondary" onclick="showSection('movies')">
-                    <i class="fas fa-film"></i> استكشف المحتوى
-                </button>
+                <button class="btn-primary" onclick="goToDownload()"><i class="fab fa-android"></i> تحميل تطبيق TOTV</button>
+                <button class="btn-secondary" onclick="showSection('movies')"><i class="fas fa-film"></i> استكشف المحتوى</button>
             </div>
         </div>
     </section>
 
-    <!-- Movies Section -->
     <div id="movies-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-fire"></i> أشهر الأفلام</h2>
         <p class="section-desc">اختر فيلمك المفضل واستمتع بمشاهدته</p>
         <div class="movies-grid" id="movies-grid"></div>
     </div>
 
-    <!-- Cast Section -->
     <div id="cast-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-star"></i> نجوم هوليوود</h2>
         <p class="section-desc">تعرف على أشهر نجوم السينما العالمية</p>
         <div class="cast-grid" id="cast-grid"></div>
     </div>
 
-    <!-- Sports Section (كرة القدم) -->
     <div id="sports-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-futbol"></i> نجوم كرة القدم</h2>
         <p class="section-desc">أشهر لاعبي كرة القدم حول العالم</p>
         
-        <!-- زر مشاهدة جميع المباريات بث مباشر -->
         <div class="live-match-btn">
             <button class="live-btn" onclick="goToDownload()">
                 <i class="fas fa-play-circle"></i> مشاهدة جميع المباريات بث مباشر
@@ -905,60 +833,43 @@
         <div class="sports-grid" id="sports-grid"></div>
     </div>
 
-    <!-- Download Section -->
     <div id="download-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-download"></i> تحميل تطبيق TOTV</h2>
         <p class="section-desc">حمّل تطبيق TOTV الآن واستمتع بمشاهدة أفلامك ومبارياتك المفضلة</p>
         <div style="text-align: center;">
             <div class="download-buttons">
-                <button class="download-btn" onclick="downloadApp()">
-                    <i class="fab fa-android"></i> تحميل تطبيق TOTV لأندرويد
-                </button>
+                <button class="download-btn" onclick="downloadApp()"><i class="fab fa-android"></i> تحميل تطبيق TOTV لأندرويد</button>
             </div>
-            <p style="color: var(--text-dim); margin-top: 30px; font-size: 0.9rem;">
-                تطبيق TOTV متوفر لأجهزة الأندرويد فقط حالياً
-            </p>
+            <p style="color: var(--text-dim); margin-top: 30px;">تطبيق TOTV متوفر لأجهزة الأندرويد فقط حالياً</p>
         </div>
     </div>
 
-    <!-- Pricing Section -->
     <div id="pricing-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-tags"></i> اختر باقتك</h2>
         <p class="section-desc">باقات مرنة تناسب جميع الاحتياجات</p>
         <div class="pricing-grid" id="pricing-grid"></div>
     </div>
 
-    <!-- Contact Section -->
     <div id="contact-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-headset"></i> تواصل معنا</h2>
         <p class="section-desc">فريق الدعم متواجد 24 ساعة للإجابة على استفساراتك</p>
         <div style="text-align: center;">
             <div class="contact-buttons">
-                <a href="https://wa.me/9647714415816" class="contact-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i> واتساب
-                </a>
-                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="contact-btn telegram-contact">
-                    <i class="fab fa-telegram"></i> بوت الدفع
-                </a>
-                <a href="mailto:totv.Support@gmail.com" class="contact-btn email">
-                    <i class="fas fa-envelope"></i> totv.Support@gmail.com
-                </a>
+                <a href="https://wa.me/9647714415816" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
+                <a href="https://t.me/PaymentTOTVBOT" target="_blank" class="contact-btn telegram-contact"><i class="fab fa-telegram"></i> بوت الدفع</a>
+                <a href="mailto:totv.Support@gmail.com" class="contact-btn email"><i class="fas fa-envelope"></i> totv.Support@gmail.com</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <img src="logo44.png" alt="تحميل تطبيق TOTV" class="footer-logo">
         <p class="footer-text">© 2025 TOTV - تجربة سينمائية ورياضية استثنائية</p>
-        <p class="footer-text" style="font-size: 0.8rem; margin-top: 5px;">totv.app | تحميل تطبيق TOTV | بث مباشر مباريات</p>
+        <p class="footer-text" style="font-size: 0.8rem;">totv.app | تحميل تطبيق TOTV | بث مباشر مباريات</p>
     </footer>
 
-    <!-- Floating WhatsApp -->
     <div class="floating-contact">
-        <a href="https://wa.me/9647714415816" class="float-btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <a href="https://wa.me/9647714415816" class="float-btn"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <script>
@@ -966,28 +877,25 @@
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-        // Players data (كرة القدم)
+        // صور حقيقية للاعبين من الإنترنت
         const players = [
-            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://via.placeholder.com/300x300?text=Messi" },
-            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://via.placeholder.com/300x300?text=Ronaldo" },
-            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://via.placeholder.com/300x300?text=Mbappe" },
-            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://via.placeholder.com/300x300?text=Haaland" },
-            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://via.placeholder.com/300x300?text=Neymar" },
-            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://via.placeholder.com/300x300?text=Vinicius" },
-            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://via.placeholder.com/300x300?text=Bellingham" },
-            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://via.placeholder.com/300x300?text=Salah" },
-            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://via.placeholder.com/300x300?text=DeBruyne" },
-            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://via.placeholder.com/300x300?text=Griezmann" },
-            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://via.placeholder.com/300x300?text=Lewandowski" },
-            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://via.placeholder.com/300x300?text=Modric" }
+            { name: "كريستيانو رونالدو", team: "النصر", country: "🇵🇹", image: "https://media.api-sports.io/football/players/187.png" },
+            { name: "ليونيل ميسي", team: "إنتر ميامي", country: "🇦🇷", image: "https://media.api-sports.io/football/players/359.png" },
+            { name: "كيليان مبابي", team: "ريال مدريد", country: "🇫🇷", image: "https://media.api-sports.io/football/players/1419.png" },
+            { name: "نيمار جونيور", team: "الهلال", country: "🇧🇷", image: "https://media.api-sports.io/football/players/354.png" },
+            { name: "محمد صلاح", team: "ليفربول", country: "🇪🇬", image: "https://media.api-sports.io/football/players/159.png" },
+            { name: "إرلينغ هالاند", team: "مانشستر سيتي", country: "🇳🇴", image: "https://media.api-sports.io/football/players/3230.png" },
+            { name: "فينيسيوس جونيور", team: "ريال مدريد", country: "🇧🇷", image: "https://media.api-sports.io/football/players/1836.png" },
+            { name: "جود بيلينغهام", team: "ريال مدريد", country: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", image: "https://media.api-sports.io/football/players/3061.png" },
+            { name: "كيفين دي بروين", team: "مانشستر سيتي", country: "🇧🇪", image: "https://media.api-sports.io/football/players/186.png" },
+            { name: "أنتوني غريزمان", team: "أتلتيكو مدريد", country: "🇫🇷", image: "https://media.api-sports.io/football/players/329.png" },
+            { name: "روبرت ليفاندوفسكي", team: "برشلونة", country: "🇵🇱", image: "https://media.api-sports.io/football/players/367.png" },
+            { name: "لوكا مودريتش", team: "ريال مدريد", country: "🇭🇷", image: "https://media.api-sports.io/football/players/362.png" }
         ];
 
         function showSection(section) {
-            document.querySelectorAll('.content-section').forEach(el => {
-                el.classList.remove('active');
-            });
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
             document.getElementById('home-section').style.display = 'none';
-            
             if (section === 'home') {
                 document.getElementById('home-section').style.display = 'flex';
             } else {
@@ -996,41 +904,23 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function goToPricing() {
-            showSection('pricing');
-        }
-
-        function goToDownload() {
-            showSection('download');
-        }
-
-        function downloadApp() {
-            alert('📱 جاري تحويلك لتحميل تطبيق TOTV لأندرويد');
-        }
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
+        function goToPricing() { showSection('pricing'); }
+        function goToDownload() { showSection('download'); }
+        function downloadApp() { alert('📱 جاري تحويلك لتحميل تطبيق TOTV لأندرويد'); }
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
 
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Display Sports Players
         function displaySportsPlayers() {
             const grid = document.getElementById('sports-grid');
             grid.innerHTML = '';
-            
             players.forEach(player => {
                 const card = document.createElement('div');
                 card.className = 'player-card';
                 card.onclick = () => goToDownload();
-                
                 card.innerHTML = `
                     <img src="${player.image}" class="player-photo" onerror="this.src='https://via.placeholder.com/300x300?text=${player.name}'">
                     <div class="player-info">
@@ -1045,114 +935,78 @@
             });
         }
 
-        // Fetch movies
         async function fetchMovies() {
             try {
                 const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar-SA`);
                 const data = await res.json();
-                displayMovies(data.results.slice(0, 12));
-            } catch (error) {
-                displaySampleMovies();
-            }
-        }
-
-        function displayMovies(movies) {
-            const grid = document.getElementById('movies-grid');
-            grid.innerHTML = '';
-            
-            movies.forEach(movie => {
-                const card = document.createElement('div');
-                card.className = 'movie-card';
-                card.onclick = () => goToDownload();
-                
-                const posterUrl = movie.poster_path ? IMG_URL + movie.poster_path : 'https://via.placeholder.com/300x450?text=TOTV';
-                card.innerHTML = `
-                    <img src="${posterUrl}" class="movie-poster">
-                    <div class="movie-info">
-                        <div class="movie-title">${movie.title}</div>
-                        <div class="movie-meta">
-                            <span><i class="fas fa-star"></i> ${movie.vote_average.toFixed(1)}</span>
-                            <span><i class="fas fa-calendar"></i> ${(movie.release_date || '').slice(0, 4)}</span>
+                const grid = document.getElementById('movies-grid');
+                grid.innerHTML = '';
+                data.results.slice(0, 12).forEach(movie => {
+                    const card = document.createElement('div');
+                    card.className = 'movie-card';
+                    card.onclick = () => goToDownload();
+                    card.innerHTML = `
+                        <img src="${IMG_URL}${movie.poster_path}" class="movie-poster" onerror="this.src='https://via.placeholder.com/300x450?text=TOTV'">
+                        <div class="movie-info">
+                            <div class="movie-title">${movie.title}</div>
+                            <div class="movie-meta">
+                                <span>⭐ ${movie.vote_average.toFixed(1)}</span>
+                                <span>📅 ${(movie.release_date || '').slice(0, 4)}</span>
+                            </div>
                         </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch { displaySampleMovies(); }
         }
 
         function displaySampleMovies() {
-            const moviesList = [
-                { title: 'المهمة المستحيلة', vote: 8.2, year: '2023' },
-                { title: 'جون ويك 4', vote: 8.5, year: '2023' },
-                { title: 'أوبنهايمر', vote: 8.8, year: '2023' }
-            ];
-            
             const grid = document.getElementById('movies-grid');
             grid.innerHTML = '';
-            
-            for(let i = 0; i < 12; i++) {
-                const movie = moviesList[i % moviesList.length];
+            for(let i = 1; i <= 12; i++) {
                 const card = document.createElement('div');
                 card.className = 'movie-card';
                 card.onclick = () => goToDownload();
                 card.innerHTML = `
-                    <img src="https://via.placeholder.com/300x450?text=TOTV" class="movie-poster">
+                    <img src="https://via.placeholder.com/300x450?text=TOTV+Movie" class="movie-poster">
                     <div class="movie-info">
-                        <div class="movie-title">${movie.title} ${Math.floor(i/3)+1}</div>
-                        <div class="movie-meta">
-                            <span>⭐ ${movie.vote}</span>
-                            <span>📅 ${movie.year}</span>
-                        </div>
+                        <div class="movie-title">فيلم ${i}</div>
+                        <div class="movie-meta"><span>⭐ 8.5</span><span>📅 2024</span></div>
                     </div>
                 `;
                 grid.appendChild(card);
             }
         }
 
-        // Fetch cast
         async function fetchCast() {
             try {
                 const res = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&language=ar-SA`);
                 const data = await res.json();
-                displayCast(data.results.slice(0, 12));
-            } catch (error) {
-                displaySampleCast();
-            }
-        }
-
-        function displayCast(people) {
-            const grid = document.getElementById('cast-grid');
-            grid.innerHTML = '';
-            
-            people.forEach(person => {
-                const card = document.createElement('div');
-                card.className = 'cast-card';
-                card.onclick = () => goToDownload();
-                
-                const photoUrl = person.profile_path ? IMG_URL + person.profile_path : 'https://via.placeholder.com/180x270?text=' + person.name;
-                card.innerHTML = `
-                    <img src="${photoUrl}" class="cast-photo">
-                    <div class="cast-name">${person.name}</div>
-                    <div class="cast-role">${person.known_for_department}</div>
-                `;
-                grid.appendChild(card);
-            });
+                const grid = document.getElementById('cast-grid');
+                grid.innerHTML = '';
+                data.results.slice(0, 12).forEach(person => {
+                    const card = document.createElement('div');
+                    card.className = 'cast-card';
+                    card.onclick = () => goToDownload();
+                    card.innerHTML = `
+                        <img src="${IMG_URL}${person.profile_path}" class="cast-photo" onerror="this.src='https://via.placeholder.com/180x270?text=${person.name}'">
+                        <div class="cast-name">${person.name}</div>
+                        <div class="cast-role">${person.known_for_department}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch { displaySampleCast(); }
         }
 
         function displaySampleCast() {
-            const sampleCast = ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور'];
             const grid = document.getElementById('cast-grid');
             grid.innerHTML = '';
-            
-            sampleCast.forEach(name => {
+            const names = ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور'];
+            names.forEach(name => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
                 card.onclick = () => goToDownload();
-                card.innerHTML = `
-                    <img src="https://via.placeholder.com/180x270?text=${name}" class="cast-photo">
-                    <div class="cast-name">${name}</div>
-                    <div class="cast-role">ممثل مشهور</div>
-                `;
+                card.innerHTML = `<img src="https://via.placeholder.com/180x270?text=${name}" class="cast-photo"><div class="cast-name">${name}</div><div class="cast-role">ممثل</div>`;
                 grid.appendChild(card);
             });
         }
@@ -1163,60 +1017,36 @@
                 { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم'] },
                 { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري'] }
             ];
-            
             const grid = document.getElementById('pricing-grid');
             grid.innerHTML = '';
-            
             pricing.forEach(plan => {
                 const card = document.createElement('div');
                 card.className = `price-card ${plan.popular ? 'popular' : ''}`;
-                
                 card.innerHTML = `
                     ${plan.popular ? '<div class="popular-badge"><i class="fas fa-crown"></i> الأكثر طلباً</div>' : ''}
                     <h3 class="plan-name">${plan.name}</h3>
                     <div class="price">${plan.price} <small>د.ع</small></div>
                     <div style="color: var(--text-dim); margin-bottom: 15px;">لـ ${plan.period}</div>
-                    <ul class="features-list">
-                        ${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
-                    </ul>
-                    <button class="payment-btn telegram-btn" onclick="payViaTelegram('${plan.name}', '${plan.price} د.ع')">
-                        <i class="fab fa-telegram"></i> اشترك عبر تيليجرام
-                    </button>
-                    <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')">
-                        <i class="fab fa-whatsapp"></i> اشترك عبر واتساب
-                    </button>
+                    <ul class="features-list">${plan.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}</ul>
+                    <button class="payment-btn telegram-btn" onclick="payViaTelegram('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-telegram"></i> اشترك عبر تيليجرام</button>
+                    <button class="payment-btn" onclick="payViaWhatsapp('${plan.name}', '${plan.price} د.ع')"><i class="fab fa-whatsapp"></i> اشترك عبر واتساب</button>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function payViaTelegram(plan, price) {
-            const botUsername = 'PaymentTOTVBOT';
-            window.open(`https://t.me/${botUsername}?start=subscribe_${plan.replace(/ /g, '_')}`, '_blank');
-        }
+        function payViaTelegram(plan, price) { window.open(`https://t.me/PaymentTOTVBOT?start=subscribe_${plan.replace(/ /g, '_')}`, '_blank'); }
+        function payViaWhatsapp(plan, price) { window.open(`https://wa.me/9647714415816?text=${encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}`)}`, '_blank'); }
 
-        function payViaWhatsapp(plan, price) {
-            const phone = '9647714415816';
-            const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
-            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.getElementById('sidebar').classList.remove('active');
-            }
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.getElementById('sidebar').classList.remove('active'); });
 
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 500);
+            setTimeout(() => document.getElementById('loading').classList.add('hidden'), 500);
             fetchMovies();
             fetchCast();
             displayPricing();
             displaySportsPlayers();
         });
     </script>
-
 </body>
 </html>

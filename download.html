@@ -3,176 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جاري تحميل توتيفي TOTV</title>
+    <title>تحميل تطبيق TOTV+ | الموقع الرسمي</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            font-family: 'Cairo', 'Tajawal', sans-serif;
+            height: 100vh;
             margin: 0;
-            direction: rtl;
-        }
-        
-        .container {
             text-align: center;
-            color: #FFD700;
-            padding: 20px;
         }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255,215,0,0.2);
-            border-top-color: #FFD700;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 30px auto;
+        .container {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
         }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .logo {
-            width: 80px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(255,215,0,0.8));
-        }
-        
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #FFD700, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        p {
-            color: #b3b3b3;
-            margin-bottom: 20px;
-        }
-        
-        .download-main-btn {
-            background: linear-gradient(135deg, #B8860B, #FFD700);
-            color: #000;
+        h1 { color: #f39c12; margin-bottom: 10px; }
+        p { color: #bbb; margin-bottom: 30px; }
+        .btn-download {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 40px;
             border: none;
-            padding: 15px 45px;
             border-radius: 50px;
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-        }
-        
-        .download-main-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255,215,0,0.6);
-        }
-        
-        .back-home {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,215,0,0.3);
-            margin-top: 20px;
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 50px;
-            color: #FFD700;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: 0.3s;
+            display: inline-block;
         }
-        
-        .back-home:hover {
-            background: #FFD700;
-            color: #000;
+        .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
         }
-        
-        .note {
-            color: #666;
-            font-size: 0.75rem;
-            margin-top: 25px;
-        }
-        
-        .progress-bar {
-            width: 80%;
-            max-width: 300px;
-            height: 4px;
-            background: rgba(255,215,0,0.2);
-            border-radius: 10px;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-        
-        .progress {
-            width: 0%;
-            height: 100%;
-            background: #FFD700;
-            border-radius: 10px;
-            animation: loading 2s ease-out forwards;
-        }
-        
-        @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
-        }
+        .status { margin-top: 20px; font-size: 0.9rem; color: #888; }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <img src="logo44.png" alt="توتيفي TOTV" class="logo" onerror="this.src='https://via.placeholder.com/80x80?text=TOTV'">
-        <h2>📱 توتيفي TOTV Premium</h2>
-        <p>جاري تجهيز ملف التحميل...</p>
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
+        <h1>تطبيق TOTV+</h1>
+        <p>بوابتك لعالم الترفيه والرياضة</p>
         
-        <button class="download-main-btn" id="downloadBtn">
-            تحميل تطبيق توتيفي الآن
-        </button>
+        <a href="https://totv.app" id="downloadBtn" class="btn-download">تحميل التطبيق الآن (APK)</a>
         
-        <br>
-        <a href="index.html" class="back-home">
-            العودة للصفحة الرئيسية
-        </a>
-        <p class="note">📱 سيبدأ التحميل تلقائياً خلال ثواني</p>
+        <div class="status" id="statusText">سيبدأ التحميل تلقائياً خلال ثوانٍ...</div>
     </div>
 
     <script>
-        // الرابط الجديد الذي سيعمل من خلال التوجيه (Masked) في Namecheap
-        const downloadUrl = 'https://totv.app/totv.apk';
-        
+        // دالة بدء التحميل
         function startDownload() {
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = 'totv.apk';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            document.getElementById('statusText').innerText = "جاري بدء التحميل، يرجى الانتظار...";
+            // التوجيه للدومين اللي ربطناه بقوقل درايف بـ Namecheap
+            window.location.href = "https://totv.app";
         }
-        
+
+        // بدء التحميل تلقائياً بعد ثانية واحدة من دخول الصفحة
         window.onload = function() {
-            setTimeout(function() {
-                startDownload();
-            }, 1500);
-        }
-        
-        document.getElementById('downloadBtn').onclick = function() {
+            setTimeout(startDownload, 1500);
+        };
+
+        // تفعيل التحميل عند ضغط الزر يدوياً
+        document.getElementById('downloadBtn').onclick = function(e) {
+            e.preventDefault();
             startDownload();
-        }
+        };
     </script>
+
 </body>
 </html>

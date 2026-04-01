@@ -85,6 +85,16 @@
             margin-top: 30px;
         }
         
+        .back-home {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            margin-top: 15px;
+        }
+        
+        .back-home:hover {
+            background: #FFD700;
+        }
+        
         .progress-bar {
             width: 80%;
             max-width: 300px;
@@ -120,7 +130,9 @@
         </div>
         <p>سيبدأ التحميل خلال ثواني</p>
         <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk">اضغط هنا إذا لم يبدأ التحميل</a>
-        <p class="note">⏱️ سيتم توجيهك للصفحة الرئيسية بعد التحميل</p>
+        <br>
+        <a href="index.html" class="back-home"><i class="fas fa-home"></i> العودة للصفحة الرئيسية</a>
+        <p class="note">📱 يمكنك العودة للصفحة الرئيسية بعد التحميل</p>
     </div>
 
     <script>
@@ -135,10 +147,6 @@
                 link.click();
                 document.body.removeChild(link);
             }, 1000);
-            
-            setTimeout(function() {
-                window.location.href = 'index.html';
-            }, 5000);
         }
     </script>
 </body>

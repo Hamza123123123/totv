@@ -1,33 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>TOTV+ Download</title>
+    <style>
+        body { background: #000; color: #fff; text-align: center; padding-top: 100px; font-family: sans-serif; }
+        .box { border: 1px solid #333; padding: 20px; display: inline-block; border-radius: 10px; }
+        .btn { background: #f39c12; color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>تطبيق TOTV+</h2>
+        <p>اضغط على الزر أدناه إذا لم يبدأ التحميل تلقائياً</p>
+        <a href="https://drive.google.com/uc?export=download&id=1apUQ-rYP9n-JYCenQq5L6K7eV1zPRZhP" class="btn">تحميل الآن (APK)</a>
+    </div>
+
     <script>
-        // رابط التحميل المباشر من جوجل درايف الذي جهزناه
-        const directDownloadUrl = "https://drive.google.com/uc?export=download&id=1apUQ-rYP9n-JYCenQq5L6K7eV1zPRZhP";
-
-        function startDownload() {
-            document.getElementById('statusText').innerText = "بدأ التحميل الآن... افحص الإشعارات";
-            
-            // إنشاء رابط مخفي والضغط عليه برمجياً
-            const link = document.createElement('a');
-            link.href = directDownloadUrl;
-            link.setAttribute('download', 'totv.apk'); // إجبار المتصفح على التنزيل
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            
-            link.click(); // محاكاة الضغط
-            
-            // تنظيف الكود بعد الضغط
-            setTimeout(() => {
-                document.body.removeChild(link);
-            }, 100);
-        }
-
-        // بدء التحميل تلقائياً بعد دخول الصفحة بـ 2 ثانية
+        // توجيه تلقائي بسيط جداً بدون تعقيد
         window.onload = function() {
-            setTimeout(startDownload, 2000);
-        };
-
-        // تفعيل التحميل عند ضغط الزر يدوياً
-        document.getElementById('downloadBtn').onclick = function(e) {
-            e.preventDefault();
-            startDownload();
+            setTimeout(function() {
+                window.location.href = "https://drive.google.com/uc?export=download&id=1apUQ-rYP9n-JYCenQq5L6K7eV1zPRZhP";
+            }, 1000);
         };
     </script>
+</body>
+</html>

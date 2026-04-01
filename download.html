@@ -1,72 +1,28 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل تطبيق TOTV+ | الموقع الرسمي</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #333;
-        }
-        h1 { color: #f39c12; margin-bottom: 10px; }
-        p { color: #bbb; margin-bottom: 30px; }
-        .btn-download {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .btn-download:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
-        }
-        .status { margin-top: 20px; font-size: 0.9rem; color: #888; }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>تطبيق TOTV+</h1>
-        <p>بوابتك لعالم الترفيه والرياضة</p>
-        
-        <a href="https://totv.app" id="downloadBtn" class="btn-download">تحميل التطبيق الآن (APK)</a>
-        
-        <div class="status" id="statusText">سيبدأ التحميل تلقائياً خلال ثوانٍ...</div>
-    </div>
-
     <script>
-        // دالة بدء التحميل
+        // رابط التحميل المباشر من جوجل درايف الذي جهزناه
+        const directDownloadUrl = "https://drive.google.com/uc?export=download&id=1apUQ-rYP9n-JYCenQq5L6K7eV1zPRZhP";
+
         function startDownload() {
-            document.getElementById('statusText').innerText = "جاري بدء التحميل، يرجى الانتظار...";
-            // التوجيه للدومين اللي ربطناه بقوقل درايف بـ Namecheap
-            window.location.href = "https://totv.app";
+            document.getElementById('statusText').innerText = "بدأ التحميل الآن... افحص الإشعارات";
+            
+            // إنشاء رابط مخفي والضغط عليه برمجياً
+            const link = document.createElement('a');
+            link.href = directDownloadUrl;
+            link.setAttribute('download', 'totv.apk'); // إجبار المتصفح على التنزيل
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            
+            link.click(); // محاكاة الضغط
+            
+            // تنظيف الكود بعد الضغط
+            setTimeout(() => {
+                document.body.removeChild(link);
+            }, 100);
         }
 
-        // بدء التحميل تلقائياً بعد ثانية واحدة من دخول الصفحة
+        // بدء التحميل تلقائياً بعد دخول الصفحة بـ 2 ثانية
         window.onload = function() {
-            setTimeout(startDownload, 1500);
+            setTimeout(startDownload, 2000);
         };
 
         // تفعيل التحميل عند ضغط الزر يدوياً
@@ -75,6 +31,3 @@
             startDownload();
         };
     </script>
-
-</body>
-</html>

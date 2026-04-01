@@ -586,6 +586,86 @@
             color: var(--text-dim);
         }
 
+        /* ===== SPORTS SECTION STYLES ===== */
+        .sports-hero-btn {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .sports-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .channel-card {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            padding: 20px 15px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255,215,0,0.3);
+            border-color: var(--gold);
+        }
+        
+        .channel-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+        }
+        
+        .channel-logo i {
+            font-size: 2.5rem;
+            color: var(--black);
+        }
+        
+        .channel-logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .channel-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .watch-live-btn {
+            background: rgba(255,215,0,0.2);
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .channel-card:hover .watch-live-btn {
+            background: var(--gold);
+            color: var(--black);
+        }
+
         /* ===== PRICING GRID ===== */
         .pricing-grid {
             display: grid;
@@ -833,6 +913,9 @@
             .premium-banner .premium-text { font-size: 1rem; }
             .popup-card { padding: 30px 20px; }
             .popup-title { font-size: 1.5rem; }
+            .sports-channels-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+            .channel-logo { width: 60px; height: 60px; }
+            .channel-logo i { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -896,7 +979,7 @@
         <div class="hero-content">
             <img src="logo44.png" alt="تحميل تطبيق توتيفي TOTV" class="hero-logo">
             <h1 class="hero-title">عالم السينما بلا حدود</h1>
-            <p class="hero-subtitle">تحميل تطبيق توتيفي TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD على جميع أجهزتك</p>
+            <p class="hero-subtitle">تحميل تطبيق توتيفي TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD على جميع أجهزتك، كما يمكنك مشاهدة مباريات كرة القدم مباشرة</p>
             
             <div class="premium-banner" onclick="goToPricing()">
                 <span class="premium-text">اصبح عضو Premium</span>
@@ -950,18 +1033,117 @@
     <!-- Sports Section (كرة القدم) -->
     <div id="sports-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-futbol"></i> كرة القدم</h2>
-        <p class="section-desc">لمشاهدة جميع المباريات بث مباشر</p>
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn-primary" onclick="startDownload()" style="padding: 20px 50px; font-size: 1.3rem;">
+        <p class="section-desc">مشاهدة جميع المباريات بث مباشر على أفضل القنوات الرياضية</p>
+        
+        <!-- زر مشاهدة جميع المباريات -->
+        <div class="sports-hero-btn">
+            <button class="btn-primary" onclick="startDownload()" style="padding: 18px 50px; font-size: 1.2rem;">
                 <i class="fas fa-tv"></i> لمشاهدة جميع المباريات بث مباشر
             </button>
         </div>
+        
+        <!-- قنوات كرة القدم مع صور -->
+        <div class="sports-channels-grid">
+            <!-- beIN SPORTS -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">beIN SPORTS</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- SSC SPORTS -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">SSC SPORTS</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- BN Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">BNT Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- Alkass Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Alkass Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- Dubai Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Dubai Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- Abu Dhabi Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Abu Dhabi Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- Sky Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Sky Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- BT Sport -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">BT Sport</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- ESPN -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">ESPN</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+            
+            <!-- Fox Sports -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-logo">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Fox Sports</div>
+                <div class="watch-live-btn"><i class="fas fa-play"></i> مشاهدة مباشر</div>
+            </div>
+        </div>
+        
+        <p style="text-align: center; color: var(--text-dim); margin-top: 40px; font-size: 0.9rem;">
+            <i class="fas fa-info-circle"></i> اضغط على أي قناة لمشاهدة البث المباشر عبر تطبيق توتيفي
+        </p>
     </div>
 
     <!-- Download Section -->
     <div id="download-section" class="content-section">
         <h2 class="section-title"><i class="fas fa-download"></i> تحميل تطبيق توتيفي TOTV</h2>
-        <p class="section-desc">حمّل تطبيق توتيفي الآن واستمتع بمشاهدة أفلامك المفضلة</p>
+        <p class="section-desc">حمّل تطبيق توتيفي الآن واستمتع بمشاهدة أفلامك المفضلة ومباريات كرة القدم مباشرة</p>
         <div style="text-align: center;">
             <div class="download-buttons">
                 <button class="download-btn" onclick="startDownload()">
@@ -1003,7 +1185,7 @@
     <!-- Footer -->
     <footer>
         <img src="logo44.png" alt="تحميل تطبيق توتيفي TOTV" class="footer-logo">
-        <p class="footer-text">© 2025 توتيفي TOTV Premium - تجربة سينمائية استثنائية</p>
+        <p class="footer-text">© 2025 توتيفي TOTV Premium - تجربة سينمائية استثنائية | مشاهدة مباريات كرة القدم مباشر</p>
         <p class="footer-text" style="font-size: 0.8rem; margin-top: 5px;">totv.app | تحميل تطبيق توتيفي</p>
     </footer>
 
@@ -1177,9 +1359,9 @@
         // ===== PRICING =====
         function displayPricing() {
             const pricing = [
-                { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K Ultra HD', 'دعم فني 24/7'] },
-                { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم'] },
-                { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري'] }
+                { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'مشاهدة مباريات كرة القدم', 'جودة 4K Ultra HD', 'دعم فني 24/7'] },
+                { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم', 'قنوات رياضية إضافية'] },
+                { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري', 'جميع قنوات البث المباشر'] }
             ];
             
             const grid = document.getElementById('pricing-grid');

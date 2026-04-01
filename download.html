@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جاري تحميل TOTV+</title>
+    <title>جاري تحميل توتيفي TOTV</title>
     <style>
         * {
             margin: 0;
@@ -61,7 +61,6 @@
             margin-bottom: 20px;
         }
         
-        /* زر التحميل الرئيسي - بدون رابط طويل */
         .download-main-btn {
             background: linear-gradient(135deg, #B8860B, #FFD700);
             color: #000;
@@ -82,24 +81,6 @@
         .download-main-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(255,215,0,0.6);
-        }
-        
-        /* رابط احتياطي مخفي */
-        .fallback-link {
-            color: #FFD700;
-            text-decoration: none;
-            border: 1px solid rgba(255,215,0,0.3);
-            padding: 8px 20px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-        
-        .fallback-link:hover {
-            background: rgba(255,215,0,0.2);
-            border-color: #FFD700;
         }
         
         .back-home {
@@ -148,38 +129,32 @@
             50% { width: 70%; }
             100% { width: 100%; }
         }
-        
-        .hidden-link {
-            display: none;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="TOTV+" class="logo" onerror="this.src='https://via.placeholder.com/80x80?text=TOTV'">
-        <h2>📱 TOTV+ Premium</h2>
+        <img src="logo44.png" alt="توتيفي TOTV" class="logo" onerror="this.src='https://via.placeholder.com/80x80?text=TOTV'">
+        <h2>📱 توتيفي TOTV Premium</h2>
         <p>جاري تجهيز ملف التحميل...</p>
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
         
-        <!-- زر التحميل الرئيسي - بدون رابط طويل -->
         <button class="download-main-btn" id="downloadBtn">
-            <i class="fab fa-android"></i> تحميل التطبيق الآن
+            تحميل تطبيق توتيفي الآن
         </button>
         
         <br>
         <a href="index.html" class="back-home">
-            <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+            العودة للصفحة الرئيسية
         </a>
         <p class="note">📱 سيبدأ التحميل تلقائياً خلال ثواني</p>
     </div>
 
     <script>
-        // رابط التحميل الحقيقي (مخفي عن المستخدم)
-        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        // الرابط الجديد الذي سيعمل من خلال التوجيه (Masked) في Namecheap
+        const downloadUrl = 'https://totv.app/totv.apk';
         
-        // دالة بدء التحميل
         function startDownload() {
             const link = document.createElement('a');
             link.href = downloadUrl;
@@ -189,14 +164,12 @@
             document.body.removeChild(link);
         }
         
-        // التحميل التلقائي عند فتح الصفحة
         window.onload = function() {
             setTimeout(function() {
                 startDownload();
             }, 1500);
         }
         
-        // عند الضغط على الزر
         document.getElementById('downloadBtn').onclick = function() {
             startDownload();
         }

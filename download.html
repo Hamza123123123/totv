@@ -61,38 +61,68 @@
             margin-bottom: 20px;
         }
         
-        a {
+        /* زر التحميل الرئيسي - بدون رابط طويل */
+        .download-main-btn {
+            background: linear-gradient(135deg, #B8860B, #FFD700);
+            color: #000;
+            border: none;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+        }
+        
+        .download-main-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,215,0,0.6);
+        }
+        
+        /* رابط احتياطي مخفي */
+        .fallback-link {
             color: #FFD700;
             text-decoration: none;
-            border: 2px solid #FFD700;
-            padding: 12px 30px;
-            border-radius: 50px;
+            border: 1px solid rgba(255,215,0,0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
             display: inline-block;
-            margin-top: 20px;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-        
-        a:hover {
-            background: #FFD700;
-            color: #000;
-            transform: translateY(-3px);
-        }
-        
-        .note {
-            color: #666;
+            margin-top: 15px;
             font-size: 0.8rem;
-            margin-top: 30px;
+            transition: all 0.3s;
+        }
+        
+        .fallback-link:hover {
+            background: rgba(255,215,0,0.2);
+            border-color: #FFD700;
         }
         
         .back-home {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,215,0,0.3);
-            margin-top: 15px;
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            color: #FFD700;
+            text-decoration: none;
+            transition: all 0.3s;
         }
         
         .back-home:hover {
             background: #FFD700;
+            color: #000;
+        }
+        
+        .note {
+            color: #666;
+            font-size: 0.75rem;
+            margin-top: 25px;
         }
         
         .progress-bar {
@@ -118,6 +148,10 @@
             50% { width: 70%; }
             100% { width: 100%; }
         }
+        
+        .hidden-link {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -128,25 +162,43 @@
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
-        <p>سيبدأ التحميل خلال ثواني</p>
-        <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk">اضغط هنا إذا لم يبدأ التحميل</a>
+        
+        <!-- زر التحميل الرئيسي - بدون رابط طويل -->
+        <button class="download-main-btn" id="downloadBtn">
+            <i class="fab fa-android"></i> تحميل التطبيق الآن
+        </button>
+        
         <br>
-        <a href="index.html" class="back-home"><i class="fas fa-home"></i> العودة للصفحة الرئيسية</a>
-        <p class="note">📱 يمكنك العودة للصفحة الرئيسية بعد التحميل</p>
+        <a href="index.html" class="back-home">
+            <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+        </a>
+        <p class="note">📱 سيبدأ التحميل تلقائياً خلال ثواني</p>
     </div>
 
     <script>
+        // رابط التحميل الحقيقي (مخفي عن المستخدم)
         const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
         
+        // دالة بدء التحميل
+        function startDownload() {
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'totv.apk';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // التحميل التلقائي عند فتح الصفحة
         window.onload = function() {
             setTimeout(function() {
-                const link = document.createElement('a');
-                link.href = downloadUrl;
-                link.download = 'totv.apk';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, 1000);
+                startDownload();
+            }, 1500);
+        }
+        
+        // عند الضغط على الزر
+        document.getElementById('downloadBtn').onclick = function() {
+            startDownload();
         }
     </script>
 </body>

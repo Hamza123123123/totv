@@ -212,20 +212,17 @@
             box-shadow: 0 0 35px rgba(255,215,0,0.6);
         }
 
-        .premium-banner .flipped-plus {
-            display: inline-block;
-            transform: scaleX(-1);
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--gold);
-        }
-
         .premium-banner .premium-text {
             font-size: 1.3rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--gold), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .premium-banner i {
+            color: var(--gold);
+            font-size: 1.2rem;
         }
 
         /* Category Slider */
@@ -308,6 +305,62 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        /* Channel Card - للقنوات الرياضية بدون صورة */
+        .channel-card {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 130px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            padding: 15px 12px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.5));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .channel-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,0,0,0.6));
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.2);
+        }
+
+        .channel-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--black);
+        }
+
+        .channel-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .watch-btn {
+            background: rgba(255,215,0,0.2);
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--gold);
+            transition: all 0.3s;
+        }
+
+        .channel-card:hover .watch-btn {
+            background: var(--gold);
+            color: var(--black);
         }
 
         /* Stats */
@@ -749,9 +802,10 @@
             .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
             .movie-poster { height: 200px; }
             .premium-banner .premium-text { font-size: 1rem; }
-            .premium-banner .flipped-plus { font-size: 1.4rem; }
             .slider-card { min-width: 110px; }
             .slider-image { width: 90px; height: 90px; }
+            .channel-card { min-width: 110px; }
+            .channel-icon { width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -797,7 +851,6 @@
             
             <!-- Premium Banner -->
             <div class="premium-banner" onclick="goToPricing()">
-                <span class="flipped-plus">+</span>
                 <span class="premium-text">اصبح عضو Premium</span>
                 <i class="fas fa-crown"></i>
             </div>
@@ -835,62 +888,98 @@
     <!-- Category Slider -->
     <div class="category-slider">
         <div class="slider-container">
-            <!-- مباريات كرة القدم -->
-            <div class="slider-card" onclick="showSection('movies')">
-                <img src="https://media.api-sports.io/football/leagues/207.png" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=⚽'">
-                <div class="slider-title">الدوري الإنجليزي</div>
-                <div class="slider-category"><i class="fas fa-futbol"></i> مباراة مباشرة</div>
+            <!-- قنوات كرة القدم - بدون صور، فقط أسماء القنوات -->
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">beIN SPORTS</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
-                <img src="https://media.api-sports.io/football/leagues/140.png" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=⚽'">
-                <div class="slider-title">دوري أبطال أوروبا</div>
-                <div class="slider-category"><i class="fas fa-trophy"></i> مباراة مباشرة</div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">SSC SPORTS</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
-                <img src="https://media.api-sports.io/football/players/27103.png" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=👤'">
-                <div class="slider-title">ميسي vs رونالدو</div>
-                <div class="slider-category"><i class="fas fa-star"></i> قمة الكرة</div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">BNT Sports</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
-                <img src="https://media.api-sports.io/football/leagues/61.png" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=⚽'">
-                <div class="slider-title">كأس العالم</div>
-                <div class="slider-category"><i class="fas fa-globe"></i> مباريات حصرية</div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Alkass Sports</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
+            </div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Dubai Sports</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
+            </div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Abu Dhabi Sports</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
+            </div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">Sky Sports</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
+            </div>
+            <div class="channel-card" onclick="startDownload()">
+                <div class="channel-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="channel-name">BT Sport</div>
+                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
             </div>
             
             <!-- أفلام -->
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/8cdWjvZQUxUjzBP3aDtPKwCwePp.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🎬'">
                 <div class="slider-title">أفلام أكشن</div>
                 <div class="slider-category"><i class="fas fa-fist-raised"></i> الأحدث</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=😆'">
                 <div class="slider-title">أفلام كوميدي</div>
                 <div class="slider-category"><i class="fas fa-laugh"></i> اضحك معنا</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=😱'">
                 <div class="slider-title">أفلام رعب</div>
                 <div class="slider-category"><i class="fas fa-ghost"></i> تشويق وإثارة</div>
             </div>
             
             <!-- مسلسلات -->
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=📺'">
                 <div class="slider-title">مسلسلات تركية</div>
                 <div class="slider-category"><i class="fas fa-turkish-lira"></i> الأكثر مشاهدة</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/6kbAMLteGO8yyewYau6bJ683sw7.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🇺🇸'">
                 <div class="slider-title">مسلسلات أمريكية</div>
                 <div class="slider-category"><i class="fas fa-tv"></i> حصرية</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/7ZP8HtgOIDaBs12krXgUIygqEsy.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🇰🇷'">
                 <div class="slider-title">مسلسلات كورية</div>
                 <div class="slider-category"><i class="fas fa-heart"></i> دراما رومانسية</div>
             </div>
-            <div class="slider-card" onclick="showSection('movies')">
+            <div class="slider-card" onclick="startDownload()">
                 <img src="https://image.tmdb.org/t/p/w500/khV4f7Jz106hS9dW2Y5VqJY8Yk8.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🎭'">
                 <div class="slider-title">أنمي</div>
                 <div class="slider-category"><i class="fas fa-dragon"></i> أقوى السلاسل</div>
@@ -990,7 +1079,6 @@
             showSection('pricing');
         }
 
-        // دالة التحميل - تنتقل لصفحة download.html
         function startDownload() {
             window.location.href = 'download.html';
         }

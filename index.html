@@ -3,7 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTV+ | عالم السينما بلا حدود</title>
+    <title>تحميل تطبيق TOTV | توتيفي - عالم السينما بلا حدود</title>
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo44.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo44.png">
+    <link rel="shortcut icon" href="logo44.png">
+    <link rel="apple-touch-icon" href="logo44.png">
+    
+    <!-- ===== SEO META TAGS ===== -->
+    <meta name="description" content="تحميل تطبيق توتيفي TOTV الرسمي - منصة مشاهدة الأفلام والمسلسلات العالمية بجودة 4K Ultra HD. أكثر من 10,000 فيلم ومسلسل. حمل تطبيق توتيفي الآن مجاناً.">
+    <meta name="keywords" content="تحميل تطبيق totv, تحميل totv, totv app, تطبيق totv, تنزيل totv, totv تحميل, totv plus, TOTV, توتيفي, تحميل توتيفي, تطبيق توتيفي, توتيفي بلس, تحميل برنامج totv, totv tv, مشاهدة أفلام, أفلام 4K, مسلسلات عالمية, تحميل تطبيق totv للاندرويد, توتيفي apk">
+    <meta name="author" content="TOTV">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    
+    <!-- ===== OPEN GRAPH META TAGS ===== -->
+    <meta property="og:title" content="تحميل تطبيق توتيفي TOTV | عالم السينما بلا حدود">
+    <meta property="og:description" content="تحميل تطبيق توتيفي TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD. أكثر من 10,000 فيلم ومسلسل.">
+    <meta property="og:image" content="https://totv.app/logo44.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://totv.app">
+    <meta property="og:site_name" content="توتيفي TOTV">
+    
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="تحميل تطبيق توتيفي TOTV">
+    <meta name="twitter:description" content="تحميل تطبيق توتيفي TOTV - منصة مشاهدة الأفلام والمسلسلات بجودة 4K Ultra HD">
+    <meta name="twitter:image" content="https://totv.app/logo44.png">
+    
+    <!-- ===== CANONICAL URL ===== -->
+    <link rel="canonical" href="https://totv.app">
+    
+    <!-- ===== STRUCTURED DATA (JSON-LD) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "توتيفي TOTV",
+        "url": "https://totv.app",
+        "description": "تحميل تطبيق توتيفي TOTV لمشاهدة الأفلام والمسلسلات العالمية بجودة 4K Ultra HD",
+        "alternateName": "توتيفي"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "توتيفي TOTV",
+        "applicationCategory": "Entertainment",
+        "operatingSystem": "Android",
+        "description": "تطبيق توتيفي TOTV لمشاهدة الأفلام والمسلسلات بجودة 4K Ultra HD"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "توتيفي TOTV",
+        "url": "https://totv.app",
+        "logo": "https://totv.app/logo44.png",
+        "sameAs": [
+            "https://wa.me/9647714415816",
+            "https://t.me/PaymentTOTVBOT",
+            "mailto:totv.Support@gmail.com"
+        ]
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -31,7 +99,113 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* ===== POPUP OVERLAY ===== */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .popup-card {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 30px;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid rgba(255,215,0,0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .popup-logo {
+            width: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.6));
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .popup-desc {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .popup-btn {
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .popup-btn-download {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+        }
+
+        .popup-btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37,211,102,0.6);
+        }
+
+        .popup-btn-continue {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--gold);
+            color: var(--text);
+        }
+
+        .popup-btn-continue:hover {
+            background: rgba(255,215,0,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* ===== NAVIGATION ===== */
         .navbar {
             position: fixed;
             top: 0;
@@ -60,6 +234,7 @@
             width: 50px;
             height: 50px;
             filter: drop-shadow(0 0 20px rgba(255,215,0,0.8));
+            object-fit: contain;
         }
 
         .brand {
@@ -70,7 +245,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Menu Button */
         .menu-btn {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -92,7 +266,7 @@
             color: var(--black);
         }
 
-        /* Sidebar Menu */
+        /* ===== SIDEBAR MENU ===== */
         .sidebar {
             position: fixed;
             top: 0;
@@ -148,7 +322,7 @@
             padding-right: 15px;
         }
 
-        /* Hero Section */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -168,6 +342,7 @@
             margin-bottom: 30px;
             filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
             animation: logoFloat 3s ease-in-out infinite;
+            object-fit: contain;
         }
 
         @keyframes logoFloat {
@@ -190,7 +365,7 @@
             margin-bottom: 30px;
         }
 
-        /* Premium Banner */
+        /* ===== PREMIUM BANNER ===== */
         .premium-banner {
             background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(184,134,11,0.25));
             border: 2px solid var(--gold);
@@ -212,14 +387,6 @@
             box-shadow: 0 0 35px rgba(255,215,0,0.6);
         }
 
-        .premium-banner .flipped-plus {
-            display: inline-block;
-            transform: scaleX(-1);
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--gold);
-        }
-
         .premium-banner .premium-text {
             font-size: 1.3rem;
             font-weight: 800;
@@ -228,145 +395,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Category Slider */
-        .category-slider {
-            width: 100%;
-            padding: 30px 5%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.95));
-            border-bottom: 1px solid rgba(255,215,0,0.2);
-            position: relative;
-            overflow-x: auto;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .category-slider::-webkit-scrollbar {
-            height: 5px;
-        }
-
-        .category-slider::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-        }
-
-        .category-slider::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 10px;
-        }
-
-        .slider-container {
-            display: inline-flex;
-            gap: 25px;
-            padding: 10px 0;
-        }
-
-        .slider-card {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            min-width: 140px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 15px;
-            padding: 12px;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(5px);
-        }
-
-        .slider-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,215,0,0.1);
-            box-shadow: 0 10px 25px rgba(255,215,0,0.2);
-        }
-
-        .slider-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 20px;
-            object-fit: cover;
-            border: 2px solid rgba(255,215,0,0.5);
-            transition: all 0.3s;
-        }
-
-        .slider-card:hover .slider-image {
-            border-color: var(--gold);
-            transform: scale(1.05);
-        }
-
-        .slider-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text);
-            text-align: center;
-        }
-
-        .slider-category {
-            font-size: 0.7rem;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Channel Card - للقنوات الرياضية */
-        .channel-card {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            min-width: 130px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 15px;
-            padding: 15px 12px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.5));
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,215,0,0.3);
-        }
-
-        .channel-card:hover {
-            transform: translateY(-8px);
-            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,0,0,0.6));
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(255,215,0,0.2);
-        }
-
-        .channel-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--black);
-        }
-
-        .channel-name {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .watch-btn {
-            background: rgba(255,215,0,0.2);
-            border: 1px solid var(--gold);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: var(--gold);
-            transition: all 0.3s;
-        }
-
-        .channel-card:hover .watch-btn {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* Stats */
+        /* ===== STATS ===== */
         .stats-grid {
             display: flex;
             justify-content: center;
@@ -394,7 +423,7 @@
             color: var(--text-dim);
         }
 
-        /* Buttons */
+        /* ===== BUTTONS ===== */
         .hero-actions {
             display: flex;
             gap: 20px;
@@ -439,7 +468,7 @@
             transform: translateY(-3px);
         }
 
-        /* Content Sections */
+        /* ===== CONTENT SECTIONS ===== */
         .content-section {
             display: none;
             padding: 80px 5%;
@@ -472,7 +501,7 @@
             font-size: 1rem;
         }
 
-        /* Movies Grid */
+        /* ===== MOVIES GRID ===== */
         .movies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -518,7 +547,7 @@
             font-size: 0.8rem;
         }
 
-        /* Cast Grid */
+        /* ===== CAST GRID ===== */
         .cast-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -557,7 +586,7 @@
             color: var(--text-dim);
         }
 
-        /* Pricing Grid */
+        /* ===== PRICING GRID ===== */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -652,11 +681,7 @@
             color: white;
         }
 
-        .telegram-btn:hover {
-            background: linear-gradient(135deg, #0099e6, #0077b3);
-        }
-
-        /* Download Section */
+        /* ===== DOWNLOAD SECTION ===== */
         .download-buttons {
             display: flex;
             justify-content: center;
@@ -686,7 +711,7 @@
             filter: brightness(1.1);
         }
 
-        /* Contact Section */
+        /* ===== CONTACT SECTION ===== */
         .contact-buttons {
             display: flex;
             justify-content: center;
@@ -726,7 +751,7 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
             background: var(--dark);
             padding: 40px 5%;
@@ -737,14 +762,10 @@
         .footer-logo {
             width: 50px;
             margin-bottom: 15px;
+            object-fit: contain;
         }
 
-        .footer-text {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* Floating WhatsApp */
+        /* ===== FLOATING WHATSAPP ===== */
         .floating-contact {
             position: fixed;
             bottom: 25px;
@@ -772,7 +793,7 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Loading */
+        /* ===== LOADING ===== */
         .loading {
             position: fixed;
             top: 0;
@@ -810,15 +831,33 @@
             .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
             .movie-poster { height: 200px; }
             .premium-banner .premium-text { font-size: 1rem; }
-            .premium-banner .flipped-plus { font-size: 1.4rem; }
-            .slider-card { min-width: 110px; }
-            .slider-image { width: 90px; height: 90px; }
-            .channel-card { min-width: 110px; }
-            .channel-icon { width: 45px; height: 45px; font-size: 1.2rem; }
+            .popup-card { padding: 30px 20px; }
+            .popup-title { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== POPUP ===== -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-card">
+            <img src="logo44.png" alt="توتيفي TOTV" class="popup-logo">
+            <h2 class="popup-title">✨ تجربة أفضل مع التطبيق ✨</h2>
+            <p class="popup-desc">
+                حمّل تطبيق توتيفي TOTV الآن<br>
+                واستمتع بمشاهدة أفلامك المفضلة بجودة 4K Ultra HD<br>
+                في أي وقت وأي مكان
+            </p>
+            <div class="popup-buttons">
+                <button class="popup-btn popup-btn-download" onclick="startDownload()">
+                    <i class="fab fa-android"></i> تحميل التطبيق
+                </button>
+                <button class="popup-btn popup-btn-continue" onclick="closePopup()">
+                    <i class="fas fa-globe"></i> استمرار بالتصفح
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Loading -->
     <div class="loading" id="loading">
@@ -828,8 +867,8 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="logo-area">
-            <img src="logo.png" alt="TOTV+" class="logo">
-            <div class="brand">TOTV+</div>
+            <img src="logo44.png" alt="تحميل تطبيق توتيفي TOTV" class="logo">
+            <div class="brand">توتيفي TOTV</div>
         </div>
         <button class="menu-btn" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
@@ -845,7 +884,8 @@
             <a class="sidebar-link" onclick="showSection('home'); toggleSidebar();">الرئيسية</a>
             <a class="sidebar-link" onclick="showSection('movies'); toggleSidebar();">الأفلام</a>
             <a class="sidebar-link" onclick="showSection('cast'); toggleSidebar();">النجوم</a>
-            <a class="sidebar-link" onclick="startDownload(); toggleSidebar();">تحميل التطبيق</a>
+            <a class="sidebar-link" onclick="showSection('sports'); toggleSidebar();">كرة القدم</a>
+            <a class="sidebar-link" onclick="showSection('download'); toggleSidebar();">تحميل التطبيق</a>
             <a class="sidebar-link" onclick="showSection('pricing'); toggleSidebar();">الأسعار</a>
             <a class="sidebar-link" onclick="showSection('contact'); toggleSidebar();">تواصل</a>
         </div>
@@ -854,13 +894,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home-section">
         <div class="hero-content">
-            <img src="logo.png" alt="TOTV+" class="hero-logo">
+            <img src="logo44.png" alt="تحميل تطبيق توتيفي TOTV" class="hero-logo">
             <h1 class="hero-title">عالم السينما بلا حدود</h1>
-            <p class="hero-subtitle">استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD على جميع أجهزتك</p>
+            <p class="hero-subtitle">تحميل تطبيق توتيفي TOTV الرسمي - استمتع بأفضل الأفلام والمسلسلات العالمية بجودة 4K Ultra HD على جميع أجهزتك</p>
             
-            <!-- Premium Banner -->
             <div class="premium-banner" onclick="goToPricing()">
-                <span class="flipped-plus">+</span>
                 <span class="premium-text">اصبح عضو Premium</span>
                 <i class="fas fa-crown"></i>
             </div>
@@ -886,7 +924,7 @@
 
             <div class="hero-actions">
                 <button class="btn-primary" onclick="startDownload()">
-                    <i class="fab fa-android"></i> تحميل التطبيق
+                    <i class="fab fa-android"></i> تحميل تطبيق توتيفي
                 </button>
                 <button class="btn-secondary" onclick="showSection('movies')">
                     <i class="fas fa-film"></i> استكشف المحتوى
@@ -894,92 +932,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Category Slider - جميع الأقسام (أفلام، مسلسلات، كرة قدم) -->
-    <div class="category-slider">
-        <div class="slider-container">
-            <!-- ========== قسم كرة القدم - القنوات الرياضية ========== -->
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">beIN SPORTS</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">SSC SPORTS</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">BNT Sports</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">Alkass Sports</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">Dubai Sports</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">Abu Dhabi Sports</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">Sky Sports</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            <div class="channel-card" onclick="startDownload()">
-                <div class="channel-icon"><i class="fas fa-futbol"></i></div>
-                <div class="channel-name">BT Sport</div>
-                <div class="watch-btn"><i class="fas fa-play"></i> مشاهدة</div>
-            </div>
-            
-            <!-- ========== قسم الأفلام ========== -->
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/8cdWjvZQUxUjzBP3aDtPKwCwePp.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🎬'">
-                <div class="slider-title">أفلام أكشن</div>
-                <div class="slider-category"><i class="fas fa-fist-raised"></i> الأحدث</div>
-            </div>
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=😆'">
-                <div class="slider-title">أفلام كوميدي</div>
-                <div class="slider-category"><i class="fas fa-laugh"></i> اضحك معنا</div>
-            </div>
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=😱'">
-                <div class="slider-title">أفلام رعب</div>
-                <div class="slider-category"><i class="fas fa-ghost"></i> تشويق وإثارة</div>
-            </div>
-            
-            <!-- ========== قسم المسلسلات ========== -->
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=📺'">
-                <div class="slider-title">مسلسلات تركية</div>
-                <div class="slider-category"><i class="fas fa-turkish-lira"></i> الأكثر مشاهدة</div>
-            </div>
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/6kbAMLteGO8yyewYau6bJ683sw7.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🇺🇸'">
-                <div class="slider-title">مسلسلات أمريكية</div>
-                <div class="slider-category"><i class="fas fa-tv"></i> حصرية</div>
-            </div>
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/7ZP8HtgOIDaBs12krXgUIygqEsy.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🇰🇷'">
-                <div class="slider-title">مسلسلات كورية</div>
-                <div class="slider-category"><i class="fas fa-heart"></i> دراما رومانسية</div>
-            </div>
-            <div class="slider-card" onclick="startDownload()">
-                <img src="https://image.tmdb.org/t/p/w500/khV4f7Jz106hS9dW2Y5VqJY8Yk8.jpg" class="slider-image" onerror="this.src='https://via.placeholder.com/120x120?text=🎭'">
-                <div class="slider-title">أنمي</div>
-                <div class="slider-category"><i class="fas fa-dragon"></i> أقوى السلاسل</div>
-            </div>
-        </div>
-    </div>
 
     <!-- Movies Section -->
     <div id="movies-section" class="content-section">
@@ -995,18 +947,29 @@
         <div class="cast-grid" id="cast-grid"></div>
     </div>
 
+    <!-- Sports Section (كرة القدم) -->
+    <div id="sports-section" class="content-section">
+        <h2 class="section-title"><i class="fas fa-futbol"></i> كرة القدم</h2>
+        <p class="section-desc">لمشاهدة جميع المباريات بث مباشر</p>
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="btn-primary" onclick="startDownload()" style="padding: 20px 50px; font-size: 1.3rem;">
+                <i class="fas fa-tv"></i> لمشاهدة جميع المباريات بث مباشر
+            </button>
+        </div>
+    </div>
+
     <!-- Download Section -->
     <div id="download-section" class="content-section">
-        <h2 class="section-title"><i class="fas fa-download"></i> حمل تطبيق TOTV+</h2>
-        <p class="section-desc">حمّل التطبيق الآن واستمتع بمشاهدة أفلامك المفضلة</p>
+        <h2 class="section-title"><i class="fas fa-download"></i> تحميل تطبيق توتيفي TOTV</h2>
+        <p class="section-desc">حمّل تطبيق توتيفي الآن واستمتع بمشاهدة أفلامك المفضلة</p>
         <div style="text-align: center;">
             <div class="download-buttons">
                 <button class="download-btn" onclick="startDownload()">
-                    <i class="fab fa-android"></i> تحميل لأندرويد
+                    <i class="fab fa-android"></i> تحميل تطبيق توتيفي لأندرويد
                 </button>
             </div>
             <p style="color: var(--text-dim); margin-top: 30px; font-size: 0.9rem;">
-                التطبيق متوفر لأجهزة الأندرويد فقط حالياً
+                تطبيق توتيفي متوفر لأجهزة الأندرويد فقط حالياً
             </p>
         </div>
     </div>
@@ -1039,8 +1002,9 @@
 
     <!-- Footer -->
     <footer>
-        <img src="logo.png" alt="TOTV+" class="footer-logo">
-        <p class="footer-text">© 2024 TOTV+ Premium - تجربة سينمائية استثنائية</p>
+        <img src="logo44.png" alt="تحميل تطبيق توتيفي TOTV" class="footer-logo">
+        <p class="footer-text">© 2025 توتيفي TOTV Premium - تجربة سينمائية استثنائية</p>
+        <p class="footer-text" style="font-size: 0.8rem; margin-top: 5px;">totv.app | تحميل تطبيق توتيفي</p>
     </footer>
 
     <!-- Floating WhatsApp -->
@@ -1054,7 +1018,18 @@
         const API_KEY = '5b166a24c91f59178e8ce30f1f3735c0';
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+        
+        // ===== DOWNLOAD FUNCTION - تنتقل لصفحة download.html =====
+        function startDownload() {
+            window.location.href = 'download.html';
+        }
 
+        // ===== POPUP FUNCTIONS =====
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.add('hidden');
+        }
+
+        // ===== SECTION FUNCTIONS =====
         function showSection(section) {
             document.querySelectorAll('.content-section').forEach(el => {
                 el.classList.remove('active');
@@ -1073,15 +1048,11 @@
             showSection('pricing');
         }
 
-        // دالة التحميل - تنتقل لصفحة download.html
-        function startDownload() {
-            window.location.href = 'download.html';
-        }
-
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
         }
 
+        // ===== NAVBAR SCROLL =====
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1091,6 +1062,7 @@
             }
         });
 
+        // ===== MOVIES =====
         async function fetchMovies() {
             try {
                 const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar-SA`);
@@ -1104,10 +1076,12 @@
         function displayMovies(movies) {
             const grid = document.getElementById('movies-grid');
             grid.innerHTML = '';
+            
             movies.forEach(movie => {
                 const card = document.createElement('div');
                 card.className = 'movie-card';
                 card.onclick = () => startDownload();
+                
                 const posterUrl = movie.poster_path ? IMG_URL + movie.poster_path : 'https://via.placeholder.com/300x450?text=TOTV';
                 card.innerHTML = `
                     <img src="${posterUrl}" class="movie-poster">
@@ -1129,8 +1103,10 @@
                 { title: 'جون ويك 4', vote: 8.5, year: '2023' },
                 { title: 'أوبنهايمر', vote: 8.8, year: '2023' }
             ];
+            
             const grid = document.getElementById('movies-grid');
             grid.innerHTML = '';
+            
             for(let i = 0; i < 12; i++) {
                 const movie = moviesList[i % moviesList.length];
                 const card = document.createElement('div');
@@ -1150,6 +1126,7 @@
             }
         }
 
+        // ===== CAST =====
         async function fetchCast() {
             try {
                 const res = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&language=ar-SA`);
@@ -1163,10 +1140,12 @@
         function displayCast(people) {
             const grid = document.getElementById('cast-grid');
             grid.innerHTML = '';
+            
             people.forEach(person => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
                 card.onclick = () => startDownload();
+                
                 const photoUrl = person.profile_path ? IMG_URL + person.profile_path : 'https://via.placeholder.com/180x270?text=' + person.name;
                 card.innerHTML = `
                     <img src="${photoUrl}" class="cast-photo">
@@ -1181,6 +1160,7 @@
             const sampleCast = ['ليوناردو دي كابريو', 'براد بيت', 'جوني ديب', 'روبرت داوني جونيور'];
             const grid = document.getElementById('cast-grid');
             grid.innerHTML = '';
+            
             sampleCast.forEach(name => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
@@ -1194,17 +1174,21 @@
             });
         }
 
+        // ===== PRICING =====
         function displayPricing() {
             const pricing = [
                 { name: 'الباقة الشهرية', price: '5,000', period: 'شهر', popular: false, features: ['جميع الأفلام والمسلسلات', 'جودة 4K Ultra HD', 'دعم فني 24/7'] },
                 { name: 'باقة 3 أشهر', price: '13,000', period: '3 أشهر', popular: true, features: ['جميع المميزات السابقة', 'توفير 2,000 دينار', 'أولوية في الدعم'] },
                 { name: 'الباقة السنوية', price: '45,000', period: 'سنة', popular: false, features: ['أفضل قيمة', 'توفير 50%', 'محتوى حصري'] }
             ];
+            
             const grid = document.getElementById('pricing-grid');
             grid.innerHTML = '';
+            
             pricing.forEach(plan => {
                 const card = document.createElement('div');
                 card.className = `price-card ${plan.popular ? 'popular' : ''}`;
+                
                 card.innerHTML = `
                     ${plan.popular ? '<div class="popular-badge"><i class="fas fa-crown"></i> الأكثر طلباً</div>' : ''}
                     <h3 class="plan-name">${plan.name}</h3>
@@ -1231,20 +1215,23 @@
 
         function payViaWhatsapp(plan, price) {
             const phone = '9647714415816';
-            const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في TOTV+ Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
+            const msg = encodeURIComponent(`مرحباً 👋\nأود الاشتراك في توتيفي TOTV Premium\n\n📦 الباقة: ${plan}\n💰 السعر: ${price}\n\nأرجو تزويدي بتفاصيل الدفع. شكراً!`);
             window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
 
+        // ===== KEYBOARD =====
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 document.getElementById('sidebar').classList.remove('active');
             }
         });
 
+        // ===== INITIALIZE =====
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
-            }, 500);
+                document.getElementById('popupOverlay').classList.remove('hidden');
+            }, 800);
             fetchMovies();
             fetchCast();
             displayPricing();

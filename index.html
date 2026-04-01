@@ -947,11 +947,15 @@
         <div class="cast-grid" id="cast-grid"></div>
     </div>
 
-    <!-- Sports Section (كرة القدم) -->
+    <!-- Sports Section (كرة القدم) - بدون جداول -->
     <div id="sports-section" class="content-section">
-        <h2 class="section-title"><i class="fas fa-futbol"></i> مباريات كرة القدم</h2>
-        <p class="section-desc">تابع أحدث المباريات والقنوات الرياضية المشفرة</p>
-        <div class="movies-grid" id="sports-grid"></div>
+        <h2 class="section-title"><i class="fas fa-futbol"></i> كرة القدم</h2>
+        <p class="section-desc">لمشاهدة جميع المباريات بث مباشر</p>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk" class="btn-primary" target="_self" style="padding: 20px 50px; font-size: 1.3rem;">
+                <i class="fas fa-tv"></i> لمشاهدة جميع المباريات بث مباشر
+            </a>
+        </div>
     </div>
 
     <!-- Download Section -->
@@ -1014,6 +1018,7 @@
         const API_KEY = '5b166a24c91f59178e8ce30f1f3735c0';
         const BASE_URL = 'https://api.themoviedb.org/3';
         const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+        const APK_URL = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
 
         // ===== POPUP FUNCTIONS =====
         function closePopup() {
@@ -1071,7 +1076,7 @@
             movies.forEach(movie => {
                 const card = document.createElement('div');
                 card.className = 'movie-card';
-                card.onclick = () => window.location.href = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+                card.onclick = () => window.location.href = APK_URL;
                 
                 const posterUrl = movie.poster_path ? IMG_URL + movie.poster_path : 'https://via.placeholder.com/300x450?text=TOTV';
                 card.innerHTML = `
@@ -1102,7 +1107,7 @@
                 const movie = moviesList[i % moviesList.length];
                 const card = document.createElement('div');
                 card.className = 'movie-card';
-                card.onclick = () => window.location.href = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+                card.onclick = () => window.location.href = APK_URL;
                 card.innerHTML = `
                     <img src="https://via.placeholder.com/300x450?text=TOTV" class="movie-poster">
                     <div class="movie-info">
@@ -1135,7 +1140,7 @@
             people.forEach(person => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
-                card.onclick = () => window.location.href = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+                card.onclick = () => window.location.href = APK_URL;
                 
                 const photoUrl = person.profile_path ? IMG_URL + person.profile_path : 'https://via.placeholder.com/180x270?text=' + person.name;
                 card.innerHTML = `
@@ -1155,47 +1160,11 @@
             sampleCast.forEach(name => {
                 const card = document.createElement('div');
                 card.className = 'cast-card';
-                card.onclick = () => window.location.href = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+                card.onclick = () => window.location.href = APK_URL;
                 card.innerHTML = `
                     <img src="https://via.placeholder.com/180x270?text=${name}" class="cast-photo">
                     <div class="cast-name">${name}</div>
                     <div class="cast-role">ممثل مشهور</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // ===== SPORTS =====
-        function displaySports() {
-            const sportsList = [
-                { name: 'دوري أبطال أوروبا', channel: 'beIN Sports', time: '10:00 مساءً', date: '2025-04-05' },
-                { name: 'الدوري الإنجليزي', channel: 'beIN Sports 1', time: '7:30 مساءً', date: '2025-04-06' },
-                { name: 'الدوري الإسباني', channel: 'beIN Sports 2', time: '10:00 مساءً', date: '2025-04-07' },
-                { name: 'الدوري الإيطالي', channel: 'beIN Sports 3', time: '9:45 مساءً', date: '2025-04-08' },
-                { name: 'كأس العالم للأندية', channel: 'beIN Sports 4', time: '8:00 مساءً', date: '2025-04-10' },
-                { name: 'الدوري السعودي', channel: 'SSC Sports', time: '9:00 مساءً', date: '2025-04-11' }
-            ];
-            
-            const grid = document.getElementById('sports-grid');
-            grid.innerHTML = '';
-            
-            sportsList.forEach(sport => {
-                const card = document.createElement('div');
-                card.className = 'movie-card';
-                card.onclick = () => window.location.href = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
-                
-                card.innerHTML = `
-                    <img src="https://via.placeholder.com/300x450?text=${sport.name}" class="movie-poster">
-                    <div class="movie-info">
-                        <div class="movie-title">${sport.name}</div>
-                        <div class="movie-meta">
-                            <span><i class="fas fa-tv"></i> ${sport.channel}</span>
-                            <span><i class="fas fa-clock"></i> ${sport.time}</span>
-                        </div>
-                        <div style="color: var(--gold); font-size: 0.8rem; margin-top: 5px;">
-                            <i class="fas fa-calendar"></i> ${sport.date}
-                        </div>
-                    </div>
                 `;
                 grid.appendChild(card);
             });
@@ -1261,7 +1230,6 @@
             }, 800);
             fetchMovies();
             fetchCast();
-            displaySports();
             displayPricing();
         });
     </script>

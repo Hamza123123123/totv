@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
         
-        /* خلفية متحركة */
         body::before {
             content: '';
             position: fixed;
@@ -36,7 +35,6 @@
             left: 0;
         }
         
-        /* كرات خلفية متحركة */
         .background-balls {
             position: fixed;
             width: 100%;
@@ -71,7 +69,6 @@
             z-index: 2;
         }
         
-        /* ===== CARD STYLES ===== */
         .card {
             background: rgba(0,0,0,0.7);
             backdrop-filter: blur(10px);
@@ -87,7 +84,6 @@
             box-shadow: 0 10px 30px rgba(255,215,0,0.1);
         }
         
-        /* ===== لاعب كرة قدم يركض ===== */
         .football-player {
             position: relative;
             width: 100%;
@@ -151,7 +147,6 @@
             to { transform: rotate(360deg); }
         }
         
-        /* ===== LOGO ===== */
         .logo {
             width: 70px;
             margin-bottom: 15px;
@@ -172,7 +167,6 @@
             font-size: 0.9rem;
         }
         
-        /* ===== DOWNLOAD BUTTON ===== */
         .download-main-btn {
             background: linear-gradient(135deg, #B8860B, #FFD700);
             color: #000;
@@ -197,7 +191,6 @@
             box-shadow: 0 8px 30px rgba(255,215,0,0.6);
         }
         
-        /* ===== PROGRESS ===== */
         .progress-bar {
             width: 100%;
             max-width: 400px;
@@ -222,7 +215,6 @@
             100% { width: 100%; }
         }
         
-        /* ===== INSTALLATION STEPS ===== */
         .section-title {
             font-size: 1.5rem;
             font-weight: 800;
@@ -290,7 +282,6 @@
             color: #FFD700;
         }
         
-        /* ===== FAQ SECTION ===== */
         .faq-grid {
             display: flex;
             flex-direction: column;
@@ -341,7 +332,6 @@
             max-height: 200px;
         }
         
-        /* ===== SAFETY NOTE ===== */
         .safety-note {
             background: rgba(255,215,0,0.1);
             border-radius: 15px;
@@ -352,7 +342,6 @@
             color: #FFD700;
         }
         
-        /* ===== BACK HOME ===== */
         .back-home {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,215,0,0.3);
@@ -378,11 +367,6 @@
             text-align: center;
         }
         
-        hr {
-            border-color: rgba(255,215,0,0.2);
-            margin: 20px 0;
-        }
-        
         @media (max-width: 768px) {
             .card { padding: 20px; }
             .section-title { font-size: 1.3rem; }
@@ -393,7 +377,6 @@
 </head>
 <body>
     
-    <!-- كرات خلفية متحركة -->
     <div class="background-balls">
         <div class="bg-ball" style="left: 5%; animation-duration: 12s; font-size: 2.5rem;">⚽</div>
         <div class="bg-ball" style="left: 20%; animation-duration: 9s; font-size: 1.8rem; animation-delay: 2s;">⚽</div>
@@ -405,9 +388,7 @@
     
     <div class="container">
         
-        <!-- بطاقة التحميل الرئيسية -->
         <div class="card" style="text-align: center;">
-            <!-- لاعب كرة قدم يركض -->
             <div class="football-player">
                 <div class="running-player">
                     <div style="display: flex; flex-direction: column; align-items: center;">
@@ -435,7 +416,6 @@
             <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
         </div>
         
-        <!-- بطريقة التثبيت -->
         <div class="card">
             <div class="section-title">
                 <i class="fas fa-download"></i>
@@ -443,13 +423,11 @@
             </div>
             
             <div class="steps-grid">
-                <!-- XAPK / APK -->
                 <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
                     <span style="background: rgba(255,215,0,0.2); padding: 5px 15px; border-radius: 20px; color: #FFD700;">XAPK</span>
                     <span style="background: rgba(255,215,0,0.2); padding: 5px 15px; border-radius: 20px; color: #FFD700;">APK</span>
                 </div>
                 
-                <!-- الخطوة 1 -->
                 <div class="step-item">
                     <div class="step-number">1</div>
                     <div class="step-content">
@@ -458,7 +436,6 @@
                     </div>
                 </div>
                 
-                <!-- الخطوة 2 -->
                 <div class="step-item">
                     <div class="step-number">2</div>
                     <div class="step-content">
@@ -468,18 +445,16 @@
                     </div>
                 </div>
                 
-                <!-- الخطوة 3 -->
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>✅ التثبيت والاستمتاع</h3>
-                        <p>افتح ملف <code>totv.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
+                        <p>افتح ملف <code>totv+.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- الأسئلة الشائعة -->
         <div class="card">
             <div class="section-title">
                 <i class="fas fa-question-circle"></i>
@@ -532,7 +507,6 @@
             </div>
         </div>
         
-        <!-- زر العودة -->
         <div style="text-align: center;">
             <a href="index.html" class="back-home">
                 <i class="fas fa-home"></i> العودة للصفحة الرئيسية
@@ -546,18 +520,21 @@
     </div>
 
     <script>
-        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        // رابط التحميل المباشر (مخفي بدون ذكر المصدر)
+        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv+.apk';
         
         function startDownload() {
+            // إنشاء رابط وهمي للتحميل المباشر بدون فتح صفحة جديدة
             const link = document.createElement('a');
             link.href = downloadUrl;
-            link.download = 'totv.apk';
+            link.download = 'totv+.apk';
+            link.style.display = 'none';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
         
-        // بدء التحميل التلقائي
+        // بدء التحميل التلقائي عند تحميل الصفحة
         window.onload = function() {
             setTimeout(function() {
                 startDownload();
@@ -565,11 +542,11 @@
         }
         
         // زر التحميل اليدوي
-        document.getElementById('downloadBtn').onclick = function() {
+        document.getElementById('downloadBtn').onclick = function(e) {
+            e.preventDefault();
             startDownload();
         }
         
-        // دالة فتح/غلق الأسئلة الشائعة
         function toggleFaq(element) {
             const faqItem = element.closest('.faq-item');
             faqItem.classList.toggle('active');

@@ -367,7 +367,6 @@
             text-align: center;
         }
         
-        /* رسالة التحميل */
         .download-status {
             margin-top: 10px;
             font-size: 0.8rem;
@@ -422,7 +421,7 @@
             </button>
             
             <div class="download-status" id="downloadStatus">
-                <i class="fas fa-download"></i> جاري تحميل totvplus.apk ...
+                <i class="fas fa-download"></i> جاري تحميل الملف ...
             </div>
             
             <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
@@ -461,7 +460,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>✅ التثبيت والاستمتاع</h3>
-                        <p>افتح ملف <code>totvplus.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
+                        <p>افتح ملف <code>totv.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
                     </div>
                 </div>
             </div>
@@ -480,7 +479,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        اضغط على زر "تحميل تطبيق توتيفي الآن" الموجود في أعلى الصفحة، سيبدأ التحميل تلقائياً خلال ثواني. في حال لم يبدأ التحميل، اضغط على الزر مرة أخرى.
+                        اضغط على زر "تحميل تطبيق توتيفي الآن" الموجود في أعلى الصفحة، سيبدأ التحميل تلقائياً خلال ثواني.
                     </div>
                 </div>
                 
@@ -492,28 +491,27 @@
                     <div class="faq-answer">
                         1. بعد تحميل الملف، افتحه من مجلد التنزيلات<br>
                         2. إذا طلب منك تفعيل "مصادر غير معروفة"، اذهب إلى الإعدادات وفعّلها<br>
-                        3. اضغط على "تثبيت" وانتظر حتى الانتهاء<br>
-                        4. افتح التطبيق واستمتع!
+                        3. اضغط على "تثبيت" وانتظر حتى الانتهاء
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-shield-alt"></i> هل ملف APK هذا آمن للتثبيت؟</span>
+                        <span><i class="fas fa-shield-alt"></i> هل الملف آمن؟</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        نعم، ملف التطبيق آمن بنسبة 100% وهو الإصدار الرسمي من تطبيق توتيفي TOTV. تم فحصه بواسطة عدة برامج مكافحة فيروسات ولا يحتوي على أي برامج ضارة.
+                        نعم، الملف آمن بنسبة 100% وهو الإصدار الرسمي من تطبيق توتيفي TOTV.
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-tv"></i> هل يمكن مشاهدة المباريات عبر التطبيق؟</span>
+                        <span><i class="fas fa-tv"></i> هل يمكن مشاهدة المباريات؟</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        نعم! تطبيق توتيفي يتيح لك مشاهدة جميع المباريات بث مباشر عبر أفضل القنوات الرياضية (beIN Sports، SSC، BN Sports، Alkass، وغيرها) بالإضافة إلى الأفلام والمسلسلات.
+                        نعم! تطبيق توتيفي يتيح لك مشاهدة جميع المباريات بث مباشر والأفلام والمسلسلات.
                     </div>
                 </div>
             </div>
@@ -527,50 +525,69 @@
         </div>
         
         <div class="safety-note">
-            <i class="fas fa-shield-alt"></i> الملف آمن 100% من تطبيق توتيفي الرسمي | نسخة أندرويد فقط
+            <i class="fas fa-shield-alt"></i> الملف آمن 100% | نسخة أندرويد فقط
         </div>
     </div>
 
     <script>
-        // الرابط الأصلي للملف (يعمل)
-        const realDownloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
-        // اسم الملف الذي سيظهر للمستخدم
-        const displayFileName = 'totvplus.apk';
+        // الرابط المباشر الصحيح (نسخة totv.apk الموجودة فعلاً)
+        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
         
         function startDownload() {
-            // إظهار رسالة التحميل
             const statusDiv = document.getElementById('downloadStatus');
             statusDiv.style.display = 'block';
             
-            // إنشاء رابط تحميل مخفي
-            const link = document.createElement('a');
-            link.href = realDownloadUrl;
-            link.download = displayFileName;
-            link.style.display = 'none';
-            document.body.appendChild(link);
+            // استخدام XMLHttpRequest لتحميل الملف بدون فتح صفحة GitHub
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', downloadUrl, true);
+            xhr.responseType = 'blob';
             
-            // محاكاة الضغط على الرابط
-            link.click();
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // إنشاء رابط تحميل من البيانات المستلمة
+                    const blob = new Blob([xhr.response], {type: 'application/vnd.android.package-archive'});
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.href = url;
+                    link.download = 'totv.apk';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    
+                    statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> اكتمل التحميل!';
+                    setTimeout(() => {
+                        statusDiv.style.display = 'none';
+                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                    }, 3000);
+                } else {
+                    statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> خطأ في التحميل، حاول مرة أخرى';
+                    setTimeout(() => {
+                        statusDiv.style.display = 'none';
+                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                    }, 3000);
+                }
+            };
             
-            // إخفاء الرابط بعد الاستخدام
-            setTimeout(() => {
-                document.body.removeChild(link);
-            }, 100);
+            xhr.onerror = function() {
+                statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> خطأ في الاتصال، حاول مرة أخرى';
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                    statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                }, 3000);
+            };
             
-            // إخفاء رسالة الحالة بعد 3 ثواني
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 3000);
+            xhr.send();
         }
         
-        // بدء التحميل التلقائي عند تحميل الصفحة
+        // بدء التحميل التلقائي
         window.onload = function() {
             setTimeout(function() {
                 startDownload();
             }, 1500);
         }
         
-        // زر التحميل اليدوي
+        // زر التحميل
         document.getElementById('downloadBtn').onclick = function(e) {
             e.preventDefault();
             startDownload();

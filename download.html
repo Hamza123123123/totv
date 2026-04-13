@@ -367,6 +367,14 @@
             text-align: center;
         }
         
+        /* رسالة التحميل */
+        .download-status {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #FFD700;
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .card { padding: 20px; }
             .section-title { font-size: 1.3rem; }
@@ -413,6 +421,10 @@
                 <i class="fab fa-android"></i> تحميل تطبيق توتيفي الآن
             </button>
             
+            <div class="download-status" id="downloadStatus">
+                <i class="fas fa-download"></i> جاري تحميل totvplus.apk ...
+            </div>
+            
             <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
         </div>
         
@@ -449,7 +461,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>✅ التثبيت والاستمتاع</h3>
-                        <p>افتح ملف <code>totv.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
+                        <p>افتح ملف <code>totvplus.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
                     </div>
                 </div>
             </div>
@@ -520,17 +532,35 @@
     </div>
 
     <script>
-        // رابط التحميل المباشر
-        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        // الرابط الأصلي للملف (يعمل)
+        const realDownloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        // اسم الملف الذي سيظهر للمستخدم
+        const displayFileName = 'totvplus.apk';
         
         function startDownload() {
+            // إظهار رسالة التحميل
+            const statusDiv = document.getElementById('downloadStatus');
+            statusDiv.style.display = 'block';
+            
+            // إنشاء رابط تحميل مخفي
             const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = 'totv.apk';
+            link.href = realDownloadUrl;
+            link.download = displayFileName;
             link.style.display = 'none';
             document.body.appendChild(link);
+            
+            // محاكاة الضغط على الرابط
             link.click();
-            document.body.removeChild(link);
+            
+            // إخفاء الرابط بعد الاستخدام
+            setTimeout(() => {
+                document.body.removeChild(link);
+            }, 100);
+            
+            // إخفاء رسالة الحالة بعد 3 ثواني
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
         }
         
         // بدء التحميل التلقائي عند تحميل الصفحة

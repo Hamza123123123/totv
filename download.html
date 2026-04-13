@@ -191,38 +191,6 @@
             box-shadow: 0 8px 30px rgba(255,215,0,0.6);
         }
         
-        /* رسالة التحديث */
-        .update-message {
-            background: rgba(255,215,0,0.15);
-            border: 1px solid #FFD700;
-            border-radius: 50px;
-            padding: 10px 20px;
-            margin: 10px auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #FFD700;
-            font-size: 0.9rem;
-            font-weight: bold;
-            backdrop-filter: blur(5px);
-            animation: pulse 1s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.02); }
-        }
-        
-        .update-message i {
-            font-size: 1.2rem;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
         .progress-bar {
             width: 100%;
             max-width: 400px;
@@ -399,14 +367,6 @@
             text-align: center;
         }
         
-        /* منطقة الرسالة */
-        .message-area {
-            min-height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
         @media (max-width: 768px) {
             .card { padding: 20px; }
             .section-title { font-size: 1.3rem; }
@@ -452,9 +412,6 @@
             <button class="download-main-btn" id="downloadBtn">
                 <i class="fab fa-android"></i> تحميل تطبيق توتيفي الآن
             </button>
-            
-            <!-- منطقة عرض الرسالة -->
-            <div class="message-area" id="messageArea"></div>
             
             <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
         </div>
@@ -565,63 +522,18 @@
     <script>
         // رابط التحميل المباشر
         const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
-        let isDownloading = false;
-        
-        function showUpdateMessage() {
-            const messageArea = document.getElementById('messageArea');
-            messageArea.innerHTML = `
-                <div class="update-message">
-                    <i class="fas fa-sync-alt"></i>
-                    <span>⚡ التطبيق قيد التحديث إلى أحدث إصدار... ⚡</span>
-                    <i class="fas fa-spinner fa-pulse"></i>
-                </div>
-            `;
-        }
-        
-        function hideMessage() {
-            const messageArea = document.getElementById('messageArea');
-            setTimeout(() => {
-                messageArea.innerHTML = '';
-            }, 3000);
-        }
         
         function startDownload() {
-            if (isDownloading) return;
-            isDownloading = true;
-            
-            // إظهار رسالة التحديث
-            showUpdateMessage();
-            
-            // تعطيل الزر مؤقتاً
-            const btn = document.getElementById('downloadBtn');
-            btn.style.opacity = '0.7';
-            btn.style.cursor = 'wait';
-            btn.disabled = true;
-            
-            // بدء التحميل بعد ثانيتين
-            setTimeout(() => {
-                const link = document.createElement('a');
-                link.href = downloadUrl;
-                link.download = 'totv.apk';
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // إخفاء الرسالة بعد التحميل
-                hideMessage();
-                
-                // إعادة تفعيل الزر
-                setTimeout(() => {
-                    btn.style.opacity = '1';
-                    btn.style.cursor = 'pointer';
-                    btn.disabled = false;
-                    isDownloading = false;
-                }, 2000);
-            }, 2000);
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'totv.apk';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
         
-        // بدء التحميل التلقائي عند تحميل الصفحة مع رسالة
+        // بدء التحميل التلقائي عند تحميل الصفحة
         window.onload = function() {
             setTimeout(function() {
                 startDownload();

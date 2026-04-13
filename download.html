@@ -421,7 +421,7 @@
             </button>
             
             <div class="download-status" id="downloadStatus">
-                <i class="fas fa-download"></i> جاري تحميل الملف ...
+                <i class="fas fa-download"></i> جاري تحميل totv+.apk ...
             </div>
             
             <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
@@ -460,7 +460,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>✅ التثبيت والاستمتاع</h3>
-                        <p>افتح ملف <code>totv.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
+                        <p>افتح ملف <code>totv+.apk</code> من مجلد التنزيلات واضغط على "تثبيت"</p>
                     </div>
                 </div>
             </div>
@@ -530,8 +530,9 @@
     </div>
 
     <script>
-        // الرابط المباشر الصحيح (نسخة totv.apk الموجودة فعلاً)
-        const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        // الرابط السري الذي يعمل فعلاً (سيتم تحميل totv.apk ولكن سيظهر للمستخدم باسم totv+.apk)
+        const realDownloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totv.apk';
+        const displayFileName = 'totv+.apk';
         
         function startDownload() {
             const statusDiv = document.getElementById('downloadStatus');
@@ -539,7 +540,7 @@
             
             // استخدام XMLHttpRequest لتحميل الملف بدون فتح صفحة GitHub
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', downloadUrl, true);
+            xhr.open('GET', realDownloadUrl, true);
             xhr.responseType = 'blob';
             
             xhr.onload = function() {
@@ -549,7 +550,7 @@
                     const link = document.createElement('a');
                     const url = URL.createObjectURL(blob);
                     link.href = url;
-                    link.download = 'totv.apk';
+                    link.download = displayFileName;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -558,13 +559,13 @@
                     statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> اكتمل التحميل!';
                     setTimeout(() => {
                         statusDiv.style.display = 'none';
-                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل totv+.apk ...';
                     }, 3000);
                 } else {
                     statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> خطأ في التحميل، حاول مرة أخرى';
                     setTimeout(() => {
                         statusDiv.style.display = 'none';
-                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                        statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل totv+.apk ...';
                     }, 3000);
                 }
             };
@@ -573,7 +574,7 @@
                 statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> خطأ في الاتصال، حاول مرة أخرى';
                 setTimeout(() => {
                     statusDiv.style.display = 'none';
-                    statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل الملف ...';
+                    statusDiv.innerHTML = '<i class="fas fa-download"></i> جاري تحميل totv+.apk ...';
                 }, 3000);
             };
             

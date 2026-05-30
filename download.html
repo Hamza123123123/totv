@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل تطبيق توتيفي TOTV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>تحميل تطبيق توتيفي TOTV - نسخة أندرويد وبديل iPhone</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -84,6 +84,81 @@
             box-shadow: 0 10px 30px rgba(255,215,0,0.1);
         }
         
+        /* البطاقة المميزة لأيفون */
+        .ios-card {
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(30,30,40,0.9));
+            border: 1px solid rgba(255,215,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .ios-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+            animation: rotateGlow 12s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .ios-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,215,0,0.15);
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+            backdrop-filter: blur(5px);
+        }
+        .ios-badge i {
+            font-size: 1rem;
+        }
+        .iphone-mock {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0 5px;
+        }
+        .iphone-mock i {
+            font-size: 3rem;
+            color: #FFD700;
+            filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+            animation: floatPhone 3s ease-in-out infinite;
+        }
+        @keyframes floatPhone {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        .btn-ios {
+            background: linear-gradient(135deg, #2c2c2e, #1c1c1e);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .btn-ios:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+        }
         .football-player {
             position: relative;
             width: 100%;
@@ -374,7 +449,6 @@
             display: none;
         }
         
-        /* iframe مخفي للتحميل */
         .hidden-download {
             position: absolute;
             width: 0;
@@ -404,6 +478,7 @@
     
     <div class="container">
         
+        <!-- بطاقة تحميل أندرويد الأصلية -->
         <div class="card" style="text-align: center;">
             <div class="football-player">
                 <div class="running-player">
@@ -426,23 +501,48 @@
             </div>
             
             <button class="download-main-btn" id="downloadBtn">
-                <i class="fab fa-android"></i> تحميل تطبيق توتيفي الآن
+                <i class="fab fa-android"></i> تحميل تطبيق توتيفي الآن (أندرويد)
             </button>
             
             <div class="download-status" id="downloadStatus">
                 <i class="fas fa-download"></i> جاري تجهيز ملف التحميل ...
             </div>
             
-            <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0</p>
+            <p style="color: #888; font-size: 0.7rem;">حجم الملف: 34 م.ب | الإصدار: 1.0 | نظام أندرويد فقط</p>
         </div>
         
-        <!-- iframe مخفي للتحميل -->
+        <!-- بطاقة iPhone المضافة (توضيح جميل) -->
+        <div class="card ios-card" style="text-align: center;">
+            <div class="ios-badge">
+                <i class="fab fa-apple"></i> قريباً على iPhone
+                <i class="fas fa-star-of-life" style="font-size: 0.6rem;"></i>
+            </div>
+            <div class="iphone-mock">
+                <i class="fab fa-apple"></i>
+                <i class="fas fa-mobile-alt" style="font-size: 2.5rem; margin-right: 5px;"></i>
+            </div>
+            <h2 style="color: #FFD700; font-size: 1.4rem; margin-bottom: 12px;">📲 تطبيق توتيفي قادم قريباً لأجهزة iOS!</h2>
+            <p style="color: #ccc; margin-bottom: 15px; line-height: 1.6;">
+                نحن نعمل على إطلاق نسخة مذهلة من توتيفي لأجهزة iPhone وiPad قريباً جداً. 
+                في الوقت الحالي، ننصحك بتحميل المشغل المثالي <strong>Smarters Player Lite</strong> من متجر التطبيقات، 
+                لتستمتع بمشاهدة المباريات والمحتوى الرياضي بجودة عالية وسلاسة تامة.
+            </p>
+            <a href="https://apps.apple.com/co/app/smarters-player-lite/id1628995509" target="_blank" class="btn-ios" rel="noopener noreferrer">
+                <i class="fab fa-app-store-ios"></i> حمل Smarters Player Lite من App Store
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <p style="font-size: 0.75rem; color: #FFD700; margin-top: 15px;">
+                <i class="fas fa-clock"></i> انتظرونا قريباً بتطبيق توتيفي الأصلي على iPhone - تجربة لا مثيل لها!
+            </p>
+        </div>
+        
+        <!-- iframe مخفي للتحميل (أندرويد) -->
         <iframe id="downloadFrame" class="hidden-download"></iframe>
         
         <div class="card">
             <div class="section-title">
                 <i class="fas fa-download"></i>
-                طريقة التثبيت
+                طريقة التثبيت (أندرويد)
             </div>
             
             <div class="steps-grid">
@@ -481,49 +581,47 @@
         <div class="card">
             <div class="section-title">
                 <i class="fas fa-question-circle"></i>
-                الأسئلة الشائعة للتحميل
+                الأسئلة الشائعة
             </div>
             
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-download"></i> كيف يتم التحميل؟</span>
+                        <span><i class="fas fa-download"></i> كيف يتم التحميل للأندرويد؟</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        اضغط على زر "تحميل تطبيق توتيفي الآن" الموجود في أعلى الصفحة، سيبدأ التحميل تلقائياً خلال ثواني.
+                        اضغط على زر "تحميل تطبيق توتيفي الآن (أندرويد)" الموجود في أعلى الصفحة، سيبدأ التحميل تلقائياً خلال ثواني.
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-cog"></i> كيف يتم التثبيت؟</span>
+                        <span><i class="fab fa-apple"></i> متى سيتوفر التطبيق لأجهزة iPhone؟</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        1. بعد تحميل الملف، افتحه من مجلد التنزيلات<br>
-                        2. إذا طلب منك تفعيل "مصادر غير معروفة"، اذهب إلى الإعدادات وفعّلها<br>
-                        3. اضغط على "تثبيت" وانتظر حتى الانتهاء
+                        قريباً جداً! نحن في المراحل النهائية من التطوير. سيكون الإعلان قريباً عبر قنواتنا الرسمية. يمكنك متابعة حسابنا على تويتر أو التيليجرام لمعرفة الموعد الدقيق.
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-shield-alt"></i> هل الملف آمن؟</span>
+                        <span><i class="fas fa-tv"></i> هل يمكن مشاهدة المباريات عبر Smarters Player Lite؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، Smarters Player Lite مشغل ممتاز يدعم جميع أنواع البث المباشر والمباريات، ويمكنك استخدامه لحين إطلاق تطبيق توتيفي الرسمي على iOS.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-shield-alt"></i> هل ملف الأندرويد آمن؟</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
                         نعم، الملف آمن بنسبة 100% وهو الإصدار الرسمي من تطبيق توتيفي TOTV.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span><i class="fas fa-tv"></i> هل يمكن مشاهدة المباريات؟</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        نعم! تطبيق توتيفي يتيح لك مشاهدة جميع المباريات بث مباشر والأفلام والمسلسلات.
                     </div>
                 </div>
             </div>
@@ -533,16 +631,16 @@
             <a href="index.html" class="back-home">
                 <i class="fas fa-home"></i> العودة للصفحة الرئيسية
             </a>
-            <p class="note">⚽ مشاهدة المباريات بث مباشر | 🎬 أفلام ومسلسلات 4K</p>
+            <p class="note">⚽ مشاهدة المباريات بث مباشر | 🎬 أفلام ومسلسلات 4K | قريباً على iPhone</p>
         </div>
         
         <div class="safety-note">
-            <i class="fas fa-shield-alt"></i> الملف آمن 100% | نسخة أندرويد فقط
+            <i class="fas fa-shield-alt"></i> الملف آمن 100% | نسخة أندرويد فقط | لمستخدمي iPhone نوصي بـ Smarters Player Lite
         </div>
     </div>
 
     <script>
-        // الرابط الجديد الذي رفعته
+        // رابط تحميل ملف الأندرويد
         const downloadUrl = 'https://github.com/Hamza123123123/totv/releases/download/v1/totvplus.apk';
         
         function startDownload() {
@@ -550,17 +648,14 @@
             const iframe = document.getElementById('downloadFrame');
             
             statusDiv.style.display = 'block';
-            
-            // استخدام iframe مخفي للتحميل
             iframe.src = downloadUrl;
             
-            // إخفاء رسالة الحالة بعد 3 ثواني
             setTimeout(() => {
                 statusDiv.style.display = 'none';
             }, 3000);
         }
         
-        // بدء التحميل التلقائي عند تحميل الصفحة
+        // بدء التحميل التلقائي بعد تحميل الصفحة (للأندرويد)
         window.onload = function() {
             setTimeout(function() {
                 startDownload();
